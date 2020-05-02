@@ -121,7 +121,7 @@
 
             <!--LIGHTBOX GALLERY WITH GUTTERS-->
             <div class="row">
-                <div class="col-md-12"id="insertHere">
+                <div class="col-md-12">
                     <div class="photo-gallery">
                         <div class="intro">
                             <h2 class="text-center">Gallery</h2>
@@ -198,7 +198,7 @@
                             <div class="col-sm-6 col-md-4 col-lg-3 item">
                                 <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/tse.jpg"></a>
                                 <p class="imgDetails">Afternoon, Canal du Midi, Toulouse</p>
-                                <button  class="btn btn-danger btn-sm rounded-0 deleteButton" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                <button  class="btn btn-danger btn-sm rounded-0 imageDeleteButton" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -245,9 +245,10 @@
 </html>
 
 <script>// Attach a submit handler to the form
+
     $("#sender").off().submit(function (event) {
 
-        // Stop form from submitting normally
+        // Stop form from submitting normally;
         event.preventDefault();
         var input = $(this).find('input');
 
@@ -262,7 +263,6 @@
 
         var posting = $.post(postUrl, { videoInput: inputValue });
         console.log('posting = ', posting);
-        
     });
 
 
