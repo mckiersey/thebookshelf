@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title></title>
+    </head>
+
+
+    <body>
+     <div class="col-12 full-background-image">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 main_text_format" id ="intro_text">
+                <h1>CONTENT</h1>
+                <h3>A home for all your favourite online content</h3>
+            </div>
+        </div>
+        <div class="row">
+           
+
+         
+
+
+        </div>
+            <div class="row" align ="center" id="signin_and_signup">
+                <div class="col-6" id="signin_col">
+                            <h2 class="main_text_format">SIGN-IN</h2>
+                            <form action ="http://localhost:5555/auth" method="POST">
+                                <div class="row" align="center">
+                                    <div class="col-12">
+			                            <input type="text" name="username" placeholder="Username" required>
+                                    </div>
+                                </div>
+                                <div class="row" align="center">
+                                    <div class="col-12">
+                                        <input type="password" name="password" placeholder="Password" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+			                            <input type="submit" class="btn btn-success">
+                                    </div>
+                                </div>
+		                </form>
+                </div>
+                <div class="col-6" align ="center">
+                            <h2 class=" main_text_format">CREATE YOUR OWN PAGE</h2>
+                             <form action ="http://localhost:5555/users" method= "post">
+                             <div class="row">
+                                 <div class="col-12">
+                                     <input type="text" name="username" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="email" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                             <div class="row" align ="center">
+                                 <div class="col-12">
+                                    <input type="submit" class="btn-success">
+                                 </div>
+                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+         <div style="height: 700px"></div>
+        </div>
+ 
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
+<script>
+
+    function nameButton(){
+        console.log('Name button pressed')
+        var requestString = 'http://localhost:5555/usernames';
+        $.get(requestString, function(data, status){
+            console.log('RESPONSE DATA:', data);
+
+            data.result.forEach(user => {
+                console.log(user.username);
+                document.getElementById('UserNames_id').innerHTML += '<div>' + user.username + '</div>'
+
+            });;
+        });
+    }
+
+</script>
+
+<style>
+
+
+    .full-background-image{
+        background: url(data/balloon_background.jpg) no-repeat center center fixed;
+         background-size: cover;
+    }
+    .main_text_format{
+     font-family: Tahoma, Geneva, sans-serif;
+        text-align: center;
+		color: lavender;
+		font-size: 24px;
+		padding: 20px 0 20px 0;
+    }
+
+     #intro_text{
+        width: 80px;
+        margin-top: 40px;
+        margin: auto;
+        margin-bottom: 240px;
+    }
+
+     h1 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 80px;
+}
+
+        h3{
+  font-weight: bold;
+  color: #fff;
+  font-size: 60px;
+}
+
+    #view_a_page{
+    color: black;
+    }
+   
+    
+
+    
+</style>
+
