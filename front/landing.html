@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html lang="en">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>thebook-shelf landing page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <!--<img src="data/bookshelflogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
+            <h2 class="headerFooterText">thebook-shelf.com</h2>
+        </a>
+    </nav>
+    <div class="container-fluid">
+
+
+    <!--Beginning of page content-->
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <h1>A space to keep and beautifully display your favourite online content.</h1>
+        </div>
+    </div>
+    <!--Enter or Create your own-->
+    <div class="row" align="center">
+        <div class="col">
+            <button type="button" class="btn btn-primary" id="enterButton">Enter</button>
+        </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col">
+            <button type="button" class="btn btn-secondary" id="createButton">Create your own bookshelf</button>
+        </div>
+    </div>
+
+
+    <div class="row" align="center">
+        <div class="col">
+            <img src="data/landinglogo.png" id="mainImage"/>
+        </div>
+    </div>
+    <div class="row bg-dark">
+        <div class="col">
+            <p class="headerFooterText">Built by S. McKiernan | 2020</p>
+        </div>
+    </div>
+
+    <!--End of page content-->
+    </div>
+    <!--javascript libraries requied by bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<style>
+
+    .headerFooterText{
+        color: white;
+    }
+
+    h1 {
+        font-family: 'inter', sans-serif;
+        font-weight: bold;
+        font-size: 44px;
+        text-align: center;
+        padding: 50px;
+        line-height: 1.2em;
+        color: #444444;
+    }
+
+    #enterButton {
+        margin: 10px;
+        background-color: steelblue !important;
+        font-size: 30px;
+    }
+    #createButton {
+        margin: 10px;
+        font-size: 15px;
+    }
+
+    #mainImage{
+        margin: 30px;
+    }
+</style>
+
+<script>
+    $('#enterButton').click(function () {
+        console.log('entering site...')
+        window.location = "home.html";
+    });
+</script>

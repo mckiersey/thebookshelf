@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Video Content</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="js_code.js"></script>
+
+</head>
+<body>
+    <div class='cotainter-fluid'>
+     
+        <div class="row bg-light" align ="center">
+            <div class="col-12">
+                <button type="button" class="btn btn-dark font-weight-bold" id="video-section-banner">Click to open the video section</button>
+            </div>
+        </div>
+        <div class="row bg-dark" id="video-section-content">
+            <div class="col">
+         
+                        <button  id="fetcher">Fetch Data!</button>
+                    </div>
+                </div>
+
+                <div class="row" id="first-video-row">
+                    <div class="col-6">
+                        <div class="embed-responsive embed-responsive-16by9" id="slot1">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col-6">
+                        <div class="embed-responsive embed-responsive-16by9" id="slot2">
+
+                        </div>
+                    </div>
+                
+                    <div class="col-6">
+                        <div class="embed-responsive embed-responsive-16by9" id="slot3">
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="embed-responsive embed-responsive-16by9" id="slot4">
+
+                        </div>
+                    </div>
+                
+            
+        <div class="row" align="center">
+            <div class="col" id="importedLinks">
+                <p>links go here</p>
+            </div>
+        </div>     
+    </div>
+
+</body>
+</html>
+
+<style>
+    #video-section-content{
+        display: none;
+    }
+    .embed-responsive-item{
+        padding: 20px;
+    }
+</style>
