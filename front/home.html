@@ -3,9 +3,9 @@
 <head>
 
 
-    <title data-n-head="true">Content Home</title>
-    <link data-n-head="true" rel="icon" type="image/x-icon" href="/favicon.png?v=2">
-    <title>CONTENT HOME</title>
+    <title data-n-head="true">thebookshelf Home</title>
+    <link data-n-head="true" rel="icon" type="image/x-icon" href="">
+    <title>THE BOOK-SHELF HOME</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/a3b77350a6.js"></script> <!--Icons (delete button)-->
@@ -16,11 +16,28 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
+
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img id="headerLogo" src="data/landinglogo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="#">
+
+            <h2 class="headerFooterText">thebook-shelf.com</h2>
+            <p class="headerFooterText">Quality content deserves a beautiful space</p>
+        </a>
+    </nav>
+    <style>
+  
+
+    </style>
     <div class="container-fluid">
-        <!--<div class="col-12 background-colour"> -->
         <!--CAROUSEL-->
         <div class="row" align="center" id="carousel_row">
             <div class="col-9">
@@ -36,7 +53,8 @@
                         <li data-target="#carousel_header" data-slide-to="6"></li>
                         <li data-target="#carousel_header" data-slide-to="7"></li>
                         <li data-target="#carousel_header" data-slide-to="8"></li>
-                        <li data-target="#carousel_header" data-slide-to="9"></li>
+
+
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -44,16 +62,16 @@
                         </div>
 
                         <div class="carousel-item">
-                            <img src="/Users/Seansmac/Desktop/dev/v_bootstrap/bootstrap_frontend/data/philippines_brian_sean.jpg" class="d-block w-100" id="carousel_image">
+                            <img src="data/philippines_brian_sean.jpg" class="d-block w-100" id="carousel_image">
                         </div>
                         <div class="carousel-item">
-                            <img src="/Users/Seansmac/Desktop/dev/v_bootstrap/bootstrap_frontend/data/philippines_beach.jpg" class="d-block w-100" id="carousel_image">
+                            <img src="data/philippines_beach.jpg" class="d-block w-100" id="carousel_image">
                         </div>
                         <div class="carousel-item">
                             <img src="data/etretatbeach.jpg" class="d-block w-100" id="carousel_image">
                         </div>
                         <div class="carousel-item">
-                            <img src="/Users/Seansmac/Desktop/dev/v_bootstrap/bootstrap_frontend/data/philippines_boat.jpg" class="d-block w-100" id="carousel_image">
+                            <img src="data/philippines_boat.jpg" class="d-block w-100" id="carousel_image">
                         </div>
                         <div class="carousel-item">
                             <img src="data/turkeyfishermen.jpg" class="d-block w-100" id="carousel_image">
@@ -61,10 +79,11 @@
                         <div class="carousel-item">
                             <img src="data/poseidon.jpg" class="d-block w-100" id="carousel_image">
                         </div>
-                        <div class="carousel-item ">
-                            <img src="/Users/Seansmac/Pictures/balloons_background.jpg" class="d-block w-100" id="carousel_image">
-                        </div>
+                      
                     </div>
+
+
+
                     <a class="carousel-control-prev" href="#carousel_header" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -78,13 +97,9 @@
 
             <!--HEADER & PROFILE PICTURE-->
             <div class="header_and_profile personalSection">
-                <div class="col-6">
-                    <div class="header_text">
-                        <h1 id="title">THEBOOKSHELF</h1>
-                    </div>
-                </div>
+
                 <div class="col-6 personalSection" align="right">
-                    <img src="/Users/Seansmac/Projects/content.github.io/me_balloons.jpg" alt="Avatar" class="avatar">
+                    <img src="data/me_balloons.jpg" alt="Avatar" class="avatar">
                 </div>
                 <!-- EDIT SWITCH-->
                 <div class="custom-control custom-switch" id="editModeSwitch">
@@ -92,7 +107,7 @@
                     <label class="custom-control-label" for="customSwitch1">Edit mode</label>
                 </div>
                 <!--NAV BAR-->
-                <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical">
+                <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical" id="navBar">
                     <li class="item">
                         <a class="nav-link active" href="homepage_new.html">Home</a>
                     </li>
@@ -100,32 +115,38 @@
                         <a class="nav-link" href="landing.html">Return to landing page</a>
                     </li>
                     <li class="item">
-                        <a class="nav-link" href="index.html">Create your own</a>
+                        <a class="nav-link" href="#">Create your own</a>
                     </li>
                 </ul>
             </div>
-         
-           
+
+
         </div>
 
         <!--MUSIC-->
         <div class="row">
             <div class="col-12">
-                <div class="jumbotron">
-                    <div class="row">
-                        <div class="col-2">
-                            <h1 class="display-5">My Music</h1>
-                            <p class="lead">Deezer</p>
-                            <hr class="my-4">
-                            <a class="btn btn-primary btn-lg" href="https://www.deezer.com/mydeezeryear/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbmRvZnllYXJEYXRhIjp7InVzZXJJZCI6MjY3MTg3MDQyMn19.vYFjoWpuQ3M8kuxf3WgkyLZBgHXDBH8Gl6CNCAMsZbk?from_app=true" role="button">My Deezer Year: 2019</a>
-                        </div>
-                        <div class="col-9" align="left">
-                            <iframe scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=1000&height=500&color=ff0000&layout=dark&size=medium&type=playlist&id=6594777664&app_id=1" width=100% height=100%></iframe>
-                        </div>
+                <div class="row" align="center">
+                    <div class="col-2">
+                        <h1 id="myMusic">My Music</h1>
+                        <p class="lead">What I'm listening to these days</p>
+
+                    </div>
+                    <div class="col-4 musicFrame">
+                        <p class="shelfDescription">Listen on Deezer</p>
+
+                        <iframe class="musicPlayer" id="deezerPlayer" scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=7613072842&app_id=1"></iframe>
+                        <img class="musicLogo" id="deezerLogo" src="data/deezerAppLogo.png" />
+                    </div>
+                    <div class="col-4 musicFrame">
+                        <p class="shelfDescription">Listen on Spotify</p>
+                        <iframe class="musicPlayer" id="spotPlayer" src="https://open.spotify.com/embed/playlist/16ryn0QfWZMcBTNfqzW7Si" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <img class="musicLogo" id="spotLogo" src="data/spotAppLogo.png" />
                     </div>
                 </div>
             </div>
         </div>
+       
 
         <!-- </div> -->
         <!--VIDEO SHELF-->
@@ -176,14 +197,7 @@
 
 
                 <!--PODCAST CONTENT POPULATES HERE-->
-                <!--
-                To do:
-                - podcast images
-                - podcast links
-                - episode links
-                -
 
-            -->
                 <div class="card-deck">
                     <div class="card mb-6">
                         <img src="data/secondCaptains.jpg" class="card-img-top" alt="...">
@@ -304,115 +318,129 @@
                 <button type="button" class="btn btn-dark font-weight-bold" id="openArticles">Click to open the articles section</button>
             </div>
         </div>
-        <div class="row bg-light" align="center" id="podcast-section-content">
+        <div class="row bg-light" align="center" id="article-section-content">
             <div class="col">
 
 
                 <!--ARTICLE CONTENT POPULATES HERE-->
                 <div class='writing_piece'>
+                    <iframe class="articleIFrame" src="https://www.theatlantic.com/politics/archive/2015/06/grace/397064/"></iframe>
+                    <iframe class="articleIFrame" src="https://pitchfork.com/features/article/listen-to-music/"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/log-covid-19-38f565944bcd"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/my-paris-is-3d4bd3d4405b"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/i-just-proved-that-a-spoon-has-100-different-uses-7b505d4db33f"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/searching-for-failure-6173c120c366"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/ballet-6bd5887a00d4"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/tao-or-human-e9e7c6bd4ea6"></iframe>
+                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/a-year-at-home-d443dee3ea5a"></iframe>
 
-                    <iframe src="https://medium.com/@mckiersey/log-covid-19-38f565944bcd"></iframe>
-                </div>
-                <div class='writing_piece'>
-                    <iframe src=""></iframe>
-                </div>
-                <div class='writing_piece'>
-                    <iframe src=""></iframe>
-                </div>
-                <div class='writing_piece'>
-                    <iframe src=""></iframe>
                 </div>
             </div>
         </div>
 
 
 
-            <!--LIGHTBOX GALLERY WITH GUTTERS-->
+        <!--LIGHTBOX GALLERY WITH GUTTERS-->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="photo-gallery">
-                        <div class="intro">
-                            <h2 class="text-center photo-gallery">Images</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="photo-gallery">
+                    <div class="intro">
+                        <h2 class="text-center photo-gallery">Images</h2>
+                    </div>
+                    <div class="row photos">
+                        <div class="col-sm-6 col-md-4 col-lg-4 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/commutelight.jpg"></a>
+                            <p class="imgDetails">Morning light: Rue de Caumartin, Paris</p>
                         </div>
-                        <div class="row photos">
-                            <div class="col-sm-6 col-md-4 col-lg-4 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/commutelight.jpg"></a>
-                                <p class="imgDetails">Morning light: Rue de Caumartin, Paris</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/pureheart.jpg"></a>
-                                <p class="imgDetails">Pass this way with a pure heart: Hollyhead, Wales</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/cava.jpg"></a>
-                                <p class="imgDetails">ça va?: Paris toilet graffiti</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/mosquedusk.jpg"></a>
-                                <p class="imgDetails">Blue Mosque, Istanbul</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/campervanletter.jpg"></a>
-                                <p class="imgDetails">Campervan stories: West of Ireland</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/lesroches.jpg"></a>
-                                <p class="imgDetails">Les Roches, Beirut</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/mosque.jpg"></a>
-                                <p class="imgDetails">Turkey's largest mosque, Adana</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/cappadociapath.jpg"></a>
-                                <p class="imgDetails">Cappadocia</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/smilingtree.jpg"></a>
-                                <p class="imgDetails">Nightlife in Gemmayzeh, Beirut</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/floatingballoon.jpg"></a>
-                                <p class="imgDetails">Cappadocia</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/mosqueinside.jpg"></a>
-                                <p class="imgDetails">Hagia Sophia, Istanbul</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/market.jpg"></a>
-                                <p class="imgDetails">Bustle, Istanbul</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/petdog.jpg"></a>
-                                <p class="imgDetails">Friends, Cappadocia</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/acropolis.jpg"></a>
-                                <p class="imgDetails">The Acropolis, Athen</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/burningroad.jpg"></a>
-                                <p class="imgDetails">Les Gillets Jaunes on a Saturday Afternoon, Boulevard St-Germain, Paris</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/eiffeltower.jpg"></a>
-                                <p class="imgDetails">La Tour Eiffel, Paris</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/notredame.jpg"></a>
-                                <p class="imgDetails">Notre Dame (Intact), Quai de la Tournelle, Paris</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/tse.jpg"></a>
-                                <p class="imgDetails">Afternoon, Canal du Midi, Toulouse</p>
-                                <button class="btn btn-danger btn-sm rounded-0 imageDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
-                            </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/pureheart.jpg"></a>
+                            <p class="imgDetails">Pass this way with a pure heart: Hollyhead, Wales</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/cava.jpg"></a>
+                            <p class="imgDetails">ça va?: Paris toilet graffiti</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/mosquedusk.jpg"></a>
+                            <p class="imgDetails">Blue Mosque, Istanbul</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/campervanletter.jpg"></a>
+                            <p class="imgDetails">Campervan stories: West of Ireland</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/lesroches.jpg"></a>
+                            <p class="imgDetails">Les Roches, Beirut</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" id="toggleImg" src="data/mosque.jpg"></a>
+                            <p class="imgDetails">Turkey's largest mosque, Adana</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/cappadociapath.jpg"></a>
+                            <p class="imgDetails">Cappadocia</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/smilingtree.jpg"></a>
+                            <p class="imgDetails">Nightlife in Gemmayzeh, Beirut</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/floatingballoon.jpg"></a>
+                            <p class="imgDetails">Cappadocia</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/mosqueinside.jpg"></a>
+                            <p class="imgDetails">Hagia Sophia, Istanbul</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/market.jpg"></a>
+                            <p class="imgDetails">Bustle, Istanbul</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/petdog.jpg"></a>
+                            <p class="imgDetails">Friends, Cappadocia</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/acropolis.jpg"></a>
+                            <p class="imgDetails">The Acropolis, Athen</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/burningroad.jpg"></a>
+                            <p class="imgDetails">Les Gillets Jaunes on a Saturday Afternoon, Boulevard St-Germain, Paris</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/eiffeltower.jpg"></a>
+                            <p class="imgDetails">La Tour Eiffel, Paris</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/notredame.jpg"></a>
+                            <p class="imgDetails">Notre Dame (Intact), Quai de la Tournelle, Paris</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 item">
+                            <a href=".jpg" data-lightbox="photos"><img class="toggleImg" src="data/tse.jpg"></a>
+                            <p class="imgDetails">Afternoon, Canal du Midi, Toulouse</p>
+                            <button class="btn btn-danger btn-sm rounded-0 imageDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                         </div>
                     </div>
+
+                        <div class="col-md-6 editModeElement">
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                            Browse… <input type="file" id="imgInp">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                                <img id='img-upload' />
+                            </div>
+                        </div>
                 </div>
             </div>
+        </div>
     </div> <!--Containter fluid div-->
 
 </body>
@@ -423,8 +451,23 @@
 
 
 <style>
+
+    .headerFooterText {
+        color: white;
+    }
     .background-colour {
         background-color: #eee;
+    }
+
+    #headerLogo {
+        border-radius: 30px;
+        width: 20%;
+        height: 20%;
+        margin: 10px;
+    }
+
+    .container-fluid{
+        margin-top: 3px;
     }
 
     .header_and_profile {
@@ -437,8 +480,11 @@
         font-family: 'inter', sans-serif;
         font-weight: bold;
     }
+    #navBar{
+        margin-top: 100px;
+    }
 
-    #title{
+    #title {
         font-size: 30px;
     }
 
@@ -504,6 +550,25 @@
         margin-top: 50px;
     }
 
+    #myMusic {
+        margin-top: 30px;
+    }
+
+    .musicPlayer {
+        display: none;
+        height: 500px;
+        width: 500px;
+        padding: 50px;
+    }
+
+    .musicLogo {
+        width: 110px;
+        height: 100px;
+    }
+
+    #spotLogo {
+        width: 150px;
+    }
     #video-section-content{
         display: none;
     }
@@ -512,7 +577,16 @@
         display: none;
     }
 
-    .addDataSection{
+   #article-section-content{
+       display:none;
+   }
+    .articleIFrame{
+        height: 800px;
+        width: 600px;
+        border: none;
+    }
+
+    .addDataSection {
         margin: 15px;
     }
 
@@ -539,6 +613,35 @@
 
     .photo-gallery{
         margin-top: 30px;
+    }
+
+    .row photos{
+        margin:50px;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    #img-upload {
+        width: 100%;
     }
 
 </style>

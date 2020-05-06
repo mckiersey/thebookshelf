@@ -2,18 +2,18 @@
 
 $(document).ready(function () {
 
-    userName = 'sean'
 
     console.log('Javascript loaded')
 
     // Simulate log in on/off edit function
+    userName = 'sean'
+
     if (userName == 'sean') {
         $('#editModeSwitch').show()
     }
 
     $('#editModeSwitch').on("change", function () {
         $('.editModeElement').toggle()
-        
     });
 
   
@@ -27,7 +27,20 @@ $(document).ready(function () {
     });
 
 
-       
+    //Music players
+    $('.musicLogo').click(function () {
+        console.log('music logo clicked.')
+        console.log(this.id)
+        musicElementClicked = this.id
+        $(`#${musicElementClicked}`).hide()
+        if (this.id == 'deezerLogo') {
+            console.log('showing deezer player')
+            $('#deezerPlayer').show();
+        } else if (this.id == 'spotLogo') {
+            console.log('showing spot player')
+            $('#spotPlayer').show()
+        }
+    })
 
     $('#openVideos').click(function () {
         console.log('Video section clicked.');
@@ -42,10 +55,12 @@ $(document).ready(function () {
     });
 
     $('#openArticles').click(function () {
-        console.log('Podcasts section clicked.');
-        $('#podcast-section-content').slideToggle('fast');
+        console.log('Article section clicked.');
+        $('#article-section-content').slideToggle('fast');
 
     });
+
+ 
 
    
     $('.toggleImg').mouseenter(function () {
@@ -80,7 +95,7 @@ $(document).ready(function () {
         });
     });
 
-    // POST DATA TO DATA BASE
+    // POST VIDEO DATA TO DATA BASE
     $("#sender").off().submit(function (event) {
         event.preventDefault();
 
@@ -100,7 +115,45 @@ $(document).ready(function () {
         }
         event.preventDefault();
         
-    });    
+    });
+
+
+
+    // POST IMAGE DATA TO DATA BASE
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+
     // DELETE DATA IN THE DATA BASE
         // Need seperate buttons because to find data to be deleted I need to specift the content type (img etc.)
 
