@@ -30,7 +30,7 @@
         <a class="navbar-brand" href="#">
 
             <h2 class="headerFooterText">thebook-shelf.com</h2>
-            <p class="headerFooterText">Quality content deserves a beautiful space</p>
+            <p class="headerFooterText">Beautiful content deserves a beautiful space</p>
         </a>
     </nav>
     <style>
@@ -42,8 +42,18 @@
         <div class="row" align="center" id="carousel_row">
             <div class="col-9">
 
+                <button type="button" class="btn btn-dark font-weight-bold" id="openCarousel">Fetch carousel data</button>
+
+                <div class="row bg-dark" align="center" id="imageTests">
+                    <div class="col">
+                    </div>
+                    <!--VIDEO CONTENT POPULATES HERE-->
+                </div>
+                </div>
                 <div id="carousel_header" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
+                    <ol class="carousel-indicators" id="imageTest">
+                        <!--CAROUSEL CONTENT POPULATES HERE-->
+
                         <li data-target="#carousel_header" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel_header" data-slide-to="1"></li>
                         <li data-target="#carousel_header" data-slide-to="2"></li>
@@ -57,6 +67,8 @@
 
                     </ol>
                     <div class="carousel-inner">
+                        <!--CAROUSEL CONTENT POPULATES HERE-->
+
                         <div class="carousel-item active">
                             <img src="data/parissunset.jpg" class="d-block w-100" id="carousel_image">
                         </div>
@@ -79,7 +91,7 @@
                         <div class="carousel-item">
                             <img src="data/poseidon.jpg" class="d-block w-100" id="carousel_image">
                         </div>
-                      
+
                     </div>
 
 
@@ -119,10 +131,13 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
-
+        <!--Upload for carousel images-->
+        <div class="col-md-6 editModeElement">
+            <p id="msg"></p>
+            <input type="file" id="carouselImage" name="file" multiple />
+            <button class="imageUpload" id="carouselImage">Upload</button>
+        </div>
         <!--MUSIC-->
         <div class="row">
             <div class="col-12">
@@ -146,7 +161,7 @@
                 </div>
             </div>
         </div>
-       
+
 
         <!-- </div> -->
         <!--VIDEO SHELF-->
@@ -174,7 +189,7 @@
                         <input type="text" class="form-control" id="videoInput" aria-describedby="youtubeInput" placeholder="Enter Youtube Embed Link">
                         <small id="youtubeInput" class="form-text text-muted">Please make sure to input the address from the 'embed' option.</small>
                     </div>
-                    <button id="senderButton" type="submit" class="btn btn-primary">Submit</button>
+                    <button id="senderButton" type="submit" class="btn btn-primary">Add</button>
                 </form>
                 <p id="text-output"></p>
             </div>
@@ -318,35 +333,32 @@
                 <button type="button" class="btn btn-dark font-weight-bold" id="openArticles">Click to open the articles section</button>
             </div>
         </div>
+        <div class="row addDataSection" align="justify">
+            <div class="col-8">
+                <form class="editModeElement" id="articleSender">
+                    <div class="form-group">
+                        <label class="inputLabel" for="articleInput">Add an article</label>
+                        <input type="text" class="form-control" id="articleInput" aria-describedby="youtubeInput" placeholder="Enter a link from a great article">
+                        <small id="articleInput" class="form-text text-muted"></small>
+                    </div>
+                    <button id="senderButton" type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <p id="text-output"></p>
+            </div>
+        </div>
         <div class="row bg-light" align="center" id="article-section-content">
             <div class="col">
-
-
                 <!--ARTICLE CONTENT POPULATES HERE-->
-                <div class='writing_piece'>
-                    <iframe class="articleIFrame" src="https://www.theatlantic.com/politics/archive/2015/06/grace/397064/"></iframe>
-                    <iframe class="articleIFrame" src="https://pitchfork.com/features/article/listen-to-music/"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/log-covid-19-38f565944bcd"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/my-paris-is-3d4bd3d4405b"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/i-just-proved-that-a-spoon-has-100-different-uses-7b505d4db33f"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/searching-for-failure-6173c120c366"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/ballet-6bd5887a00d4"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/tao-or-human-e9e7c6bd4ea6"></iframe>
-                    <iframe class="articleIFrame" src="https://medium.com/@mckiersey/a-year-at-home-d443dee3ea5a"></iframe>
-
-                </div>
             </div>
         </div>
 
 
-
         <!--LIGHTBOX GALLERY WITH GUTTERS-->
-
         <div class="row">
             <div class="col-md-12">
                 <div class="photo-gallery">
                     <div class="intro">
-                        <h2 class="text-center photo-gallery">Images</h2>
+                        <h2 class="text-center photo-gallery">My world</h2>
                     </div>
                     <div class="row photos">
                         <div class="col-sm-6 col-md-4 col-lg-4 item">
@@ -424,20 +436,11 @@
                         </div>
                     </div>
 
-                        <div class="col-md-6 editModeElement">
-                            <div class="form-group">
-                                <label>Upload Image</label>
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <span class="btn btn-default btn-file">
-                                            Browse… <input type="file" id="imgInp">
-                                        </span>
-                                    </span>
-                                    <input type="text" class="form-control" readonly>
-                                </div>
-                                <img id='img-upload' />
-                            </div>
-                        </div>
+                    <div class="col-md-6 editModeElement">
+                        <p id="msg"></p>
+                        <input type="file" id="gridImage" name="file" multiple />
+                        <button class="imageUpload" id="gridImage">Upload</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,8 +496,8 @@
         display: none;
     }
 
-    .editModeElement{
-        display: none;
+    .editModeElement {
+        /* display: none;  NEED TO ADD SIGN IN FUNCTION FOR THIS*/
     }
 
     #carousel_header_images {
@@ -573,7 +576,7 @@
         display: none;
     }
 
-    #podcast-section-content{
+    #podcast-section-content {
         display: none;
     }
 
@@ -642,6 +645,11 @@
 
     #img-upload {
         width: 100%;
+    }
+
+    .imageUpload {
+        margin-top: 20px;
+        margin-bottom: 50px;
     }
 
 </style>

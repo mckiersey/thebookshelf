@@ -13,13 +13,14 @@ var session = require('express-session');
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
 var cors = require('cors');
+var fileupload = require("express-fileupload");
 
  
 // THIS BRANCH IS WORKING AND IS A BACKUP //
 
 //Fix security issues
 
-app.use(cors())
+app.use(cors());
 
 // CREATE SESSION
 
@@ -28,6 +29,12 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+app.use(fileupload({
+    createParentPath: true
+}));
+
+app.use('/uploads', express.static('uploads'))
 
 //USE BODY PARSER
 

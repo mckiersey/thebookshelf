@@ -28,6 +28,8 @@ $(document).ready(function () {
 
 
     //Music players
+
+
     $('.musicLogo').click(function () {
         console.log('music logo clicked.')
         console.log(this.id)
@@ -60,8 +62,6 @@ $(document).ready(function () {
 
     });
 
- 
-
    
     $('.toggleImg').mouseenter(function () {
         $(".imgDetails").finish().slideToggle(400);
@@ -75,10 +75,11 @@ $(document).ready(function () {
    
 
 
-     // FETCH DATA FROM DATABASE            
+// FETCH DATA FROM DATABASE            
+    //Videos
 
     $('#openVideos').click(function () {
-        console.log('Data fetch requested');
+        console.log('Video data fetch requested');
         //Send a request to the server;
 
         var requestString = 'http://localhost:5555/videos';
@@ -87,28 +88,83 @@ $(document).ready(function () {
 
             data.forEach(function (entry) {
                 console.log(entry)
-                videoContentIframe = entry.videoLink
+                videoContentIframe = entry.link
                 console.log(videoContentIframe)
                 document.getElementById('video-section-content').innerHTML += videoContentIframe    
-                    + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'   
+                + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'   
+            });
+        });
+    });
+    //Articles
+
+    $('#openArticles').click(function () {
+        console.log('Article data fetch requested')
+        var requestString = 'http://localhost:5555/articles';
+
+        $.get(requestString, function (data, status) {
+            console.log('Requet status is:', status)
+            data.forEach(function (entry) {
+                articleContent = entry.link
+                console.log('article:', articleContent)
+                document.getElementById('article-section-content').innerHTML += `<iframe class="articleIFrame" src="${articleContent}"></iframe>`
+                    + '<button class="btn btn-danger btn-sm rounded-0 articleDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'   
+
             });
         });
     });
 
-    // POST VIDEO DATA TO DATA BASE
+
+    // CAROUSEL
+    $('#openCarousel').click(function () {
+        console.log('carousel fetcher...')
+        var requestString = 'http://localhost:5555/carouselImages';
+        $.get(requestString, function (data, status) {
+            console.log('data response is: ', data)
+            var i= 0
+            data.forEach(function (entry) {
+                sentImage = entry.LINK
+               // sentImageClean = sentImage.replace('./', '/');
+                sentImageFinal = "http://localhost:5555" + sentImage
+                console.log(sentImageFinal)
+                //console.log('image: ', sentImageClean);
+                document.getElementById('imageTest').innerHTML += `<li data-target="#carousel_header" data-slide-to="${i}"></li>`
+                console.log('i = ', i)
+                if (i === 0) {
+                    var className = "carousel-item active"
+                } else {
+                    var className = "carousel-item"
+                }
+                console.log('class name is', className)
+                i++
+
+
+
+                    //`<img src="${sentImageFinal}">`;
+            })
+        });
+    });
+    // 
+       //  <div class="carousel-item active">
+      //       <img src="data/parissunset.jpg" class="d-block w-100" id="carousel_image">
+     //    </div>
+
+
+    // POST VIDEO DATA TO DATA BASE;
     $("#sender").off().submit(function (event) {
         event.preventDefault();
 
         // Stop form from submitting normally;
+
         try {
             var input = $(this).find('input');
-            inputValue = input.val();
+            var inputValue = input.val();
             var postUrl = 'http://localhost:5555/videos'
             // Get some values from elements on the page
+
                 console.log('inputValue =', inputValue);
                 console.log('url =', postUrl);
             // Send the data using post
-                var posting = $.post(postUrl, { videoInput: inputValue });
+            var posting = $.post(postUrl, { videoInput: inputValue , user: userName});
                 console.log('posting = ', posting);
         } catch (ex) {
             alert('An error occurred and I need to write some code to handle this!');
@@ -117,42 +173,58 @@ $(document).ready(function () {
         
     });
 
+    //POST ARTICLE DATA TO DATA BASE
+
+    $('#articleSender').off().submit(function (event) {
+        event.preventDefault();
+        try {
+            var input = $(this).find('input');
+            var inputValue = input.val();
+            console.log('to be posted:', inputValue)
+            var postUrl = 'http://localhost:5555/articles'
+            $.post(postUrl, { articleInput: inputValue, accountOwner: userName });
+            //$.post("test.php", { name: "John", time: "2pm" });
+
+        } catch (exception) {
+            alert('An error occured and I need to write code to handle it')
+        }
+        console.log('article submitted')
+        
+    });
+
 
 
     // POST IMAGE DATA TO DATA BASE
-        $(document).on('change', '.btn-file :file', function () {
-            var input = $(this),
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [label]);
-        });
+    $('.imageUpload').on('click', function () {
+        console.log('Image uploader clicked')
+        var imageType = this.id
 
-        $('.btn-file :file').on('fileselect', function (event, label) {
+        var file_data = $(`#${imageType}`).prop('files')[0];
 
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
+        var imageData = new FormData();
+        imageData.append('uploadedImage', file_data);
+        imageData.append('uploadedImage', imageType);
+        console.log('Show Get ALL',imageData.getAll('uploadedImage'));
 
-            if (input.length) {
-                input.val(log);
-            } else {
-                if (log) alert(log);
+        var postUrl = 'http://localhost:5555/images'
+
+
+        $.ajax({
+            url: postUrl, // point to server-side controller method
+            dataType: 'text', // what to expect back from the server
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: imageData,
+            type: 'post',
+            success: function (response) {
+                $('#msg').html(response); // display success response from the server
+            },
+            error: function (response) {
+                $('#msg').html(response); // display error response from the server
             }
-
         });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#img-upload').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#imgInp").change(function () {
-            readURL(this);
-        });
+    });
 
     // DELETE DATA IN THE DATA BASE
         // Need seperate buttons because to find data to be deleted I need to specift the content type (img etc.)
@@ -189,6 +261,31 @@ $(document).ready(function () {
 
        });
     });
+
+      // Video delete button
+
+    $(document).on('click', '.articleDeleteButton', function (e) {
+        console.log('Article delete Button found...')
+
+        var previousSibling = $(this.previousSibling)
+        console.log(previousSibling)
+        var linkToDelete = previousSibling[0].src
+        console.log('link to delete = ', linkToDelete)
+
+
+        var deleteUrl = 'http://localhost:5555/articles';
+        $.ajax({
+            url: deleteUrl + '?' + $.param({ "deleteMeArticle": linkToDelete, "deleteMeUserName":userName }),
+            type: 'DELETE',
+
+        });
+    });
+
+
+
+
+
+
 
 });
     
