@@ -12,11 +12,15 @@ $(document).ready(function () {
         $('#editModeSwitch').show()
     }
 
+
+
+
+
     $('#editModeSwitch').on("change", function () {
         $('.editModeElement').toggle()
     });
 
-  
+
 
     $('#toggle-event').on("change", function (e) {
         var isClicked = $('#toggle-event').is(':checked');
@@ -47,7 +51,7 @@ $(document).ready(function () {
     $('#openVideos').click(function () {
         console.log('Video section clicked.');
         $('#video-section-content').slideToggle('slow');
-        
+
     });
 
     $('#openPodcasts').click(function () {
@@ -62,20 +66,21 @@ $(document).ready(function () {
 
     });
 
-   
-    $('.toggleImg').mouseenter(function () {
+    $('.toggleImg').on("mouseenter", function () {
         $(".imgDetails").finish().slideToggle(400);
+        console.log("test ON")
     });
 
-    $('.toggleImg').mouseleave(function () {
-        $(".imgDetails").finish().slideToggle(400);
+    $('.toggleImg').on("mouseleave", function () {
+       $(".imgDetails").finish().slideToggle(400);
+        console.log("test OFF")
     });
 
-  console.log('this is the correct file.')
+
    
 
 
-// FETCH DATA FROM DATABASE            
+    // FETCH DATA FROM DATABASE            
     //Videos
 
     $('#openVideos').click(function () {
@@ -90,8 +95,8 @@ $(document).ready(function () {
                 console.log(entry)
                 videoContentIframe = entry.link
                 console.log(videoContentIframe)
-                document.getElementById('video-section-content').innerHTML += videoContentIframe    
-                + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'   
+                document.getElementById('video-section-content').innerHTML += videoContentIframe
+                    + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'
             });
         });
     });
@@ -107,89 +112,110 @@ $(document).ready(function () {
                 articleContent = entry.link
                 console.log('article:', articleContent)
                 document.getElementById('article-section-content').innerHTML += `<iframe class="articleIFrame" src="${articleContent}"></iframe>`
-                    + '<button class="btn btn-danger btn-sm rounded-0 articleDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'   
+                    + '<button class="btn btn-danger btn-sm rounded-0 articleDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'
 
             });
         });
     });
 
 
-    // CAROUSEL
-    $('#openCarousel').click(function () {
-        console.log('carousel fetcher...')
-        var requestString = 'http://localhost:5555/carouselImages';
-        $.get(requestString, function (data, status) {
-            console.log('data response is: ', data)
-            var i= 0
-            data.forEach(function (entry) {
-                sentImage = entry.LINK
-               // sentImageClean = sentImage.replace('./', '/');
-                sentImageFinal = "http://localhost:5555" + sentImage
-                console.log(sentImageFinal)
-                //console.log('image: ', sentImageClean);
-                document.getElementById('imageTest').innerHTML += `<li data-target="#carousel_header" data-slide-to="${i}"></li>`
-                console.log('i = ', i)
-                if (i === 0) {
-                    var className = "carousel-item active"
-                } else {
-                    var className = "carousel-item"
-                }
-                console.log('class name is', className)
-                i++
-
-
-
-                    //`<img src="${sentImageFinal}">`;
-            })
+    // CAROUSEL: Automatically load carousel images;
+    console.log('Loading carousel images...')
+    var requestString = 'http://localhost:5555/carouselImages';
+    $.get(requestString, function (data, status) {
+        var i = 0
+        data.forEach(function (entry) {
+            sentImage = entry.LINK
+            sentImageFinal = "http://localhost:5555" + sentImage
+            console.log(sentImageFinal)
+            document.getElementById('carouselIndicators').innerHTML += `<li data-target="#carousel_header" data-slide-to="${i} id="target_${i}"></li>`
+            console.log('i = ', i)
+            if (i === 0) {
+                var className = "carousel-item active"
+            } else {
+                var className = "carousel-item"
+            }
+            document.getElementById('carouselImages').innerHTML += `<div class="${className}" >`
+                + ` <img src="${sentImageFinal}" class="d-block w-100" id="carousel_image_${i}">`
+                + `</div>`
+            i++
+            // Build delete table;
+            document.getElementById("carousel-section-table").innerHTML += `<tr><td>${sentImageFinal}</td><td class='tickBox'> <input type="checkbox"/></td></tr >`
         });
     });
-    // 
-       //  <div class="carousel-item active">
-      //       <img src="data/parissunset.jpg" class="d-block w-100" id="carousel_image">
-     //    </div>
+
+    // Gallery: Automatically load gallery images;
+    console.log('Loading gallery images...');
+    var requestString = 'http://localhost:5555/images';
+    $.get(requestString, function (data, status) {
+        var j = 0
+        data.forEach(function (entry) {
+            console.log('loading images number:', j);
+           
+            console.log(entry);
+            var caption = 'this is a caption';
+            var gridImage = "http://localhost:5555" + entry.LINK
+            var gridImageCaption = entry.CAPTION
+
+            console.log('grid image = ', gridImage)
+            console.log('grid image caption = ', gridImageCaption)
+
+
+            if(j <= 3) {
+                var classType = 'class="col-sm-6 col-md-4 col-lg-4 item"'
+            } else {
+                var classType = 'class="col-sm-6 col-md-4 col-lg-3 item"'
+            }
+            document.getElementById('populateGridImages').innerHTML += `<div ${classType}>`
+
+                + `<a class="testMe" href=".jpg" data-lightbox="photos"><img class="toggleImg" src="${gridImage}"></a>`
+                + `<p class="imgDetails">${gridImageCaption}</p>`
+                + `<button class="btn btn-danger btn-sm rounded-0 imageDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i> Delete Me</button>`
+                + `<p class="text-warning" id="gridDeleteMsg"></p>`
+                + `</div>`
+            j++
+        });
+    });
+
+    $('.toggleImg').hover(function () {
+        console.log("test ON")
+    });
 
 
     // POST VIDEO DATA TO DATA BASE;
+
     $("#sender").off().submit(function (event) {
         event.preventDefault();
 
-        // Stop form from submitting normally;
+        var input = $(this).find('input');
+        var inputValue = input.val();
+        var postUrl = 'http://localhost:5555/videos'
+        // Get some values from elements on the page
 
-        try {
-            var input = $(this).find('input');
-            var inputValue = input.val();
-            var postUrl = 'http://localhost:5555/videos'
-            // Get some values from elements on the page
-
-                console.log('inputValue =', inputValue);
-                console.log('url =', postUrl);
-            // Send the data using post
-            var posting = $.post(postUrl, { videoInput: inputValue , user: userName});
-                console.log('posting = ', posting);
-        } catch (ex) {
-            alert('An error occurred and I need to write some code to handle this!');
-        }
-        event.preventDefault();
-        
+        console.log('inputValue =', inputValue);
+        console.log('url =', postUrl);
+        // Send the data using post
+        $.post(postUrl, { videoInput: inputValue, user: userName })
+            .done(function (data) {
+                $('#videoMsg').html(data).show().delay(4000).fadeOut();
+            });
     });
+
 
     //POST ARTICLE DATA TO DATA BASE
 
     $('#articleSender').off().submit(function (event) {
         event.preventDefault();
-        try {
-            var input = $(this).find('input');
-            var inputValue = input.val();
-            console.log('to be posted:', inputValue)
-            var postUrl = 'http://localhost:5555/articles'
-            $.post(postUrl, { articleInput: inputValue, accountOwner: userName });
-            //$.post("test.php", { name: "John", time: "2pm" });
 
-        } catch (exception) {
-            alert('An error occured and I need to write code to handle it')
-        }
-        console.log('article submitted')
-        
+        var input = $(this).find('input');
+        var inputValue = input.val();
+        console.log('to be posted:', inputValue)
+        var postUrl = 'http://localhost:5555/articles'
+        $.post(postUrl, { articleInput: inputValue, accountOwner: userName })
+            .done(function (data) {
+                $('#articleMsg').html(data).show().delay(4000).fadeOut();
+            });
+
     });
 
 
@@ -201,10 +227,19 @@ $(document).ready(function () {
 
         var file_data = $(`#${imageType}`).prop('files')[0];
 
+        var captionId = "#" + imageType + "Caption"
+        console.log('caption id = ', captionId)
+        var imageCaption = $(captionId).val();
+
+        console.log('the file  is:', file_data);
+        console.log('the caption  Value is:', imageCaption);
+
         var imageData = new FormData();
         imageData.append('uploadedImage', file_data);
         imageData.append('uploadedImage', imageType);
-        console.log('Show Get ALL',imageData.getAll('uploadedImage'));
+        imageData.append('uploadedImage', imageCaption);
+
+        console.log('Show Get ALL', imageData.getAll('uploadedImage'));
 
         var postUrl = 'http://localhost:5555/images'
 
@@ -218,30 +253,61 @@ $(document).ready(function () {
             data: imageData,
             type: 'post',
             success: function (response) {
-                $('#msg').html(response); // display success response from the server
+                $('.imageMsg').html(response).show().delay(3000).fadeOut(); // display success response from the server
             },
             error: function (response) {
-                $('#msg').html(response); // display error response from the server
+                $('.imageMsg').html(response).show().delay(3000).fadeOut();  // display error response from the server
             }
         });
     });
 
-    // DELETE DATA IN THE DATA BASE
-        // Need seperate buttons because to find data to be deleted I need to specift the content type (img etc.)
-
-        //Image delete button;
-    $(document).on('click', '.imageDeleteButton', function () {
-            console.log('new message: delete button successfully identified...')
-            //solution: https://stackoverflow.com/questions/38857875/javascript-code-stops-working-after-click-on-button
-            console.log('this is', this)
-            console.log('this.parentNode =', this.parentNode)
-            dataToDelete = $('img', this.parentNode).attr('src');
-            console.log('the source is:', dataToDelete)
-            this.parentNode.parentNode.removeChild(this.parentNode);
-            var requestString = 'http://localhost:5555/images';
+    // DELETE DATA 
 
 
+    // Carousel image delete button;
+
+    $('.imageDelete').on('click', function () {
+        console.log('image delete button clicked')
+
+        var checkboxes = document.getElementsByClassName("tickBox");
+        console.log(checkboxes.length)
+        for (var i = 0; i < checkboxes.length; i++) {
+            var checkbox = checkboxes[i];
+            checkbox.onclick = function () {
+                var currentRow = this.parentNode.parentNode;
+                var imageValue = currentRow.getElementsByTagName("td")[0].textContent;
+                var imageValueClean = imageValue.replace('http://localhost:5555', '')
+                var context = 'carouselImage'
+                var type = 'image'
+                console.log('corresponding image: ', imageValueClean);
+
+                
+                var imageDeleteData = [];
+                imageDeleteData.push(imageValueClean);
+                imageDeleteData.push(userName);
+                imageDeleteData.push(context);
+                imageDeleteData.push(type);
+                $("#deleteSelectedCarouselImages").on('click', function () {
+                    console.log('Show Get ALL', imageDeleteData);
+
+                    var deleteUrl = 'http://localhost:5555/carouselImages';
+                    $.ajax({
+                        url: deleteUrl + '?' + $.param({ "deleteMeCarouselImages": imageDeleteData, "deleteMeUserName": userName }),
+                        type: 'DELETE',
+                        success: function (response) {
+                            $('#carouselDeleteMsg').html(response).show().delay(3000).fadeOut(); // display success response from the server
+                        },
+                        error: function (response) {
+                            $('#carouselDeleteMsg').html(response).show().delay(3000).fadeOut();  // display error response from the server
+                        }
+
+                    });
+                   
+                });
+            };
+        };
     });
+        
 
         // Video delete button
     $(document).on('click', '.videoDeleteButton', function (e) {
@@ -250,10 +316,9 @@ $(document).ready(function () {
         var iFrameToDelete = $(this.previousSibling)
         var iFrameString = iFrameToDelete[0].outerHTML
         console.log('iFrame to delete = ', iFrameString)
-        //Need to clean out additional characters that are not in the original string
-        var iFrameStringClean = iFrameString.replace('allowfullscreen=""', 'allowfullscreen')
+        //Need to clean out additional characters that are not in the original string;
 
-       
+        var iFrameStringClean = iFrameString.replace('allowfullscreen=""', 'allowfullscreen')
         var deleteUrl = 'http://localhost:5555/videos';
         $.ajax({
             url: deleteUrl + '?' + $.param({ "deleteMeVideo": iFrameStringClean }),
@@ -262,7 +327,7 @@ $(document).ready(function () {
        });
     });
 
-      // Video delete button
+      // Article delete button
 
     $(document).on('click', '.articleDeleteButton', function (e) {
         console.log('Article delete Button found...')
@@ -281,6 +346,31 @@ $(document).ready(function () {
         });
     });
 
+
+    //Image gallery delete button;
+
+    $(document).on('click', '.imageDeleteButton', function () {
+        console.log('new message: delete button successfully identified...')
+        //solution: https://stackoverflow.com/questions/38857875/javascript-code-stops-working-after-click-on-button
+        console.log('this is', this)
+        console.log('this.parentNode =', this.parentNode)
+        var imageToDelete = $('img', this.parentNode).attr('src');
+        var imageToDeleteClean = imageToDelete.replace('http://localhost:5555', '')
+        console.log('the source is:', imageToDelete)
+        this.parentNode.parentNode.removeChild(this.parentNode);
+        var requestString = 'http://localhost:5555/images';
+        $.ajax({
+            url: requestString + '?' + $.param({ "deleteMeImage": imageToDeleteClean }),
+            type: 'DELETE',
+            success: function (response) {
+                $('#gridDeleteMsg').html(response).show().delay(3000).fadeOut(); // display success response from the server;
+            },
+            error: function (response) {
+                $('#gridDeleteMsg').html(response).show().delay(3000).fadeOut();  // display error response from the server
+            }
+        })
+
+    });
 
 
 

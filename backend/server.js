@@ -14,9 +14,15 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
 var cors = require('cors');
 var fileupload = require("express-fileupload");
+const path = require('path'); 
 
  
 // THIS BRANCH IS WORKING AND IS A BACKUP //
+
+// Setting the view engine
+app.set('views', path.join(__dirname, 'views'));  // add this one, change 'views' for your folder name if needed.
+app.set('view engine', 'ejs');
+
 
 //Fix security issues
 
@@ -51,7 +57,7 @@ const server = app.listen(port, (error) => {
 });
 
 
-// FIRST GET
+ 
 
 routes(app)
 
@@ -63,61 +69,9 @@ const pool = require('./data/config');
 
 
 
-// GET ALL DATA
-app.get('/all_data', (request, response) => {
-    pool.query('SELECT * FROM accounts', (error, result) => {
-        if (error) throw error;
-
-        response.send(result);
-    });
-});
 
 
-// Add a new user
 
-app.post('/users', (request, response) => {
-    pool.query('INSERT INTO accounts SET ?', request.body, (error, result) => {
-        if (error) throw error;
-
-        response.status(201).send(`User added with ID: ${result.insertId}`);
-    });
-});
-
-// SEND LIST OF USER NAMES
-
-app.get('/usernames', (request, response) => {
-    pool.query('SELECT username FROM accounts', (error, result) => {
-        if (error) throw error;
-
-        return response.send({ result });
-    });
-});
-
-
-// SIGN IN AUTHENTIFICATION
-
-app.post('/auth', function (request, response) {
-    var username = request.body.username;
-    var password = request.body.password;
-    if (username && password) {
-        pool.query('SELECT * FROM accounts WHERE username = ? AND password = ?',
-            [username, password], function (error, results, fields) {
-                if (results.length > 0) {
-                    request.session.loggedin = true;
-                    request.session.username = username;
-                    response.redirect('http://63.33.214.25/home.html');
-                } else {
-                    response.send('Incorrect Username and/or Password!');
-                }
-                response.end();
-            });
-           } else {
-    response.send('Please enter Username and Password!');
-    response.end();
-
-    };
-
-});
 
 
 

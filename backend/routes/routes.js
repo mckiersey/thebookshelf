@@ -1,128 +1,255 @@
 // ROUTES FILE TO SET UP LINK TO DATABASE...
+const bcrypt = require('bcrypt');
+
+
 
 // Load the MySQL pool connection
-    const pool = require('../data/config');
-    const router = app => {
-        app.get('/', (request, response) => {
-            response.send({
-                message: 'This message is coming from the routes file'
-            });
+const pool = require('../data/config');
+const router = app => {
+    app.get('/', (request, response) => {
+        response.send({
+            message: 'This message is coming from the routes file'
         });
+    });
 
-    // SET USERNAME //
+  
 
-    var userName = 'sean';
-    console.log(`my user name is ${userName} in this string`)
+    //FETCH DATA
+    // Fetch videoLinks;
 
-
-//FETCH DATA
-        // Fetch videoLinks;
-
-        app.get('/videos', (request, response) => {
-            pool.query(`SELECT link FROM contentData WHERE user = '${ userName }' AND type = 'video'`, (error, result) => {
-                if (error) throw error;
-                console.log('Video links requested...')
-                response.send(result);
-            });
+    app.get('/videos', (request, response) => {
+        pool.query(`SELECT link FROM contentData WHERE user = '${userName}' AND type = 'video'`, (error, result) => {
+            if (error) throw error;
+            console.log('Video links requested...')
+            response.send(result);
         });
-        //FETCH ARTICLES
+    });
+    //FETCH ARTICLES
 
-        app.get('/articles', (request, response) => {
-            pool.query(`SELECT link FROM contentData WHERE user = '${userName}' AND type = 'article'`, (error, result) => {
-                if (error) throw error;
-                console.log('Article links requested...')
-                response.send(result);
-
-            });
-        });
-
-        // FETCH CAROUSEL IMAGES
-        app.get('/carouselImages', (request, response) => {
-
-            pool.query(`SELECT LINK FROM contentData WHERE user = "${userName}" AND type = "image" AND context = "carouselImage"`, (error, result) => {
-                if (error) throw error;
-                console.log('Location of pictures are:', result)
-                response.send(result);
-
-            });
-        });
-
-
-//POST NEW DATA
-        //POST VIDEO LINK
-
-        app.post('/videos', (request, response) => {
-            console.log('post sent');
-            var userName = request.body.user;
-            console.log(request.body);
-            var videoLink = request.body.videoInput;
-            console.log('username:', userName)
-            console.log('data is', videoLink)
-            pool.query(`INSERT INTO contentData (user, link, type, context) VALUES("${userName}", '${videoLink}', 'video', '');`, (error, result) => {
-                if (error) throw error;
-                console.log('error type:', error);
-               response.status(201).send(`Video added with ID: ${result.insertId}`);
-                console.log('Post Success!');
-            });
-        });
-
-        // POST ARTICLE LINK
-        app.post('/articles', (request, response) => {
-            console.log('article being posted...');
-            console.log(request.body)
-            var userName = request.body.accountOwner
-            var articleLink = request.body.articleInput
-            console.log('Inserting article:', articleLink, ' for user: ', userName)
-            pool.query(`INSERT INTO contentData (user, link, type, context) VALUES("${userName}", '${articleLink}', 'article', '');`, (error, result) => {
-                if (error) throw error;
-                console.log('error type:', error);
-                response.status(201).send(`Video added with ID: ${result.insertId}`);
-                console.log('Post Success!');
-            });
+    app.get('/articles', (request, response) => {
+        pool.query(`SELECT link FROM contentData WHERE user = '${userName}' AND type = 'article'`, (error, result) => {
+            if (error) throw error;
+            console.log('Article links requested...')
+            response.send(result);
 
         });
+    });
 
-        //POST NEW IMAGE
-        app.post('/images', (request, response) => {
-            // Add image to server file;
+    // FETCH CAROUSEL IMAGES;
+    app.get('/carouselImages', (request, response) => {
+
+        pool.query(`SELECT LINK FROM contentData WHERE user = "${userName}" AND type = "image" AND context = "carouselImage"`, (error, result) => {
+            if (error) throw error;
+            console.log('Location of pictures are:', result)
+            response.send(result);
+
+        });
+    });
+
+    //FETCH GALLERY IMAGES:
+    app.get('/images', (request, response) => {
+        pool.query(`SELECT LINK, CAPTION FROM contentData WHERE user = "${userName}" AND type = "image" AND context = "gridImage"`, (error, result) => {
+            if (error) throw error;
+            console.log('grid images loading:', result)
+            response.send(result);
+        });
+
+    });
 
 
-           var nameOfImage = request.files.uploadedImage.name
-           var typeOfImage = request.body.uploadedImage;
-            console.log('Name of image to be uploaded:', nameOfImage)
-            console.log('Type of image to be uploaded:', typeOfImage)
+    //POST NEW DATA
+
+   // POST NEW USER
+
+ app.post('/users', async (request, response) => {
+    try {
+        console.log('Creating new user...')
+        var NewuserName = request.body.userName
+        var Newpassword = request.body.password
+
+        console.log('encrypting credentials...')
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(Newpassword, salt)
+        console.log('The unencrypted password is:', Newpassword, ' and the encrypted password is: ', hashedPassword)
+        console.log('posting new user!')
+ 
+    console.log('Creating user', NewuserName, 'with password', hashedPassword);
+    pool.query(`INSERT INTO contentData (user, password) VALUES("${NewuserName}", '${hashedPassword}');`, (error, result) => {
+        if (error) throw error;
+        console.log('error type:', error);
+        response.status(201).send(`Hi <b>${NewuserName}</b>, welcome to thebook-shelf! We're creating your account now...`);
+        console.log('Post Success!');
+        });  
+    } catch {
+        console.log('caught')
+        response.status(500).send('Error')
+    }    
+});
 
 
-            var imagePath = '/uploads/' + nameOfImage
-            request.files.uploadedImage.mv(imagePath);
-            //Add image path to database;
-            console.log('Inserting image path to database:', imagePath, ' for user: ', userName)
-            pool.query(`INSERT INTO contentData (user, link, type, context) VALUES("${userName}", "${imagePath}", "image","${typeOfImage}") ; ` , (error, result) => {
-               if (error) throw error;
-              console.log('error type:', error);
-              response.status(201).send(`Image added!`);
-              console.log('Post Success!');
+  
+    // SIGN IN AUTHENTIFICATION
 
-             });
+    app.post('/auth', function (request, response) {
+        var username = request.body.userName;
+        var password = request.body.password;
+        console.log('Credentials:', username," | ", password)
+
+        if (username && password) {
+            pool.query('SELECT * FROM contentData WHERE user = ? AND password = ?',
+            [username, password], function (error, results, fields) {
+                    if (results.length > 0) {
+                        console.log('Credentials match..')
+                        request.session.loggedin = true;
+                        request.session.username = username;
+                        response.redirect('/valid');
+                        console.log('redirecting...')
+                    } else {
+                        response.send('Incorrect Username and/or Password!');
+                        console.log('credentials do not match')
+                    }
+                    response.end();
+                });
+        } else {
+            response.send('Please enter Username and Password!');
+            console.log('no credentials entered')
+            response.end();
+
+        };
+
+    });
+
+    //redirection
+ app.post('/valid', function(req, res){
+     console.log('valid post -> home get')
+     res.redirect('/home');
+     console.log('sent')
+
+ })
+
+ app.get('/home',  function(req, res)  {
+    console.log('home get registered')
+     req.render('home')
+  });
+  
+
+    
+
+
+    /////////////////
+
+    //POST VIDEO LINK
+
+    app.post('/videos', (request, response) => {
+        console.log('post sent');
+        var userName = request.body.user;
+        console.log(request.body);
+        var videoLink = request.body.videoInput;
+        console.log('username:', userName)
+        console.log('data is', videoLink)
+        pool.query(`INSERT INTO contentData (user, link, type, context) VALUES("${userName}", '${videoLink}', 'video', '');`, (error, result) => {
+            if (error) throw error;
+            console.log('error type:', error);
+            response.status(201).send(`Video sucessfully added...`);
+            console.log('Post Success!');
+        });
+    });
+
+    // POST ARTICLE LINK
+    app.post('/articles', (request, response) => {
+        console.log('article being posted...');
+        console.log(request.body)
+        var userName = request.body.accountOwner
+        var articleLink = request.body.articleInput
+        console.log('Inserting article:', articleLink, ' for user: ', userName)
+        pool.query(`INSERT INTO contentData (user, link, type, context) VALUES("${userName}", '${articleLink}', 'article', '');`, (error, result) => {
+            if (error) throw error;
+            console.log('error type:', error);
+            response.status(201).send(`Article sucessfully added...`);
+            console.log('Post Success!');
+        });
+
+    });
+
+    //POST NEW IMAGE
+    app.post('/images', (request, response) => {
+        // Add image to server file;
+
+
+        var nameOfImage = request.files.uploadedImage.name
+        var typeOfImage = request.body.uploadedImage[0];
+        var captionOfImage = request.body.uploadedImage[1];
+
+        console.log('Name of image to be uploaded:', nameOfImage)
+        console.log('Type of image to be uploaded:', typeOfImage)
+        console.log('Caption of image to be uploaded:', captionOfImage)
+
+
+        var imagePath = '/uploads/' + nameOfImage
+        request.files.uploadedImage.mv('.' + imagePath);
+        //Add image path to database;
+        console.log('Inserting image path to database:', imagePath, ' for user: ', userName)
+        pool.query(`INSERT INTO contentData (user, link, type, context, caption) VALUES("${userName}", "${imagePath}", "image","${typeOfImage}", "${captionOfImage}") ; `, (error, result) => {
+            if (error) throw error;
+            console.log('error type:', error);
+            response.status(201).send(`Image added! Add another.`);
+            console.log('Post Success!');
 
         });
 
-//DELETE DATA
+    });
 
-        // Delete a videoLink;
-        app.delete('/videos', (request, response) => {
-            var videoToDelete = request.query.deleteMeVideo
-            console.log('request to delete this data:', videoToDelete, 'for user:', userName);
-            console.log('deleting video...')
-            pool.query(`DELETE FROM contentData WHERE user = '${userName}' AND type = 'video' AND link = '${videoToDelete}'`, (error, result) => {
-                if (error) throw error;
-                console.log(response.result);
+    //DELETE DATA
 
-                response.status(201).send(`Video deleted`);
+    // Delete a videoLink;
+    app.delete('/videos', (request, response) => {
+        var videoToDelete = request.query.deleteMeVideo
+        console.log('request to delete this data:', videoToDelete, 'for user:', userName);
+        console.log('deleting video...')
+        pool.query(`DELETE FROM contentData WHERE user = '${userName}' AND type = 'video' AND link = '${videoToDelete}'`, (error, result) => {
+            if (error) throw error;
+            console.log(response.result);
 
-                console.log('video successfully deleted')
-            });
+            response.status(201).send(`Video deleted`);
+
+            console.log('video successfully deleted')
         });
+    });
+
+    // Delete a Carousel image;
+    app.delete('/carouselImages', (request, response) => {
+        var imagesToDelete = request.query.deleteMeCarouselImages[0];
+        var userName = request.query.deleteMeCarouselImages[1];
+        var context = request.query.deleteMeCarouselImages[2];
+        var type = request.query.deleteMeCarouselImages[3];
+
+
+        console.log('carousel images to delete: ', imagesToDelete)
+
+        pool.query(`DELETE FROM contentData WHERE user = '${userName}' AND type = 'image' AND link = '${imagesToDelete}' AND context = '${context}'`, (error, result) => {
+            if (error) throw error;
+            console.log('response result: ',response.result);
+            response.status(201).send(`Carousel image deleted`);
+            console.log('Carousel image successfully deleted')
+        });
+
+    });
+
+    // Delete a gallery image
+    app.delete('/images', (request, response) => {
+        console.log('gallery image delete request')
+        var imageToDelete = request.query.deleteMeImage;
+        console.log('delete this image:', imageToDelete)
+
+
+        pool.query(`DELETE FROM contentData WHERE user = '${userName}' AND type = 'image' AND link = '${imageToDelete}' AND context = 'gridImage'`, (error, result) => {
+            if (error) throw error;
+            console.log('response result: ', response.result);
+            response.status(201).send(`Previous grid image successfully deleted`);
+            console.log('Grid image successfully deleted')
+        });
+
+    });
 
         // Delete an articleLink;
 
