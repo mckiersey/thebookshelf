@@ -13,6 +13,93 @@ const router = app => {
     });
 
   
+// REDIRECTS
+app.get('/index', (request, response)=> {
+    console.log('sending to home...')
+    response.render('index')
+
+});
+
+app.get('/home', (request, response)=> {
+    console.log('sending to home...')
+    response.render('home')
+
+});
+
+
+
+app.get('/signUp', (request, response)=> {
+    console.log('sending to home...')
+    response.render('signInSignUp')
+
+});
+
+  // POST NEW USER
+
+  app.post('/users', async (request, response) => {
+    try {
+        console.log('Creating new user...')
+        var NewuserName = request.body.userName
+        var Newpassword = request.body.password
+
+        console.log('encrypting credentials...')
+        //To add later: password encryption
+        //const salt = await bcrypt.genSalt(10)
+        //const hashedPassword = await bcrypt.hash(Newpassword, salt)
+        //console.log('The unencrypted password is:', Newpassword, ' and the encrypted password is: ', hashedPassword)
+        console.log('posting new user!')
+ 
+    //console.log('Creating user', NewuserName, 'with password', hashedPassword);
+    pool.query(`INSERT INTO contentData (user, password) VALUES("${NewuserName}", '${Newpassword}');`, (error, result) => {
+        if (error) throw error;
+        console.log('error type:', error);
+        response.status(201).send(`Hi <b>${NewuserName}</b>, welcome to thebook-shelf! We're creating your account now...`);
+        console.log('Post Success!');
+        });  
+    } catch {
+        console.log('caught')
+        response.status(500).send('Error')
+    }    
+});
+
+
+/////////////////
+
+// SIGN IN AUTHENTICATION
+
+app.post('/auth', function (request, response) {
+    console.log(request.body)
+    var username = request.body.userName;
+    var password = request.body.password;
+    console.log('Credentials:', username," | ", password)
+
+    if (username && password) {
+        pool.query('SELECT * FROM contentData WHERE user = ? AND password = ?',
+        [username, password], function (error, results, fields) {
+                if (results.length > 0) {
+                    console.log('Credentials match..')
+                    
+                    //response.redirect('/home')
+                    response.sendStatus(200);
+
+                    //console.log('redirecting...')
+                } else {
+                    response.send('Incorrect Username and/or Password!');
+                    console.log('credentials do not match')
+                }
+                response.end();
+            });
+    } else {
+        response.send('Please enter Username and Password!');
+        console.log('no credentials entered')
+        response.end();
+
+    };
+
+});
+
+
+
 
     //FETCH DATA
     // Fetch videoLinks;
@@ -37,10 +124,11 @@ const router = app => {
 
     // FETCH CAROUSEL IMAGES;
     app.get('/carouselImages', (request, response) => {
+        userName = request.query.userName
 
+        console.log('Carousel user name is:' , userName)
         pool.query(`SELECT LINK FROM contentData WHERE user = "${userName}" AND type = "image" AND context = "carouselImage"`, (error, result) => {
             if (error) throw error;
-            console.log('Location of pictures are:', result)
             response.send(result);
 
         });
@@ -48,9 +136,9 @@ const router = app => {
 
     //FETCH GALLERY IMAGES:
     app.get('/images', (request, response) => {
+        console.log('Gallery user name is:' , userName)
         pool.query(`SELECT LINK, CAPTION FROM contentData WHERE user = "${userName}" AND type = "image" AND context = "gridImage"`, (error, result) => {
             if (error) throw error;
-            console.log('grid images loading:', result)
             response.send(result);
         });
 
@@ -59,84 +147,7 @@ const router = app => {
 
     //POST NEW DATA
 
-   // POST NEW USER
-
- app.post('/users', async (request, response) => {
-    try {
-        console.log('Creating new user...')
-        var NewuserName = request.body.userName
-        var Newpassword = request.body.password
-
-        console.log('encrypting credentials...')
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(Newpassword, salt)
-        console.log('The unencrypted password is:', Newpassword, ' and the encrypted password is: ', hashedPassword)
-        console.log('posting new user!')
  
-    console.log('Creating user', NewuserName, 'with password', hashedPassword);
-    pool.query(`INSERT INTO contentData (user, password) VALUES("${NewuserName}", '${hashedPassword}');`, (error, result) => {
-        if (error) throw error;
-        console.log('error type:', error);
-        response.status(201).send(`Hi <b>${NewuserName}</b>, welcome to thebook-shelf! We're creating your account now...`);
-        console.log('Post Success!');
-        });  
-    } catch {
-        console.log('caught')
-        response.status(500).send('Error')
-    }    
-});
-
-
-  
-    // SIGN IN AUTHENTIFICATION
-
-    app.post('/auth', function (request, response) {
-        var username = request.body.userName;
-        var password = request.body.password;
-        console.log('Credentials:', username," | ", password)
-
-        if (username && password) {
-            pool.query('SELECT * FROM contentData WHERE user = ? AND password = ?',
-            [username, password], function (error, results, fields) {
-                    if (results.length > 0) {
-                        console.log('Credentials match..')
-                        request.session.loggedin = true;
-                        request.session.username = username;
-                        response.redirect('/valid');
-                        console.log('redirecting...')
-                    } else {
-                        response.send('Incorrect Username and/or Password!');
-                        console.log('credentials do not match')
-                    }
-                    response.end();
-                });
-        } else {
-            response.send('Please enter Username and Password!');
-            console.log('no credentials entered')
-            response.end();
-
-        };
-
-    });
-
-    //redirection
- app.post('/valid', function(req, res){
-     console.log('valid post -> home get')
-     res.redirect('/home');
-     console.log('sent')
-
- })
-
- app.get('/home',  function(req, res)  {
-    console.log('home get registered')
-     req.render('home')
-  });
-  
-
-    
-
-
-    /////////////////
 
     //POST VIDEO LINK
 
