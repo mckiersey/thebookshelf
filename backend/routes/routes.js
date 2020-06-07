@@ -380,7 +380,7 @@ app.post('/auth', function (request, response) {
 
         // Delete an articleLink;
         app.delete('/articles', (request, response) => {
-            var articleToDelete = request.query.deleteMeArticleCaption
+            var articleToDelete = request.query.deleteMeArticleCaption.trim()
             var userName = request.query.deleteMeUserName
 
             console.log('request to delete this data:', articleToDelete, 'for user:', userName);
@@ -390,7 +390,6 @@ app.post('/auth', function (request, response) {
                 if (error) throw error;
 
                 response.status(201).send(`Article successfully removed from your shelf. Refresh the page to see the changes.`);
-                console.log('the result is', result)
                 console.log('Article successfully deleted')
             });
         });
