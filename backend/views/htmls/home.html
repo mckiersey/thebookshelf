@@ -1,0 +1,582 @@
+﻿    <!DOCTYPE html>
+<html>
+<head>
+
+
+    <title data-n-head="true">thebookshelf Home</title>
+    <title>THE BOOK-SHELF HOME</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/a3b77350a6.js"></script> <!--Icons (delete button)-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"> <!--Open Sans-->
+
+    <script src="js_code.js"></script>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img id="headerLogo" src="data/landinglogo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="#">
+
+            <h2 class="headerFooterText">thebook-shelf.com</h2>
+            <p class="headerFooterText">Beautiful content deserves a beautiful space</p>
+        </a>
+    </nav>
+
+    <div class="container-fluid">
+        <!--CAROUSEL-->
+        <div class="row" align="center" id="carousel_row">
+            <div class="col-9">
+
+
+                <div id="carousel_header" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators" id="carouselIndicators">
+                        <!--CAROUSEL TARGET CONTENT POPULATES HERE-->
+                    </ol>
+                    <div class="carousel-inner" id="carouselImages">
+                        <!--CAROUSEL IMAGE CONTENT POPULATES HERE-->
+                    </div>
+
+
+
+                    <a class="carousel-control-prev" href="#carousel_header" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel_header" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <!--HEADER & PROFILE PICTURE-->
+            <div class="header_and_profile personalSection">
+
+                <div class="col-6 personalSection" align="right">
+                    <img src="data/me_balloons.jpg" alt="Avatar" class="avatar">
+                </div>
+                <!-- EDIT SWITCH-->
+                <div class="custom-control custom-switch" id="editModeSwitch" align="right">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Edit mode: switch to add content</label>
+                </div>
+                <!--NAV BAR-->
+                <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical" id="navBar">
+                    <li class="item">
+                        <a class="nav-link active" href="homepage_new.html">Home</a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link" href="landing.html">Return to landing page</a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link" href="#">Create your own</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Upload for carousel images-->
+        <div class="col-md-6 editModeElement">
+            <p class="imageMsg text-success"></p>
+            <input type="file" id="carouselImage" name="file" multiple />
+            <button class="imageUpload btn btn-primary" id="carouselImage">Add carousel image</button>
+            <!-- DELETE IMAGES-->
+            <button class="imageDelete btn btn-danger" id="carouselImageDelete">Remove carousel image</button>
+            <div class="row">
+                <div class="col-3">
+                    <table id="carousel-section-table">
+
+                        <!-- DELETE INFO HERE-->
+
+                    </table>
+                    <button type="button" class="btn btn-danger" id="deleteSelectedCarouselImages">Delete Selected Images</button>
+                    <p class="text-warning" id="carouselDeleteMsg"></p>
+                    <!--List of carousel images-->
+                </div>
+            </div>
+
+        </div>
+        <!--MUSIC-->
+        <div class="row">
+            <div class="col-12">
+                <div class="row" align="center">
+                    <div class="col-2">
+                        <h1 id="myMusic">My Music</h1>
+                        <p class="lead">What I'm listening to these days</p>
+
+                    </div>
+                    <div class="col-4 musicFrame">
+                        <p class="shelfDescription">Listen on Deezer</p>
+
+                        <iframe class="musicPlayer" id="deezerPlayer" scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=7613072842&app_id=1"></iframe>
+                        <img class="musicLogo" id="deezerLogo" src="data/deezerAppLogo.png" />
+                    </div>
+                    <div class="col-4 musicFrame">
+                        <p class="shelfDescription">Listen on Spotify</p>
+                        <iframe class="musicPlayer" id="spotPlayer" src="https://open.spotify.com/embed/playlist/16ryn0QfWZMcBTNfqzW7Si" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <img class="musicLogo" id="spotLogo" src="data/spotAppLogo.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- </div> -->
+        <!--VIDEO SHELF-->
+        <div class="row shelf" align="center">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <img src="data/videoSection.png">
+                <img src="data/shelf.jpg">
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <p class="shelfDescription">This is the video shelf.</p>
+                <p class="text-success" id="videoMsg"></p>
+                <button type="button" class="btn btn-dark font-weight-bold" id="openVideos">Click to open the video section</button>
+            </div>
+        </div>
+        <!--VIDEOS-->
+        <div class="row bg-dark" align="center" id="video-section-content">
+            <div class="col"></div>
+            <!--VIDEO CONTENT POPULATES HERE-->
+        </div>
+        <div class="row addDataSection" align="justify">
+            <div class="col-8">
+                <form class="editModeElement" id="sender">
+                    <div class="form-group">
+                        <label class="inputLabel" for="videoInput">Add a video</label>
+                        <input type="text" class="form-control" id="videoInput" aria-describedby="youtubeInput" placeholder="Enter Youtube Embed Link">
+                        <small id="youtubeInput" class="form-text text-muted">Please make sure to input the address from the 'embed' option.</small>
+                    </div>
+                    <button id="senderButton" type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <p id="text-output"></p>
+            </div>
+        </div>
+
+        <!--PODCAST SHELF-->
+        <div class="row shelf" align="center">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <img src="data/podcastSection.png">
+                <img src="data/shelf.jpg">
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <p class="shelfDescription">This is the podcast shelf.</p>
+                <button type="button" class="btn btn-dark font-weight-bold" id="openPodcasts">Click to open the podcast section</button>
+            </div>
+        </div>
+        <div class="row bg-light" align="center" id="podcast-section-content">
+            <div class="col">
+
+
+                <!--PODCAST CONTENT POPULATES HERE-->
+
+                <div class="card-deck">
+                    <div class="card mb-6">
+                        <img src="data/secondCaptains.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Second Captains</h5>
+                            <p class="card-text">Lots of football and sport chat, but even that wouldn't stop me listening to Ken Early.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="https://www.secondcaptains.com/2020/04/30/isolating-with-david-odoherty-episode-32-say-my-pain/">Isolating with David O'Doherty</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card mb-6">
+                        <img src="data/thisAmericanLife.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">This American Life</h5>
+                            <p class="card-text">Just great stories.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="https://www.thisamericanlife.org/664/the-room-of-requirement">Room of requirement</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.thisamericanlife.org/323/the-super">The Super</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.thisamericanlife.org/487/harper-high-school-part-one">Harper High school part 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.thisamericanlife.org/570/the-night-in-question">The night in question</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.thisamericanlife.org/559/captains-log">Captains log</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.thisamericanlife.org/557/birds-bees">The birds and the bees</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="data/desertIslandDiscs.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Desert Island Discs</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="data/wtfMM.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">WTF with Marc Maron</h5>
+                            <p class="card-text"></p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://www.wtfpod.com/podcast/episodes/episode_613_-_president_barack_obama">With Barack Obama</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://www.wtfpod.com/podcast/tag/Robin+Williams">With Robin Williams</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <img src="data/radioLab.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">RADIOLAB</h5>
+                            <p class="card-text"></p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="https://www.wnycstudios.org/podcasts/radiolab/articles/from-tree-to-shining-tree">From tree to Shining Tree</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.wnycstudios.org/podcasts/radiolab/articles/antibodies-part-1-crispr">CRISPR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.wnycstudios.org/podcasts/radiolab/episodes/91520-space">Space</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.wnycstudios.org/podcasts/radiolab/episodes/169879-patient-zero">Patient Zero</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.wnycstudios.org/podcasts/radiolab/segments/104010-one-good-deed-deserves-another">CRISPR</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--ARTICLES SHELF-->
+        <div class="row shelf" align="center">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <img src="data/articlesSection.png">
+                <img src="data/shelf.jpg">
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <p class="shelfDescription">This is the articles shelf.</p>
+                <button type="button" class="btn btn-dark font-weight-bold" id="openArticles">Click to open the articles section</button>
+            </div>
+        </div>
+        <div class="row addDataSection" align="justify">
+            <div class="col-8">
+                <form class="editModeElement" id="articleSender">
+                    <div class="form-group">
+                        <label class="inputLabel" for="articleInput">Add an article</label>
+                        <input type="text" class="form-control" id="articleInput" aria-describedby="youtubeInput" placeholder="Enter a link from a great article">
+                        <small id="articleInput" class="form-text text-muted"></small>
+                    </div>
+                    <p class="text-success" id="articleMsg"></p>
+                    <button id="senderButton" type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <p id="text-output"></p>
+            </div>
+        </div>
+        <div class="row bg-light" align="center" id="article-section-content">
+            <div class="col">
+                <!--ARTICLE CONTENT POPULATES HERE-->
+            </div>
+        </div>
+
+
+        <!--LIGHTBOX GALLERY WITH GUTTERS-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="photo-gallery">
+                    <div class="intro">
+                        <h2 class="text-center photo-gallery"></h2>
+                    </div>
+                    <div class="row photos" id="populateGridImages">
+                        <!-- GRID IMAGES POPULATE HERE!-->
+                    </div>
+
+                    <div class="col-md-6 editModeElement">
+                        <h1 uploadHeader>Add a grid image below</h1>
+                        <input type="file" id="gridImage" name="file" multiple />
+                        <input type="text" class="form-control" id="gridImageCaption" aria-describedby="gridImageCaption" placeholder="Caption your image">
+                        <button class="imageUpload btn btn-primary" id="gridImage">Add grid image</button>
+                        <p class="imageMsg text-success"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--Containter fluid div-->
+    <div class="row bg-dark">
+        <div class="col">
+            <p class="headerFooterText">Built with love by Seán McKiernan | 2020</p>
+        </div>
+    </div>
+
+</body>
+</html>
+    
+
+
+
+<style>
+
+    .headerFooterText {
+        color: white;
+    }
+    .background-colour {
+        background-color: #eee;
+    }
+
+    #headerLogo {
+        border-radius: 30px;
+        width: 20%;
+        height: 20%;
+        margin: 10px;
+    }
+
+    .container-fluid{
+        margin-top: 3px;
+    }
+
+
+    .header_and_profile {
+        position: static;
+        z-index: 9999999;
+    }
+
+    .personalSection {
+        margin: 10px;
+        font-family: 'inter', sans-serif;
+        font-weight: bold;
+    }
+    #navBar{
+        margin-top: 100px;
+    }
+
+    #title {
+        font-size: 30px;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    #carousel-section-table {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .editModeSwitch {
+        margin: 10px;
+        display: none;
+    }
+
+    .editModeElement {
+        /* display: none;  NEED TO ADD SIGN IN FUNCTION FOR THIS*/
+    }
+
+    .carousel-inner {
+        width: 1000px;
+        max-height: 500px !important;
+        margin: 15px;
+    }
+    #carousel_header_images {
+        z-index: -99 !important;
+    }
+
+    .toggleImg {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .imgDetails {
+        display: none;
+    }
+
+    .head {
+        font-size: 500px;
+        text-align: left;
+        font-family: 'helvetica neue';
+        color: Grey;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
+
+
+    .avatar {
+        vertical-align: middle;
+        width: 190px;
+        height: 180px;
+        border-radius: 50%;
+    }
+
+    .photo-gallery .photos {
+        padding-bottom: 20px;
+    }
+
+    .photo-gallery .item {
+        padding-bottom: 30px;
+    }
+
+    .shelf{
+        margin-top: 100px;
+    }
+
+    .shelfDescription {
+        color: #222222;
+        font-size: 30px;
+        font-family: "Open Sans";
+        font-weight: bold;
+        margin-top: 50px;
+    }
+
+    #myMusic {
+        margin-top: 30px;
+    }
+
+    .musicPlayer {
+        display: none;
+        height: 500px;
+        width: 500px;
+        padding: 50px;
+    }
+
+    .musicLogo {
+        width: 110px;
+        height: 100px;
+    }
+
+    #spotLogo {
+        width: 150px;
+    }
+    #video-section-content{
+        display: none;
+    }
+
+    #podcast-section-content {
+        display: none;
+    }
+
+   #article-section-content{
+       display:none;
+   }
+    .articleIFrame{
+        height: 800px;
+        width: 600px;
+        border: none;
+    }
+
+    .addDataSection {
+        margin: 15px;
+    }
+
+    .inputLabel{
+        color: white;
+    }
+
+    #fetcher {
+        margin: 20px;
+    }
+
+    #imgDetails {
+        display: none;
+    }
+
+    iframe{
+        margin:50px;
+    }
+
+   
+    .deleteButton {
+        margin-top: 2px;
+    }
+
+    .photo-gallery{
+        margin-top: 30px;
+    }
+
+    .row photos{
+        margin:50px;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    .imageDeleteButton{
+        margin-top: 5px;
+    }
+
+    #gridImageCaption {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    #gridDeleteMsg{
+        margin-top: 10px;
+    }
+    #img-upload {
+        width: 100%;
+    }
+
+    .imageUpload {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+
+</style>
+
+
