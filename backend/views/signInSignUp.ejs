@@ -103,7 +103,7 @@
                    
                 <button type="button" class="navButton btn btn-danger" id="logOutButton">Log out</button>
                 
-                <button onclick="location.href='http://localhost:5555/index'"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
+                <button onclick="location.href='http://63.33.214.25:5555/index'"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
                 <div class="dropdown show">
                     <a class="navButton btn btn-primary dropdown-toggle" href="#" role="button" id="enterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       View a bookshelf
@@ -194,13 +194,13 @@
 
         // Get list of bookshelf users
         console.log('loading list of users')
-        var requestString = 'http://localhost:5555/users';
+        var requestString = 'http://63.33.214.25:5555/users';
         $.get(requestString, function (data, status) {
         
             data.forEach(function (user) {
                 lovelyUser = user.user
             console.log(lovelyUser)
-            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://localhost:5555/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://63.33.214.25:5555/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
 
                 });
         });
@@ -223,7 +223,7 @@
 
 
                 // POST NEW USER TO DATA BASE;
-                    var postUrl = 'http://localhost:5555/users'
+                    var postUrl = 'http://63.33.214.25:5555/users'
                     // Get some values from elements on the page
 
                     // Send the data using post;
@@ -247,7 +247,7 @@
 
             console.log('Validating username:', validateUseruserName, 'and password', validateserpassword)
             // POST NEW USER TO DATA BASE;
-            var postUrl = 'http://localhost:5555/auth'
+            var postUrl = 'http://63.33.214.25:5555/auth'
             var jqxhr = $.post( postUrl, 
                     { userName: validateUseruserName, password: validateserpassword})
                      .then(function successCallback(response){
@@ -260,7 +260,7 @@
             document.cookie = `validatedUserName = ${validateUseruserName}; path=/`
             console.log('this cookie is:', document.cookie)
 
-            setTimeout(function () { window.location.href ='http://localhost:5555/home' }, 1000);
+            setTimeout(function () { window.location.href ='http://63.33.214.25:5555/home' }, 1000);
             
         }else{
            //Something went wrong
@@ -268,7 +268,7 @@
            console.log('failure is', response)
            $('#signInMsg').html(response).show();
             $('#spinner').show()
-           setTimeout(function () { window.location.href ='http://localhost:5555/signUp' }, 2000);
+           setTimeout(function () { window.location.href ='http://63.33.214.25:5555/signUp' }, 2000);
         }
          });           
         }) 
@@ -317,7 +317,7 @@
         deleting_cookie('status')
 
         console.log('cookie value:', document.cookie)
-       window.location.href ='http://localhost:5555/signUp'
+       window.location.href ='http://63.33.214.25:5555/signUp'
     })
 
   
