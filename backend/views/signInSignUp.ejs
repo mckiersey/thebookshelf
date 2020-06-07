@@ -282,10 +282,11 @@
     {
         const value = `${document.cookie}`;
         if(value.length >0){
+            console.log('all cookies', value)
             const parts = value.split(`; ${name}=`);
             console.log('parts 0 split on semi-colon part 0:', parts[0].split(';')[0].split('=')[1])
-            console.log('parts 0 split on semi-colon part 1:', parts[0].split(';')[1].split('=')[1])
-            return [parts[0].split(';')[0].split('=')[1], parts[0].split(';')[1].split('=')[1]]
+            var loggedInUser =  parts[0].split(';')[0].split('=')[1]
+            return loggedInUser;
         } else{
             return [] //return empty array if not logged in.
         }
