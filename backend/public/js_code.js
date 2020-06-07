@@ -68,7 +68,7 @@
                 deleting_cookie('validatedUserName')
             }else{}
         console.log('cookie value left:', document.cookie)
-       window.location.href ='http://63.33.214.25:5555/signUp'
+       window.location.href ='http://63.33.214.25/signUp'
     })
 
     //Music players
@@ -130,7 +130,7 @@
 
 //Playlists
     console.log('Loading music playlist ID')
-    var requestString = 'http://63.33.214.25:5555/playlists';
+    var requestString = 'http://63.33.214.25/playlists';
     var urlParameters = requestString + `?userName=${userName}`
     console.log('The podcast url is:', urlParameters)
 
@@ -160,7 +160,7 @@
         console.log('Video data requested, clicker count = ', videoClicker)
         if(videoClicker ===0){ 
 
-        var requestString = 'http://63.33.214.25:5555/videos';
+        var requestString = 'http://63.33.214.25/videos';
 
         $.get(requestString, function (data, status) {
             data.forEach(function (entry) {
@@ -184,7 +184,7 @@
 
         if(podcastClicker ===0){ 
 
-            var requestString = 'http://63.33.214.25:5555/podcasts';
+            var requestString = 'http://63.33.214.25/podcasts';
             var urlParameters = requestString + `?userName=${userName}&podContext=podcast`
             $.get(urlParameters, function (data, status) {
                 console.log('Request status is:', status)
@@ -206,7 +206,7 @@
                 });
             });
             //Load podcast table
-            var requestString = 'http://63.33.214.25:5555/podcasts';
+            var requestString = 'http://63.33.214.25/podcasts';
             var urlParameters = requestString + `?userName=${userName}&podContext=episode`
             $.get(urlParameters, function (data, status) {
                 data.forEach(function (entry) {
@@ -243,7 +243,7 @@
         $(this).css({'opacity': '0.1'})
         console.log('Podcast delete clause')
         console.log('podcast name = ',podcastLinkUrl )
-        var deletePodUrl = 'http://63.33.214.25:5555/podcasts';
+        var deletePodUrl = 'http://63.33.214.25/podcasts';
         $.ajax({
             url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podcastLinkUrl, "deleteMeUserName": userName, "podcastContext": "podcast" }),
             type: 'DELETE',
@@ -265,7 +265,7 @@
 
             console.log('podcast name = ',selectedPodcast )
             console.log('Podcast link:', podcastLink);
-            var postUrl = 'http://63.33.214.25:5555/podcasts';
+            var postUrl = 'http://63.33.214.25/podcasts';
             $.post(postUrl, { podcastName: selectedPodcast, user: userName, link: podcastLink, context: "podcast" })
             .done(function (data) {
                 $(document.getElementById(selectedPodcast)).html(data).show().delay(1000).fadeOut();
@@ -276,14 +276,14 @@
 
     // CAROUSEL: Automatically load carousel images;
     console.log('Loading carousel images...')
-    var requestString = 'http://63.33.214.25:5555/carouselImages';
+    var requestString = 'http://63.33.214.25/carouselImages';
     var urlParameters = requestString + `?userName=${userName}`
     console.log('The carousel url is:', urlParameters)
     $.get(urlParameters, function (data, status) {
         var i = 0
         data.forEach(function (entry) {
             sentImage = entry.LINK
-            sentImageFinal = "http://63.33.214.25:5555" + sentImage
+            sentImageFinal = "http://63.33.214.25" + sentImage
             document.getElementById('carouselIndicators').innerHTML += `<li data-target="#carousel_header" data-slide-to="${i} id="target_${i}"></li>`
             console.log('i = ', i)
             if (i === 0) {
@@ -302,7 +302,7 @@
 
     // Gallery: Automatically load gallery images;
     console.log('Loading gallery images...');
-    var requestString = 'http://63.33.214.25:5555/images';
+    var requestString = 'http://63.33.214.25/images';
     $.get(requestString, function (data, status) {
         var j = 0
         data.forEach(function (entry) {
@@ -310,7 +310,7 @@
            
             console.log(entry);
             var caption = 'this is a caption';
-            var gridImage = "http://63.33.214.25:5555" + entry.LINK
+            var gridImage = "http://63.33.214.25" + entry.LINK
             var gridImageCaption = entry.CAPTION
 
             console.log('grid image = ', gridImage)
@@ -324,7 +324,7 @@
             }
             document.getElementById('populateGridImages').innerHTML += `<div ${classType}>`
 
-                + `<a class="testMe" href="http://63.33.214.25:5555/home" data-lightbox="photos"><img class="toggleImg" src="${gridImage}"></a>`
+                + `<a class="testMe" href="http://63.33.214.25/home" data-lightbox="photos"><img class="toggleImg" src="${gridImage}"></a>`
                 + `<p class="imgDetails">${gridImageCaption}</p>`
                 + `<button class="btn btn-danger btn-sm rounded-0 imageDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i> Delete Me</button>`
                 + `<p class="text-warning" id="gridDeleteMsg"></p>`
@@ -335,7 +335,7 @@
 
     // Profile picture (automatically load profile picture)
     console.log('Profile picture loading')
-    var requestString = 'http://63.33.214.25:5555/profilePictures';
+    var requestString = 'http://63.33.214.25/profilePictures';
     var urlParameters = requestString + `?userName=${userName}`
     console.log('The profile picture url is:', urlParameters)
     $.get(urlParameters, function (data, status) {
@@ -346,14 +346,14 @@
         console.log('profile pic data is', profilePic)
         console.log('status is ', status)
    
-        profilePicFinal = "http://63.33.214.25:5555" + profilePic
+        profilePicFinal = "http://63.33.214.25" + profilePic
         document.getElementById('profilePictureSpace').src = profilePicFinal
     });
 
 
      //Articles (automatically load articles)
     console.log('Article data loading')
-    var requestString = 'http://63.33.214.25:5555/articles';
+    var requestString = 'http://63.33.214.25/articles';
 
     $.get(requestString, function (data, status) {
         console.log('Requet status is:', status)
@@ -393,7 +393,7 @@
         var inputValue = input.val();
         var inputType = input.attr('id');
 
-        var postUrl = 'http://63.33.214.25:5555/playlists'
+        var postUrl = 'http://63.33.214.25/playlists'
         // Get some values from elements on the page
 
         console.log('playlist id =', inputValue);
@@ -412,7 +412,7 @@
 
         var input = $(this).find('input');
         var inputValue = input.val();
-        var postUrl = 'http://63.33.214.25:5555/videos'
+        var postUrl = 'http://63.33.214.25/videos'
         // Get some values from elements on the page
 
         console.log('inputValue =', inputValue);
@@ -438,7 +438,7 @@
         console.log('article caption', articleCaption)
 
         console.log('to be posted:', articleLink, 'with caption of:', articleCaption)
-        var postUrl = 'http://63.33.214.25:5555/articles'
+        var postUrl = 'http://63.33.214.25/articles'
         $.post(postUrl, { articleInput: articleLink, accountOwner: userName, articleDescrpition: articleCaption })
             .done(function (data) {
                 $('#articleMsg').html(data).show().delay(4000).fadeOut();
@@ -458,7 +458,7 @@
 
         var inputValue = input.val();
         console.log('podcast episode to be posted:', inputValue)
-        var postUrl = 'http://63.33.214.25:5555/podcasts'
+        var postUrl = 'http://63.33.214.25/podcasts'
         $.post(postUrl, { user: userName, link: podEpLink, context: "episode", caption: podEpDescription })
           .done(function (data) {
                 $('#podEpMsg').html(data).show().delay(4000).fadeOut();
@@ -488,7 +488,7 @@
 
         console.log('Show Get ALL', imageData.getAll('uploadedImage'));
 
-        var postUrl = 'http://63.33.214.25:5555/images'
+        var postUrl = 'http://63.33.214.25/images'
 
 
         $.ajax({
@@ -523,7 +523,7 @@
             checkbox.onclick = function () {
                 var currentRow = this.parentNode.parentNode;
                 var imageValue = currentRow.getElementsByTagName("td")[0].textContent;
-                var imageValueClean = imageValue.replace('http://63.33.214.25:5555', '')
+                var imageValueClean = imageValue.replace('http://63.33.214.25', '')
                 var context = 'carouselImage'
                 var type = 'image'
                 console.log('corresponding image: ', imageValueClean);
@@ -537,7 +537,7 @@
                 $("#deleteSelectedCarouselImages").on('click', function () {
                     console.log('Show Get ALL', imageDeleteData);
 
-                    var deleteUrl = 'http://63.33.214.25:5555/carouselImages';
+                    var deleteUrl = 'http://63.33.214.25/carouselImages';
                     $.ajax({
                         url: deleteUrl + '?' + $.param({ "deleteMeCarouselImages": imageDeleteData, "deleteMeUserName": userName }),
                         type: 'DELETE',
@@ -566,7 +566,7 @@
         //Need to clean out additional characters that are not in the original string;
 
         var iFrameStringClean = iFrameString.replace('allowfullscreen=""', 'allowfullscreen')
-        var deleteUrl = 'http://63.33.214.25:5555/videos';
+        var deleteUrl = 'http://63.33.214.25/videos';
         $.ajax({
             url: deleteUrl + '?' + $.param({ "deleteMeVideo": iFrameStringClean }),
             type: 'DELETE',
@@ -591,7 +591,7 @@
             var podEpToDelete = $(this).closest('td').prev();
             var podEpLinkToDelete = podEpToDelete[0].getElementsByTagName('a')[0].href
             console.log('Podcast Episode link to delete',podEpLinkToDelete)
-            var deletePodUrl = 'http://63.33.214.25:5555/podcasts';
+            var deletePodUrl = 'http://63.33.214.25/podcasts';
             $.ajax({
                 url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podEpLinkToDelete, "deleteMeUserName": userName,  "podcastContext": "episode" }),
                 type: 'DELETE',
@@ -617,7 +617,7 @@
         console.log('link to delete = ', articleLinkToDelete)
 
 
-        var deleteUrl = 'http://63.33.214.25:5555/articles';
+        var deleteUrl = 'http://63.33.214.25/articles';
         $.ajax({
             url: deleteUrl + '?' + $.param({ "deleteMeArticleCaption": articleLinkToDelete, "deleteMeUserName":userName }),
             type: 'DELETE',
@@ -640,10 +640,10 @@
         console.log('this is', this)
         console.log('this.parentNode =', this.parentNode)
         var imageToDelete = $('img', this.parentNode).attr('src');
-        var imageToDeleteClean = imageToDelete.replace('http://63.33.214.25:5555', '')
+        var imageToDeleteClean = imageToDelete.replace('http://63.33.214.25', '')
         console.log('the source is:', imageToDelete)
         this.parentNode.parentNode.removeChild(this.parentNode);
-        var requestString = 'http://63.33.214.25:5555/images';
+        var requestString = 'http://63.33.214.25/images';
         $.ajax({
             url: requestString + '?' + $.param({ "deleteMeImage": imageToDeleteClean }),
             type: 'DELETE',
