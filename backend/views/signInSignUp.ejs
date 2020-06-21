@@ -101,9 +101,7 @@
                     <span class="sr-only">Loading...</span>
                 </div>
                    
-                <button type="button" class="navButton btn btn-danger" id="logOutButton">Log out</button>
-                
-                <button onclick="location.href='http://localhost:5555/index'"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
+                <but                <button onclick="location.href='http://localhost:5555/index'"  class=" navButton btn bt                <button onclick="location.href='http://63.33.214.25/index'"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
                 <div class="dropdown show">
                     <a class="navButton btn btn-primary dropdown-toggle" href="#" role="button" id="enterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       View a bookshelf
@@ -194,13 +192,13 @@
 
         // Get list of bookshelf users
         console.log('loading list of users')
-        var requestString = 'http://localhost:5555/users';
+        var requestString = 'http://63.33.214.25/users';
         $.get(requestString, function (data, status) {
         
             data.forEach(function (user) {
                 lovelyUser = user.user
             console.log(lovelyUser)
-            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://localhost:5555/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://63.33.214.25/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
 
                 });
         });
@@ -212,7 +210,6 @@
             //Sign up;
             $('#submitSignUp').on("click", function (event) {
                 event.preventDefault();
-                setTimeout(function () { window.location.reload(true); }, 1000);
                 var userNameInput = $('#userNameSignUp');
                 var passwordInput = $('#passwordSignUp');
 
@@ -223,14 +220,13 @@
 
 
                 // POST NEW USER TO DATA BASE;
-                    var postUrl = 'http://localhost:5555/users'
+                    var postUrl = 'http://63.33.214.25/users'
                     // Get some values from elements on the page
 
                     // Send the data using post;
 
                     $.post(postUrl, { userName: NewUseruserName, password: NewUserpassword })
                     .done(function (data) {
-                        setTimeout(startTimer, 12000);
                             $('#signUpMsg').html(data).show();
                             $('#spinner').show()
                         });   
@@ -247,7 +243,7 @@
 
             console.log('Validating username:', validateUseruserName, 'and password', validateserpassword)
             // POST NEW USER TO DATA BASE;
-            var postUrl = 'http://localhost:5555/auth'
+            var postUrl = 'http://63.33.214.25/auth'
             var jqxhr = $.post( postUrl, 
                     { userName: validateUseruserName, password: validateserpassword})
                      .then(function successCallback(response){
@@ -260,7 +256,7 @@
             document.cookie = `validatedUserName = ${validateUseruserName}; path=/`
             console.log('this cookie is:', document.cookie)
 
-            setTimeout(function () { window.location.href ='http://localhost:5555/home' }, 1000);
+            setTimeout(function () { window.location.href ='http://63.33.214.25/home' }, 100);
             
         }else{
            //Something went wrong
@@ -268,24 +264,25 @@
            console.log('failure is', response)
            $('#signInMsg').html(response).show();
             $('#spinner').show()
-           setTimeout(function () { window.location.href ='http://localhost:5555/signUp' }, 2000);
+           setTimeout(function () { window.location.href ='http://63.33.214.25/signUp' }, 2500);
         }
          });           
         }) 
 
 
     // The following is duplicated code from js_code.js that could probably be avoided by just linking that file to this file.
-    function deleting_cookie(name) {
+     function deleting_cookie(name) {
         document.cookie = name +"=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
       }
     function getCookie(name) 
     {
         const value = `${document.cookie}`;
         if(value.length >0){
+            console.log('all cookies', value)
             const parts = value.split(`; ${name}=`);
             console.log('parts 0 split on semi-colon part 0:', parts[0].split(';')[0].split('=')[1])
-            console.log('parts 0 split on semi-colon part 1:', parts[0].split(';')[1].split('=')[1])
-            return [parts[0].split(';')[0].split('=')[1], parts[0].split(';')[1].split('=')[1]]
+            var loggedInUser =  parts[0].split(';')[0].split('=')[1]
+            return loggedInUser;
         } else{
             return [] //return empty array if not logged in.
         }
@@ -317,8 +314,19 @@
         deleting_cookie('status')
 
         console.log('cookie value:', document.cookie)
-       window.location.href ='http://localhost:5555/signUp'
+       window.location.href ='http://63.33.214.25/signUp'
+    t.cookie)
+        deleting_cookie('validatedUserName')
+        deleting_cookie('status')
 
+        console.log('cookie value:', document.cookie)
+       window.location.href ='http://63.33.214.25/signUp'
+ocument.cookie)
+        deleting_cookie('validatedUserName')
+        deleting_cookie('status')
+
+        console.log('cookie value:', document.cookie)
+       window.location.href ='http://63.33.214.25/signUp'
     })
 
   
