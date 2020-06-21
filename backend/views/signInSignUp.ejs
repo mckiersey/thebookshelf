@@ -294,18 +294,22 @@
     }
 
     // Set default cookie values
-    cookies= getCookie()
-    if(cookies.length === 0){
+    // Set default cookie values
+    cookieJar= getCookie()
+    console.log('cookie jar', cookieJar)
+    if(cookieJar.length === 0){
         console.log('No user logged in. Displaying default profile')
-        userName = 'sean' // by default show my profile
+        userName = unloggedUser
+        console.log('view unlogged user bookshelf',userName)
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
+        $("#signedInLight").hide()
+
     } else {
-        console.log('User logged in. Diplaying personal profile')
-        userName = cookies[0]
-        status = cookies[1]
-        console.log('user', userName, 'has status of ', status)
+        userName = cookieJar  
+        console.log('User logged in. Diplaying personal profile for user', userName)
         $('#editModeSwitch').show() //show edit switch
+        $("#signedInLight").show()
     }
     
     
