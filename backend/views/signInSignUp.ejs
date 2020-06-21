@@ -302,12 +302,16 @@
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
         $("#signedInLight").hide()
+        $('#logOutButton').hide()
+
 
     } else {
         userName = cookieJar  
         console.log('User logged in. Diplaying personal profile for user', userName)
         $('#editModeSwitch').show() //show edit switch
         $("#signedInLight").show()
+        $('#logOutButton').show()
+
     }
     
     

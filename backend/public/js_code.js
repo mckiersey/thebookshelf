@@ -36,11 +36,14 @@
         console.log('view unlogged user bookshelf',userName)
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
+        $('#logOutButton').hide()
     } else {
         userName = cookieJar  
         console.log('User logged in. Diplaying personal profile for user', userName)
         $('#editModeSwitch').show() //show edit switch
         $("#signedInLight").show()
+        $('#logOutButton').show()
+
     }
 
     console.log('these are all the cookies', cookieJar)
