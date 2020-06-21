@@ -7,7 +7,7 @@
 // REQUIRE PACKAGES AND SET THE PORT
 
 const express = require('express');
-const port = 5555;
+const port = 80;
 const app = express();
 var session = require('express-session');
 const bodyParser = require('body-parser');
