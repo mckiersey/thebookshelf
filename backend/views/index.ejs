@@ -137,9 +137,6 @@ $(document).ready(function () {
      cookieJar= getCookie()
     console.log('cookie jar', cookieJar)
     if(cookieJar.length === 0){
-        console.log('No user logged in. Displaying default profile')
-        userName = unloggedUser
-        console.log('view unlogged user bookshelf',userName)
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
         $("#signedInLight").hide()
