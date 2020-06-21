@@ -13,6 +13,9 @@
             <!--<img src="data/bookshelflogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
             <h2 class="headerFooterText">thebook-shelf.com</h2>
         </a>
+        <a>
+        <h3 class="headerFooterText text-success" id ="signedInLight">Signed in</h3>
+    </a>
     </nav>
     <div class="container-fluid">
 
@@ -129,6 +132,22 @@ $(document).ready(function () {
         console.log('entering site...')
         window.location.href ='http://63.33.214.25/signUp'
     });
+
+     // Set default cookie values
+     cookieJar= getCookie()
+    console.log('cookie jar', cookieJar)
+    if(cookieJar.length === 0){
+        console.log('No user logged in. Displaying default profile')
+        userName = unloggedUser
+        console.log('view unlogged user bookshelf',userName)
+        status = 'signedOut' // make sure it cannot be edited
+        $('#editModeSwitch').hide() // hide edit switch
+    } else {
+        userName = cookieJar  
+        console.log('User logged in. Diplaying personal profile for user', userName)
+        $('#editModeSwitch').show() //show edit switch
+        $("#signedInLight").show()
+    }
 
 });
 </script>
