@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
 
 
@@ -8,21 +9,26 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/a3b77350a6.js"></script> <!--Icons (delete button)-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"> <!--Open Sans-->
+    <script src="https://use.fontawesome.com/a3b77350a6.js"></script>
+    <!--Icons (delete button)-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <!--Open Sans-->
 
     <script src="js_code.js"></script>
 
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
 
 </head>
+
 <body>
 
-    
+
 
     <nav class="navbar navbar-light bg-dark">
         <a class="navbar-brand" href="#">
@@ -33,14 +39,13 @@
             <h2 class="headerFooterText">thebook-shelf.com</h2>
             <p class="headerFooterText">Beautiful content deserves a beautiful space</p>
         </a>
-        <h3 class="headerFooterText text-success" id ="signedInLight">Signed in</h3>
+        <h3 class="headerFooterText text-success" id="signedInLight">Signed in</h3>
     </nav>
- 
+
     <div class="container-fluid">
         <!--CAROUSEL-->
         <div class="row" align="center" id="carousel_row">
-            <div class="col-sm-12-md-6-lg-6">
-
+            <div class="col sm-12 md-9 lg-9">
 
                 <div id="carousel_header" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators" id="carouselIndicators">
@@ -61,24 +66,26 @@
             </div>
 
             <!--HEADER & PROFILE PICTURE-->
-            <div class="header_and_profile personalSection">
+            <div class="col sm-3 md-3 lg-3 header_and_profile personalSection">
 
                 <div class="col-4 personalSection" align="right">
-                    <img id = 'profilePictureSpace' src alt="Avatar" class="avatar">
+                    <img id='profilePictureSpace' src alt="Avatar" class="avatar">
                 </div>
                 <!-- EDIT SWITCH-->
                 <div class="custom-control custom-switch" id="editModeSwitch" align="right">
                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label text-success" for="customSwitch1"><b></b>Edit mode switch & add content</b></label>
+                    <label class="custom-control-label text-success" for="customSwitch1"><b></b>Edit mode switch & add
+                        content</b></label>
                 </div>
                 <!-- ADD PROFILE PICTURE-->
                 <div class="col editModeElement">
-                    <input type="file" id="profilePicture" name="file"/>
+                    <input type="file" id="profilePicture" name="file" />
                     <button class="imageUpload btn btn-primary" id="profilePicture">Add profile picture</button>
                     <p class="ProfileimageMsg text-success"></p>
                 </div>
                 <!--NAV BAR-->
-                <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical" id="navBar">
+                <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical"
+                    id="navBar">
                     <li class="item">
                         <a class="nav-link active" href="http://63.33.214.25/home">View a shelf</a>
                     </li>
@@ -95,11 +102,11 @@
                 <button type="button" class="btn btn-danger" id="logOutButton">Log out</button>
             </div>
         </div>
-  
+
         <!--Upload for carousel images-->
         <div class="col-sm-3-md-6-lg-8 editModeElement">
             <p class="imageMsg text-success"></p>
-            <input type="file" id="carouselImage" name="file"/>
+            <input type="file" id="carouselImage" name="file" />
             <button class="imageUpload btn btn-primary" id="carouselImage">Upload selected banner image</button>
             <!-- DELETE IMAGES-->
             <button class="imageDelete btn btn-danger" id="carouselImageDelete">Remove banner image</button>
@@ -110,14 +117,15 @@
                         <!-- DELETE INFO HERE-->
 
                     </table>
-                    <button type="button" class="btn btn-danger" id="deleteSelectedCarouselImages">Delete Selected Images</button>
+                    <button type="button" class="btn btn-danger" id="deleteSelectedCarouselImages">Delete Selected
+                        Images</button>
                     <p class="text-warning" id="carouselDeleteMsg"></p>
                     <!--List of carousel images-->
                 </div>
             </div>
 
         </div>
-       
+
         <!--VIDEO SHELF-->
         <div class="row shelf" align="center">
             <div class="col-sm-12 col-md-12 col-lg-6">
@@ -127,13 +135,14 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
                 <p class="shelfDescription">This is the video shelf.</p>
-                <button type="button" class="btn btn-dark font-weight-bold" id="openVideos">Click to show the video shelf</button>
+                <button type="button" class="btn btn-dark font-weight-bold" id="openVideos">Click to show the video
+                    shelf</button>
             </div>
         </div>
         <!--VIDEOS-->
         <div class="row bg-dark populatedContent" align="center" id="video-section-content">
             <div class="col"></div>
-            
+
             <!--VIDEO CONTENT POPULATES HERE-->
         </div>
         <p class="text-warning" id="videoDeleteMsg"></p>
@@ -145,8 +154,9 @@
                     <div class="form-group">
                         <p class="text-success" id="videoMsg"></p>
 
-                        <label  for="videoInput">Add a YouTube video</label>
-                        <input type="text" class="form-control" id="videoInput" aria-describedby="videoInput" placeholder="Enter an iframe share link from YouTube">
+                        <label for="videoInput">Add a YouTube video</label>
+                        <input type="text" class="form-control" id="videoInput" aria-describedby="videoInput"
+                            placeholder="Enter an iframe share link from YouTube">
                         <small id="videoInput" class="form-text text-muted"></small>
                     </div>
                     <button id="videoSenderButton" type="submit" class="btn btn-primary">Add</button>
@@ -164,276 +174,308 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
                 <p class="shelfDescription">This is the podcast shelf.</p>
-                <button type="button" class="btn btn-dark font-weight-bold" id="openPodcasts">Click to show the podcast shelf</button>
+                <button type="button" class="btn btn-dark font-weight-bold" id="openPodcasts">Click to show the podcast
+                    shelf</button>
             </div>
-        
-        <div class="row bg-light populatedContent" align="center" id="all-podcast-section">
-            <div class="col" justify-content:center>
-                <div class="card-columns" id="podcast-section-content">
-                    <!--PODCAST CONTENT POPULATES HERE-->       
-        </div>
-        <!-- if this doesn't update dynamically, put it back into the above <div></div>-->
-        <div style="height:300px; width: 800px; overflow:auto;">
-            <h1>Great Individual Episodes</h1>
-        <table class="table table-striped table-dark" >
-            <tbody id="podcast-episode-table">
-                         
-            </tbody>
-        </table>
-        
-        </div>
-        <div class="row addDataSection" align="justify">
-            <div class="col-8">
-                <form class="editModeElement" id="podEpSender">
-                    <div class="form-group">
-                        <label  for="podEpInput">Add a great podcast episode</label>
-                        <input type="text" class="form-control" id="podEpInputDescription" aria-describedby="podEpInput" placeholder="Why did you love this episode?">
-                        <input type="text" class="form-control" id="podEpInput" aria-describedby="podEpInput" placeholder="Enter a link to a great podcast epdisode">
-                        <small id="podEpInput" class="form-text text-muted"></small>
-                    </div>
-                    <p class="text-success" id="podEpMsg"></p>
-                    <button id="podSenderButton" type="submit" class="btn btn-primary">Add</button>
-                </form>
-            </div>
-        </div>
-                <div class="row align = center editModeElement">
-                    <div class="col">
-                        <h2>Edit mode: Click a title below to add or remove it from your shelf (and then refresh)</h2>                       
-                    </div>
-                </div>
-                    <div class="card-columns editModeElement">
-            
-                            
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link="https://www.thisamericanlife.org" src="thisAmericanLife.png" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id="thisAmericanLife.png"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link="https://www.bbc.co.uk/programmes/b006qnmr/episodes/downloads" src="desertIslandDiscs.jpg" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id="desertIslandDiscs.jpg"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link="https://www.secondcaptains.com" src="secondCaptains.jpg" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id="secondCaptains.jpg"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link="http://www.wtfpod.com" src="wtfMM.jpg" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id="wtfMM.jpg"></p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link="https://www.wnycstudios.org/podcasts/radiolab" src="radioLab.jpg" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id= "radioLab.jpg"></p>
+            <div class="row bg-light populatedContent" align="center" id="all-podcast-section">
+                <div class="col" justify-content:center>
+                    <div class="card-columns" id="podcast-section-content">
+                        <!--PODCAST CONTENT POPULATES HERE-->
+                    </div>
+                    <!-- if this doesn't update dynamically, put it back into the above <div></div>-->
+                    <div style="height:300px; width: 800px; overflow:auto;">
+                        <h1>Great Individual Episodes</h1>
+                        <table class="table table-striped table-dark">
+                            <tbody id="podcast-episode-table">
 
-                                    </div>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="row addDataSection" align="justify">
+                        <div class="col-8">
+                            <form class="editModeElement" id="podEpSender">
+                                <div class="form-group">
+                                    <label for="podEpInput">Add a great podcast episode</label>
+                                    <input type="text" class="form-control" id="podEpInputDescription"
+                                        aria-describedby="podEpInput" placeholder="Why did you love this episode?">
+                                    <input type="text" class="form-control" id="podEpInput"
+                                        aria-describedby="podEpInput"
+                                        placeholder="Enter a link to a great podcast epdisode">
+                                    <small id="podEpInput" class="form-text text-muted"></small>
                                 </div>
-                            </div>
-                            <div class="col-sm-3-md-4-lg-4">
-                            <div class="card">
-                                <img data-link="http://podcasts.joerogan.net" src="joeRoganExperience.jpg" class="card-img-top-default" alt="...">
-                                <div class="card-body">
-                                    <p class="selectedPodMsg " id="joeRoganExperience.jpg"></p>
-                            </div>
+                                <p class="text-success" id="podEpMsg"></p>
+                                <button id="podSenderButton" type="submit" class="btn btn-primary">Add</button>
+                            </form>
                         </div>
                     </div>
+                    <div class="row align = center editModeElement">
+                        <div class="col">
+                            <h2>Edit mode: Click a title below to add or remove it from your shelf (and then refresh)
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="card-columns editModeElement">
+
+
                         <div class="col-sm-3-md-4-lg-4">
-                        <div class="card">
-                                <img data-link="https://www.dancarlin.com/hardcore-history-series/" src="hardcoreHistory.jpg" class="card-img-top-default" alt="...">
+                            <div class="card">
+                                <img data-link="https://www.thisamericanlife.org" src="thisAmericanLife.png"
+                                    class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="thisAmericanLife.png"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://www.bbc.co.uk/programmes/b006qnmr/episodes/downloads"
+                                    src="desertIslandDiscs.jpg" class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="desertIslandDiscs.jpg"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://www.secondcaptains.com" src="secondCaptains.jpg"
+                                    class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="secondCaptains.jpg"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="http://www.wtfpod.com" src="wtfMM.jpg" class="card-img-top-default"
+                                    alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="wtfMM.jpg"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://www.wnycstudios.org/podcasts/radiolab" src="radioLab.jpg"
+                                    class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="radioLab.jpg"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="http://podcasts.joerogan.net" src="joeRoganExperience.jpg"
+                                    class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="joeRoganExperience.jpg"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://www.dancarlin.com/hardcore-history-series/"
+                                    src="hardcoreHistory.jpg" class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="hardcoreHistory.jpg"></p>
                                 </div>
                             </div>
                         </div>
-                            <div class="col-sm-3-md-4-lg-4">
+                        <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.nytimes.com/column/the-daily" src="TheDaily.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.nytimes.com/column/the-daily" src="TheDaily.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="TheDaily.jpg"></p>
                                 </div>
                             </div>
                         </div>
-                            <div class="col-sm-3-md-4-lg-4">
+                        <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.npr.org/podcasts/510313/how-i-built-this" src="howIBuiltThis.jpg" class="card-img-top-default" alt="...">
-                                    <div class="card-body">
-                                        <p class="selectedPodMsg " id="howIBuiltThis.jpg"></p>
-                                    </div>
+                                <img data-link="https://www.npr.org/podcasts/510313/how-i-built-this"
+                                    src="howIBuiltThis.jpg" class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="howIBuiltThis.jpg"></p>
                                 </div>
                             </div>
-                            <div class="col-sm-3-md-4-lg-4">
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://exponent.fm" src="Exponent.png" class="card-img-top-default" alt="...">
+                                <img data-link="https://exponent.fm" src="Exponent.png" class="card-img-top-default"
+                                    alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="Exponent.png"></p>
                                 </div>
                             </div>
                         </div>
-                            <div class="col-sm-3-md-4-lg-4">
-                                <div class="card">
-                                    <img data-link ="https://99percentinvisible.org" src="99Invisible.png" class="card-img-top-default" alt="...">
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://99percentinvisible.org" src="99Invisible.png"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg" id="99Invisible.png"></p>
                                 </div>
-                                </div>
                             </div>
+                        </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://stownpodcast.org" src="sTown.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://stownpodcast.org" src="sTown.jpg" class="card-img-top-default"
+                                    alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="sTown.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.bbc.co.uk/programmes/b00snr0w/episodes/downloads" src="infiniteCage.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.bbc.co.uk/programmes/b00snr0w/episodes/downloads"
+                                    src="infiniteCage.jpg" class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="infiniteCage.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/" src="stuffYouShouldKnow.png" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/"
+                                    src="stuffYouShouldKnow.png" class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="stuffYouShouldKnow.png"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.npr.org/sections/money/" src="planetMoney.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.npr.org/sections/money/" src="planetMoney.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="planetMoney.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link = "http://revisionisthistory.com" src="revisionistHistory.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="http://revisionisthistory.com" src="revisionistHistory.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="revisionistHistory.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://crooked.com/podcast-series/pod-save-america/" src="podSaveAmerica.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://crooked.com/podcast-series/pod-save-america/"
+                                    src="podSaveAmerica.jpg" class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="podSaveAmerica.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.npr.org/podcasts/510307/invisibilia" src="invisibilia.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.npr.org/podcasts/510307/invisibilia" src="invisibilia.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="invisibilia.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link = "http://www.welcometonightvale.com" src="WelcomeToNightVale.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="http://www.welcometonightvale.com" src="WelcomeToNightVale.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="WelcomeToNightVale.jpg"></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3-md-4-lg-4">
-                        </div>
+                            <div class="col-sm-3-md-4-lg-4">
+                            </div>
                             <div class="card">
-                                <img data-link="https://www.intercom.com/blog/podcasts/" src="insideIntercom.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.intercom.com/blog/podcasts/" src="insideIntercom.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="insideIntercom.jpg"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="col-sm-3-md-4-lg-4">
                             <div class="card">
-                                <img data-link="https://www.wired.co.uk/podcasts" src="WiredThePodcast.jpg" class="card-img-top-default" alt="...">
+                                <img data-link="https://www.wired.co.uk/podcasts" src="WiredThePodcast.jpg"
+                                    class="card-img-top-default" alt="...">
                                 <div class="card-body">
                                     <p class="selectedPodMsg " id="WiredThePodcast.jpg"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3-md-4-lg-4">
+                            <div class="card">
+                                <img data-link="https://podtail.com/en/podcast/tony-cantwell-s-shitshow/"
+                                    src="tonyCantwell.jpg" class="card-img-top-default" alt="...">
+                                <div class="card-body">
+                                    <p class="selectedPodMsg " id="tonyCantwell.jpg"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3-md-4-lg-4">
+                                <div class="card">
+                                    <img data-link="https://fivethirtyeight.com/tag/fivethirtyeight-podcasts/"
+                                        src="538.png" class="card-img-top-default" alt="...">
+                                    <div class="card-body">
+                                        <p class="selectedPodMsg " id="538.png"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3-md-4-lg-4">
+                                <div class="card">
+                                    <img data-link="http://songexploder.net" src="SongExplorer.png"
+                                        class="card-img-top-default" alt="...">
+                                    <div class="card-body">
+                                        <p class="selectedPodMsg " id="SongExplorer.png"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3-md-4-lg-4">
-                        <div class="card">
-                            <img data-link ="https://podtail.com/en/podcast/tony-cantwell-s-shitshow/" src="tonyCantwell.jpg" class="card-img-top-default" alt="...">
-                            <div class="card-body">
-                                <p class="selectedPodMsg " id="tonyCantwell.jpg"></p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3-md-4-lg-4">
-                    <div class="card">
-                        <img data-link ="https://fivethirtyeight.com/tag/fivethirtyeight-podcasts/" src="538.png" class="card-img-top-default" alt="...">
-                        <div class="card-body">
-                            <p class="selectedPodMsg " id="538.png"></p>
-                    </div>
                 </div>
-                </div>
-                <div class="col-sm-3-md-4-lg-4">
-                    <div class="card">
-                        <img data-link ="http://songexploder.net" src="SongExplorer.png" class="card-img-top-default" alt="...">
-                        <div class="card-body">
-                            <p class="selectedPodMsg " id="SongExplorer.png"></p>
-                        </div>
-                    </div>
-                 </div>
-                </div>
+                <!--END OF PODCAST SECTION-->
             </div>
-        </div>   <!--END OF PODCAST SECTION-->
         </div>
-    </div>
         <!--ARTICLES SHELF-->
-    
+
         <div class="row" align="center">
             <div class="col">
                 <img src="articlesSection.png">
             </div>
-            <div class="col p-3 mb-2" align="left" id="article-section-content">   
-                <h3>Magazine Stack</h3>   
-                <!--ARTICLE CONTENT POPULATES HERE-->   
+            <div class="col p-3 mb-2" align="left" id="article-section-content">
+                <h3>Magazine Stack</h3>
+                <!--ARTICLE CONTENT POPULATES HERE-->
             </div>
             `<p class="text-warning" id="articleDeleteMsg"></p>
         </div>
-        
-            <div class="row addDataSection" align="justify">
-                <div class="col-8">
-                    <form class="editModeElement" id="articleSender">
-                        <div class="form-group">
-                            <label class="inputLabel" for="articleInput">Add an article</label>
-                            <input type="text" class="form-control" name="articleInputLink" aria-describedby="articleInputLink" placeholder="Enter a link from a great article">
-                            <input type="text" class="form-control" name="articleInputCaption" aria-describedby="articleInputCaption" placeholder="Write a quick description">
-                            <small id="articleInput" class="form-text text-muted"></small>
-                        </div>
-                        <p class="text-success" id="articleMsg"></p>
-                        <button id="articleSenderButton" type="submit" class="btn btn-primary">Add</button>
-                    </form>
-                    <p id="text-output"></p>
-                </div>
+
+        <div class="row addDataSection" align="justify">
+            <div class="col-8">
+                <form class="editModeElement" id="articleSender">
+                    <div class="form-group">
+                        <label class="inputLabel" for="articleInput">Add an article</label>
+                        <input type="text" class="form-control" name="articleInputLink"
+                            aria-describedby="articleInputLink" placeholder="Enter a link from a great article">
+                        <input type="text" class="form-control" name="articleInputCaption"
+                            aria-describedby="articleInputCaption" placeholder="Write a quick description">
+                        <small id="articleInput" class="form-text text-muted"></small>
+                    </div>
+                    <p class="text-success" id="articleMsg"></p>
+                    <button id="articleSenderButton" type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <p id="text-output"></p>
             </div>
-    
-            
-      
-      
+        </div>
+
+
+
+
 
         <!--LIGHTBOX GALLERY WITH GUTTERS-->
         <div class="row">
@@ -457,7 +499,8 @@
             </div>
         </div>
     </div>
-    </div> <!--Containter fluid div-->
+    </div>
+    <!--Containter fluid div-->
     <div class="row bg-dark">
         <div class="col">
             <p class="headerFooterText">Built with love by Seán McKiernan | 2020</p>
@@ -465,16 +508,17 @@
     </div>
 
 </body>
+
 </html>
-    
+
 
 
 
 <style>
-
     .headerFooterText {
         color: white;
     }
+
     .background-colour {
         background-color: #eee;
     }
@@ -486,11 +530,11 @@
         margin: 10px;
     }
 
-    #signedInLight{
+    #signedInLight {
         display: none;
     }
 
-    .container-fluid{
+    .container-fluid {
         margin-top: 3px;
     }
 
@@ -506,20 +550,25 @@
         font-family: 'inter', sans-serif;
         font-weight: bold;
     }
-    #navBar{
+
+    #navBar {
         margin-top: 50px;
     }
 
     #title {
         font-size: 30px;
     }
-    table, th, td {
+
+    table,
+    th,
+    td {
         border: 1px solid black;
     }
 
-    .deleteCarouselImagesSection{
+    .deleteCarouselImagesSection {
         display: none;
     }
+
     #carousel-section-table {
         margin-top: 20px;
         margin-bottom: 10px;
@@ -530,10 +579,10 @@
         display: none;
     }
 
-    .editModeElement{
-        display:none ;
+    .editModeElement {
+        display: none;
     }
-   
+
     .carousel-inner {
         width: 1000px;
         max-height: 500px !important;
@@ -577,7 +626,7 @@
         padding-bottom: 30px;
     }
 
-    .shelf{
+    .shelf {
         margin-top: 100px;
         margin-bottom: 50px;
     }
@@ -589,8 +638,9 @@
         font-weight: bold;
         margin-top: 50px;
     }
-    .populatedContent{
-        margin-top:50px;
+
+    .populatedContent {
+        margin-top: 50px;
     }
 
     #myMusic {
@@ -612,33 +662,36 @@
     #spotLogo {
         width: 150px;
     }
-    #video-section-content{
+
+    #video-section-content {
         display: none;
     }
 
     #all-podcast-section {
-    display: none; 
-    }
-
-    #podEpisodeForm{
-        margin-left: 30px;
-        padding: 10px;
-    }
-    .selectedPodMsg{
         display: none;
     }
 
-    .card-img-top-default  {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    opacity: 0.7;
-    }
-    .card-img-top{
-        padding:50px;
+    #podEpisodeForm {
+        margin-left: 30px;
+        padding: 10px;
     }
 
-    .articleIFrame{
+    .selectedPodMsg {
+        display: none;
+    }
+
+    .card-img-top-default {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        opacity: 0.7;
+    }
+
+    .card-img-top {
+        padding: 50px;
+    }
+
+    .articleIFrame {
         height: 800px;
         width: 600px;
         border: none;
@@ -648,10 +701,11 @@
         margin: 15px;
     }
 
-    input{
+    input {
         margin: 10px;
     }
-    .inputLabel{
+
+    .inputLabel {
         color: white;
     }
 
@@ -663,21 +717,21 @@
         display: none;
     }
 
-    iframe{
-        margin:50px;
+    iframe {
+        margin: 50px;
     }
 
-   
+
     .deleteButton {
         margin-top: 2px;
     }
 
-    .photo-gallery{
+    .photo-gallery {
         margin-top: 30px;
     }
 
-    .row photos{
-        margin:50px;
+    .row photos {
+        margin: 50px;
     }
 
     .btn-file {
@@ -701,7 +755,7 @@
         display: block;
     }
 
-    .imageDeleteButton{
+    .imageDeleteButton {
         margin-top: 5px;
     }
 
@@ -710,9 +764,10 @@
         margin-bottom: 5px;
     }
 
-    #gridDeleteMsg{
+    #gridDeleteMsg {
         margin-top: 10px;
     }
+
     #img-upload {
         width: 100%;
     }
@@ -721,8 +776,4 @@
         margin-top: 20px;
         margin-bottom: 50px;
     }
-
-
 </style>
-
-

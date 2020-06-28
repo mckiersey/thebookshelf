@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     console.log('Javascript loading...')
 
-    
+
 
     //Get unlogged username
     var url = new URL(window.location.href);
@@ -10,35 +10,34 @@
 
 
     function deleting_cookie(name) {
-        document.cookie = name +"=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-      }
-    function getCookie(name) 
-    {
+        document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    }
+    function getCookie(name) {
         const value = `${document.cookie}`;
-        if(value.length >0){
+        if (value.length > 0) {
             console.log('all cookies', value)
             const parts = value.split(`; ${name}=`);
             console.log('parts 0 split on semi-colon part 0:', parts[0].split(';')[0].split('=')[1])
-            var loggedInUser =  parts[0].split(';')[0].split('=')[1]
+            var loggedInUser = parts[0].split(';')[0].split('=')[1]
             return loggedInUser;
-        } else{
+        } else {
             return [] //return empty array if not logged in.
         }
-        
+
     }
 
     // Set default cookie values
-    cookieJar= getCookie()
+    cookieJar = getCookie()
     console.log('cookie jar', cookieJar)
-    if(cookieJar.length === 0){
+    if (cookieJar !== unloggedUser) {
         console.log('No user logged in. Displaying default profile')
         userName = unloggedUser
-        console.log('view unlogged user bookshelf',userName)
+        console.log('view unlogged user bookshelf', userName)
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
         $('#logOutButton').hide()
     } else {
-        userName = cookieJar  
+        userName = cookieJar
         console.log('User logged in. Diplaying personal profile for user', userName)
         $('#editModeSwitch').show() //show edit switch
         $("#signedInLight").show()
@@ -63,15 +62,15 @@
         }
     });
 
-     $('#logOutButton').click(function() {
+    $('#logOutButton').click(function () {
         console.log('log out button clicked')
         console.log('logging out...')
         console.log('cookie value to delete:', document.cookie)
-        if(cookieJar.length > 0){          
-                deleting_cookie('validatedUserName')
-            }else{}
+        if (cookieJar.length > 0) {
+            deleting_cookie('validatedUserName')
+        } else { }
         console.log('cookie value left:', document.cookie)
-       window.location.href ='http://63.33.214.25/signUp'
+        window.location.href = 'http://63.33.214.25/signUp'
     })
 
     //Music players
@@ -94,7 +93,7 @@
         $('.deleteCarouselImagesSection').toggle();
 
     });
-    
+
     $('#openVideos').click(function () {
         console.log('Video section clicked.');
         $('#video-section-content').slideToggle('slow');
@@ -119,73 +118,73 @@
     });
 
     $('.toggleImg').on("mouseleave", function () {
-       $(".imgDetails").finish().slideToggle(400);
+        $(".imgDetails").finish().slideToggle(400);
         console.log("test OFF")
     });
 
 
-  
 
 
-/////////////////////////////////////////////
-///////////////////////////////// GET DATA 
-/////////////////////////////////////////////
 
-//Playlists
+    /////////////////////////////////////////////
+    ///////////////////////////////// GET DATA 
+    /////////////////////////////////////////////
+
+    //Playlists
     console.log('Loading music playlist ID')
     var requestString = 'http://63.33.214.25/playlists';
     var urlParameters = requestString + `?userName=${userName}`
     console.log('The podcast url is:', urlParameters)
 
     $.get(urlParameters, function (data, status) {
-            console.log('playlist data', data)
-            // Get last uploaded playlist
-            var lastPlaylistPosted = data.length
-            console.log('length is', lastPlaylistPosted)
-            var playlistID = data[lastPlaylistPosted -1].LINK
-            var playlistPlatform = data[lastPlaylistPosted -1].context
-            console.log('playlist id ',playlistID, 'platform', playlistPlatform)
-            if(playlistPlatform == 'DeezerInput'){
-                console.log('deezer playlist')
-                document.getElementById("deezerPlayer").src = `https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=${playlistID}&app_id=1`
-                //https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=7613072842&app_id=1
-            } else{
-                console.log('spotify playlist')
-                document.getElementById("spotPlayer").src = `https://open.spotify.com/embed/playlist/${playlistID}`
-                //https://open.spotify.com/embed/playlist/16ryn0QfWZMcBTNfqzW7Si
-            }
+        console.log('playlist data', data)
+        // Get last uploaded playlist
+        var lastPlaylistPosted = data.length
+        console.log('length is', lastPlaylistPosted)
+        var playlistID = data[lastPlaylistPosted - 1].LINK
+        var playlistPlatform = data[lastPlaylistPosted - 1].context
+        console.log('playlist id ', playlistID, 'platform', playlistPlatform)
+        if (playlistPlatform == 'DeezerInput') {
+            console.log('deezer playlist')
+            document.getElementById("deezerPlayer").src = `https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=${playlistID}&app_id=1`
+            //https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=7613072842&app_id=1
+        } else {
+            console.log('spotify playlist')
+            document.getElementById("spotPlayer").src = `https://open.spotify.com/embed/playlist/${playlistID}`
+            //https://open.spotify.com/embed/playlist/16ryn0QfWZMcBTNfqzW7Si
+        }
     });
-    
+
     //Videos
-    var videoClicker =0;
+    var videoClicker = 0;
 
     $('#openVideos').click(function () {
         console.log('Video data requested, clicker count = ', videoClicker)
-        if(videoClicker ===0){ 
+        if (videoClicker === 0) {
 
-        var requestString = 'http://63.33.214.25/videos';
+            var requestString = 'http://63.33.214.25/videos';
 
-        $.get(requestString, function (data, status) {
-            data.forEach(function (entry) {
-                console.log(entry)
-                videoContentIframe = entry.link
-                console.log(videoContentIframe)
-                document.getElementById('video-section-content').innerHTML += videoContentIframe
-                    + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'
+            $.get(requestString, function (data, status) {
+                data.forEach(function (entry) {
+                    console.log(entry)
+                    videoContentIframe = entry.link
+                    console.log(videoContentIframe)
+                    document.getElementById('video-section-content').innerHTML += videoContentIframe
+                        + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'
+                });
             });
-        });
-    }
-    videoClicker ++
+        }
+        videoClicker++
     });
-   
+
 
     // PODCASTS (AUTOMATIC LOAD)
     var loadedPodcasts = []
-    var podcastClicker =0;
-    $('#openPodcasts').click(function(){
+    var podcastClicker = 0;
+    $('#openPodcasts').click(function () {
         console.log('Podcast data requested, clicker count = ', podcastClicker)
 
-        if(podcastClicker ===0){ 
+        if (podcastClicker === 0) {
 
             var requestString = 'http://63.33.214.25/podcasts';
             var urlParameters = requestString + `?userName=${userName}&podContext=podcast`
@@ -196,14 +195,14 @@
                     podcastLink = entry.link
                     podcastSrcName = entry.caption
 
-                    console.log('podcast:',podcastSrcName)
-                    console.log('link:',podcastLink)
+                    console.log('podcast:', podcastSrcName)
+                    console.log('link:', podcastLink)
 
                     document.getElementById('podcast-section-content').innerHTML += `<div class="col-sm-3-md-4-lg-4">`
-                    +`<div class="card"><a href="${podcastLink}" target="_blank">` 
-                    +`<img src="${podcastSrcName}" class="card-img-top" alt="...">`
-                    +`</a>`
-                    +`</div></div>`
+                        + `<div class="card"><a href="${podcastLink}" target="_blank">`
+                        + `<img src="${podcastSrcName}" class="card-img-top" alt="...">`
+                        + `</a>`
+                        + `</div></div>`
                     console.log('podcast info sent')
                     loadedPodcasts.push(podcastSrcName)
                 });
@@ -216,64 +215,64 @@
                     episodeLink = entry.link
                     episodeDescription = entry.caption
 
-                    console.log(' episode link:',episodeLink)
-                    console.log('episode description:',episodeDescription)
+                    console.log(' episode link:', episodeLink)
+                    console.log('episode description:', episodeDescription)
 
                     document.getElementById('podcast-episode-table').innerHTML += `<tr><td>${episodeDescription}</td>`
-                +`<td><a href="${episodeLink}" target="_blank">Listen to episode</a></td>` 
-                +`<td><button class="btn btn-danger btn-sm rounded-0 podEpDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i> Remove Me</button>`
-                + `<p class="text-warning" id="gridDeleteMsg"></p>` 
-                +`</tr>`
-                console.log('podcast table built')
+                        + `<td><a href="${episodeLink}" target="_blank">Listen to episode</a></td>`
+                        + `<td><button class="btn btn-danger btn-sm rounded-0 podEpDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i> Remove Me</button>`
+                        + `<p class="text-warning" id="gridDeleteMsg"></p>`
+                        + `</tr>`
+                    console.log('podcast table built')
                 });
             });
         } // podcast clicker
-        podcastClicker ++
+        podcastClicker++
     });
     // Change podcast as a function on whether it has already been picked
-     // Podcast selector
-     $('.card-img-top-default').click(function(){
+    // Podcast selector
+    $('.card-img-top-default').click(function () {
         console.log('all pod info', $(this))
         podcastNameUrl = $(this)[0].src
         podcastLinkUrl = $(this)[0].dataset.link
 
-        console.log('pod name url',podcastNameUrl)
+        console.log('pod name url', podcastNameUrl)
         console.log('podcast link by data set', podcastLinkUrl)
         selectedPodcast = podcastNameUrl.substring(podcastNameUrl.lastIndexOf("/") + 1, podcastNameUrl.length);
 
-        if(loadedPodcasts.includes(selectedPodcast)){
-        // Already loaded so a click means it should be deleted
-        $(this).css({'opacity': '0.1'})
-        console.log('Podcast delete clause')
-        console.log('podcast name = ',podcastLinkUrl )
-        var deletePodUrl = 'http://63.33.214.25/podcasts';
-        $.ajax({
-            url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podcastLinkUrl, "deleteMeUserName": userName, "podcastContext": "podcast" }),
-            type: 'DELETE',
-            success: function (response) {
-                console.log('success response', response)
-                console.log('the deleted podcast is ', selectedPodcast)
-                $(document.getElementById(selectedPodcast)).html(response).show().delay(1000).fadeOut();
-            },
-            error: function (response) {
-                $(document.getElementById(selectedPodcast)).html(response).show().delay(1000).fadeOut();
-            }
-        });    
+        if (loadedPodcasts.includes(selectedPodcast)) {
+            // Already loaded so a click means it should be deleted
+            $(this).css({ 'opacity': '0.1' })
+            console.log('Podcast delete clause')
+            console.log('podcast name = ', podcastLinkUrl)
+            var deletePodUrl = 'http://63.33.214.25/podcasts';
+            $.ajax({
+                url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podcastLinkUrl, "deleteMeUserName": userName, "podcastContext": "podcast" }),
+                type: 'DELETE',
+                success: function (response) {
+                    console.log('success response', response)
+                    console.log('the deleted podcast is ', selectedPodcast)
+                    $(document.getElementById(selectedPodcast)).html(response).show().delay(1000).fadeOut();
+                },
+                error: function (response) {
+                    $(document.getElementById(selectedPodcast)).html(response).show().delay(1000).fadeOut();
+                }
+            });
 
-        }else{
+        } else {
             // Not in array so select and post podcast
-            $(this).css({ 'opacity': '1'});
+            $(this).css({ 'opacity': '1' });
             podcastNameUrl = $(this)[0].src
             podcastLink = $(this).data("link")
 
-            console.log('podcast name = ',selectedPodcast )
+            console.log('podcast name = ', selectedPodcast)
             console.log('Podcast link:', podcastLink);
             var postUrl = 'http://63.33.214.25/podcasts';
             $.post(postUrl, { podcastName: selectedPodcast, user: userName, link: podcastLink, context: "podcast" })
-            .done(function (data) {
-                $(document.getElementById(selectedPodcast)).html(data).show().delay(1000).fadeOut();
-            });
-           
+                .done(function (data) {
+                    $(document.getElementById(selectedPodcast)).html(data).show().delay(1000).fadeOut();
+                });
+
         }
     });
 
@@ -310,7 +309,7 @@
         var j = 0
         data.forEach(function (entry) {
             console.log('loading images number:', j);
-           
+
             console.log(entry);
             var caption = 'this is a caption';
             var gridImage = "http://63.33.214.25" + entry.LINK
@@ -320,7 +319,7 @@
             console.log('grid image caption = ', gridImageCaption)
 
 
-            if(j < 3) {
+            if (j < 3) {
                 var classType = 'class="col-sm-6 col-md-4 col-lg-4 item"'
             } else {
                 var classType = 'class="col-sm-6 col-md-4 col-lg-3 item"'
@@ -345,16 +344,16 @@
         //Get last uploaded profile pic
         var lastProfilePicPosted = data.length
         console.log('length is', lastProfilePicPosted)
-        var profilePic = data[lastProfilePicPosted -1].LINK
+        var profilePic = data[lastProfilePicPosted - 1].LINK
         console.log('profile pic data is', profilePic)
         console.log('status is ', status)
-   
+
         profilePicFinal = "http://63.33.214.25" + profilePic
         document.getElementById('profilePictureSpace').src = profilePicFinal
     });
 
 
-     //Articles (automatically load articles)
+    //Articles (automatically load articles)
     console.log('Article data loading')
     var requestString = 'http://63.33.214.25/articles';
 
@@ -364,15 +363,15 @@
             articleLink = entry.link
             articleCaption = entry.caption
             console.log('article:', articleLink)
-            var pathArray = articleLink.split( '/' );
+            var pathArray = articleLink.split('/');
             var protocol = pathArray[0];
             var host = pathArray[2];
             var baseUrl = protocol + '//' + host;
-            console.log('url is',baseUrl)
+            console.log('url is', baseUrl)
             document.getElementById('article-section-content').innerHTML += `<div class ="row"><div class="col">`
-             +`<img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${articleCaption}</a>`
-               + '<button class="btn btn-danger btn-sm rounded-0 articleDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></div></div>'
-              
+                + `<img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${articleCaption}</a>`
+                + '<button class="btn btn-danger btn-sm rounded-0 articleDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></div></div>'
+
 
 
         });
@@ -381,10 +380,10 @@
 
 
 
-    
-/////////////////////////////////////////////
-///////////////////////////////// POST DATA 
-/////////////////////////////////////////////
+
+    /////////////////////////////////////////////
+    ///////////////////////////////// POST DATA 
+    /////////////////////////////////////////////
 
 
     // POST MUSIC DATA TO DATA BASE;
@@ -406,8 +405,8 @@
             .done(function (data) {
                 console.log('video done clause response data', data)
                 $('#musicMsg').html(data).show().delay(4000).fadeOut();
-            }); 
-    }); 
+            });
+    });
     // POST VIDEO DATA TO DATA BASE;
     $("#videoSender").off().submit(function (event) {
         console.log('video submit button pressed...')
@@ -463,7 +462,7 @@
         console.log('podcast episode to be posted:', inputValue)
         var postUrl = 'http://63.33.214.25/podcasts'
         $.post(postUrl, { user: userName, link: podEpLink, context: "episode", caption: podEpDescription })
-          .done(function (data) {
+            .done(function (data) {
                 $('#podEpMsg').html(data).show().delay(4000).fadeOut();
             });
 
@@ -510,9 +509,9 @@
             }
         });
     });
-/////////////////////////////////////////////
-///////////////////////////////// DELETE DATA 
-/////////////////////////////////////////////
+    /////////////////////////////////////////////
+    ///////////////////////////////// DELETE DATA 
+    /////////////////////////////////////////////
 
     // Carousel image delete button;
 
@@ -531,7 +530,7 @@
                 var type = 'image'
                 console.log('corresponding image: ', imageValueClean);
 
-                
+
                 var imageDeleteData = [];
                 imageDeleteData.push(imageValueClean);
                 imageDeleteData.push(userName);
@@ -552,14 +551,14 @@
                         }
 
                     });
-                   
+
                 });
             };
         };
     });
-        
 
-// Video delete button
+
+    // Video delete button
     $(document).on('click', '.videoDeleteButton', function (e) {
         console.log('Video Button found...')
 
@@ -582,38 +581,38 @@
                 $(document.getElementById("videoDeleteMsg")).html(response).show().delay(1000).fadeOut();
             }
 
-       });
+        });
     });
 
-    
 
-// Podcast Episode delete button (note: podcasts are added/removed in the GET request above)
-         $(document).on('click', '.podEpDeleteButton', function (e) {
-            console.log('Podcast Episode remove Button found...')
-            console.log('this is', $(this));
-            var podEpToDelete = $(this).closest('td').prev();
-            var podEpLinkToDelete = podEpToDelete[0].getElementsByTagName('a')[0].href
-            console.log('Podcast Episode link to delete',podEpLinkToDelete)
-            var deletePodUrl = 'http://63.33.214.25/podcasts';
-            $.ajax({
-                url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podEpLinkToDelete, "deleteMeUserName": userName,  "podcastContext": "episode" }),
-                type: 'DELETE',
-                success: function (response) {
-                    console.log('success response', response)
-                    console.log('the selected podcast is ', podEpLinkToDelete)
-                    $(document.getElementById(podEpLinkToDelete)).html(response).show().delay(1000).fadeOut();
-                },
-                error: function (response) {
-                    $(document.getElementById(podEpLinkToDelete)).html(response).show().delay(1000).fadeOut();
-                }
-            });    
+
+    // Podcast Episode delete button (note: podcasts are added/removed in the GET request above)
+    $(document).on('click', '.podEpDeleteButton', function (e) {
+        console.log('Podcast Episode remove Button found...')
+        console.log('this is', $(this));
+        var podEpToDelete = $(this).closest('td').prev();
+        var podEpLinkToDelete = podEpToDelete[0].getElementsByTagName('a')[0].href
+        console.log('Podcast Episode link to delete', podEpLinkToDelete)
+        var deletePodUrl = 'http://63.33.214.25/podcasts';
+        $.ajax({
+            url: deletePodUrl + '?' + $.param({ "deleteMePodcast": podEpLinkToDelete, "deleteMeUserName": userName, "podcastContext": "episode" }),
+            type: 'DELETE',
+            success: function (response) {
+                console.log('success response', response)
+                console.log('the selected podcast is ', podEpLinkToDelete)
+                $(document.getElementById(podEpLinkToDelete)).html(response).show().delay(1000).fadeOut();
+            },
+            error: function (response) {
+                $(document.getElementById(podEpLinkToDelete)).html(response).show().delay(1000).fadeOut();
+            }
         });
+    });
 
-      // Article delete button
+    // Article delete button
 
     $(document).on('click', '.articleDeleteButton', function (e) {
         console.log('Article delete Button found...')
-            console.log('this is', this)
+        console.log('this is', this)
         var previousSibling = $(this.previousSibling)
         console.log('article previous sibling:', previousSibling)
         var articleLinkToDelete = previousSibling[0].outerText
@@ -622,7 +621,7 @@
 
         var deleteUrl = 'http://63.33.214.25/articles';
         $.ajax({
-            url: deleteUrl + '?' + $.param({ "deleteMeArticleCaption": articleLinkToDelete, "deleteMeUserName":userName }),
+            url: deleteUrl + '?' + $.param({ "deleteMeArticleCaption": articleLinkToDelete, "deleteMeUserName": userName }),
             type: 'DELETE',
             success: function (response) {
                 $('#articleDeleteMsg').html(response).show().delay(3000).fadeOut(); // display success response from the server
