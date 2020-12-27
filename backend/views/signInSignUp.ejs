@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <title>thebook-shelf sign in/ sign up page</title>
     <!-- Bootstrap CSS -->
+    <script src="js_code.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
@@ -21,6 +23,15 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function() {
+            //when the document is finished loading, replace everything
+            //between the <a ...> </a> tags with the value of splitText
+        document.getElementById("...").href=`http://${serverAddress}/home`;
+
+        console.log('this is the address', serverAddress)
+        }
+    </script>
 
 
 </head>
@@ -34,6 +45,8 @@
             <h2 class="headerFooterText">thebook-shelf.com</h2>
             <p class="headerFooterText">Beautiful content deserves a beautiful space</p>
         </a>
+        <h3 class="headerFooterText text-success" id ="signedInLight">Signed in</h3>
+
     </nav>
 
     <div class="jumbotron">
@@ -194,13 +207,13 @@
 
         // Get list of bookshelf users
         console.log('loading list of users')
-        var requestString = 'http://63.33.214.25/users';
+        var requestString = `http://${serverAddress}/users`;
         $.get(requestString, function (data, status) {
         
             data.forEach(function (user) {
                 lovelyUser = user.user
             console.log(lovelyUser)
-            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://63.33.214.25/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://${serverAddress}/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
 
                 });
         });
@@ -222,7 +235,7 @@
 
 
                 // POST NEW USER TO DATA BASE;
-                    var postUrl = 'http://63.33.214.25/users'
+                    var postUrl = `http://${serverAddress}/users`
                     // Get some values from elements on the page
 
                     // Send the data using post;
@@ -231,6 +244,9 @@
                     .done(function (data) {
                             $('#signUpMsg').html(data).show();
                             $('#spinner').show()
+                            console.log('success sign up clause')
+                            setTimeout(function () { window.location.href =`http://${serverAddress}/signUp`}, 300);
+
                         });   
             });
         // Login
@@ -245,7 +261,7 @@
 
             console.log('Validating username:', validateUseruserName, 'and password', validateserpassword)
             // POST NEW USER TO DATA BASE;
-            var postUrl = 'http://63.33.214.25/auth'
+            var postUrl = `http://${serverAddress}/auth`
             var jqxhr = $.post( postUrl, 
                     { userName: validateUseruserName, password: validateserpassword})
                      .then(function successCallback(response){
@@ -258,7 +274,7 @@
             document.cookie = `validatedUserName = ${validateUseruserName}; path=/`
             console.log('this cookie is:', document.cookie)
 
-            setTimeout(function () { window.location.href ='http://63.33.214.25/home' }, 100);
+            setTimeout(function () { window.location.href =`http://${serverAddress}/home` }, 100);
             
         }else{
            //Something went wrong
@@ -266,7 +282,7 @@
            console.log('failure is', response)
            $('#signInMsg').html(response).show();
             $('#spinner').show()
-           setTimeout(function () { window.location.href ='http://63.33.214.25/signUp' }, 2500);
+           setTimeout(function () { window.location.href =`http://${serverAddress}/signUp` }, 2500);
         }
          });           
         }) 
@@ -292,18 +308,24 @@
     }
 
     // Set default cookie values
-    cookies= getCookie()
-    if(cookies.length === 0){
-        console.log('No user logged in. Displaying default profile')
-        userName = 'sean' // by default show my profile
+    // Set default cookie values
+    cookieJar= getCookie()
+    console.log('cookie jar', cookieJar)
+    if(cookieJar.length === 0){
+        
         status = 'signedOut' // make sure it cannot be edited
         $('#editModeSwitch').hide() // hide edit switch
+        $("#signedInLight").hide()
+        $('#logOutButton').hide()
+
+
     } else {
-        console.log('User logged in. Diplaying personal profile')
-        userName = cookies[0]
-        status = cookies[1]
-        console.log('user', userName, 'has status of ', status)
+        userName = cookieJar  
+        console.log('User logged in. Diplaying personal profile for user', userName)
         $('#editModeSwitch').show() //show edit switch
+        $("#signedInLight").show()
+        $('#logOutButton').show()
+
     }
     
     
@@ -316,7 +338,7 @@
         deleting_cookie('status')
 
         console.log('cookie value:', document.cookie)
-       window.location.href ='http://63.33.214.25/signUp'
+       window.location.href =`http://${serverAddress}/signUp`
     })
 
   

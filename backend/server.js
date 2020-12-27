@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({
 
 const server = app.listen(port, (error) => {
     if (error) return console.log(`Error: ${error}`);
-    console.log(`Sean, the server is listening on post ${server.address().port}`);
+    console.log(`Sean, the server is listening on port ${server.address().port}`);
 });
 
 

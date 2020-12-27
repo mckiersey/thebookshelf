@@ -1,11 +1,29 @@
 ﻿<!DOCTYPE html lang="en">
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>thebook-shelf landing page</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/index/favicon.ico">
+
+
+    <script>
+        window.onload = function() {
+            //when the document is finished loading, replace everything
+            //between the <a ...> </a> tags with the value of splitText
+        document.getElementById("viewAShelf").href=`http://${serverAddress}/home`;
+
+        console.log('this is the address', serverAddress)
+        }
+    </script>
+
+
+    
 </head>
+
 <body>
 
     <nav class="navbar navbar-light bg-dark">
@@ -13,66 +31,78 @@
             <!--<img src="data/bookshelflogo.png" width="30" height="30" class="d-inline-block align-top" alt="">-->
             <h2 class="headerFooterText">thebook-shelf.com</h2>
         </a>
+        <a>
+            <h3 class="headerFooterText text-success" id="signedInLight">Signed in</h3>
+        </a>
     </nav>
     <div class="container-fluid">
 
 
-    <!--Beginning of page content-->
-    <div class="row justify-content-center">
-        <div class="col-7">
-            <h1>Great content deserves a good home</h1>
-        
-            <p id="tagLine">
-                A bookshelf is a reflection of who you are.
-                Now you can curate, organise and keep your favourite content on your own bookshelf. <br/> The internet is beautiful. Share it.
-            </p>
+        <!--Beginning of page content-->
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h1>A home for your favourite online content</h1>
+
+                <p id="tagLine">
+                    A bookshelf is a reflection of who you are.
+                    Now you can curate, organise and keep your favourite content on your own bookshelf. <br />
+                <h2 class='sub-tag'>Good content deserves a good home.</h2>
+                </p>
+            </div>
         </div>
-    </div>
-    <!--Enter or Create your own-->
-    <div class="row" align="center">
-        <div class="col">
-            <div class="dropdown show">
-                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="enterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  View a bookshelf
-                </a>
-              
-                <div class="dropdown-menu" id="userListMenu" aria-labelledby="dropdownMenuLink">
-                    <a class="selectedProfile dropdown-item text text-primary" href="http://63.33.214.25/signUp">Make sure to log out to see another's bookshelf!</a>
-                 <!--Usernames populate here-->
+        <!--Enter or Create your own-->
+        <div class="row" align="center">
+            <div class="col">
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="enterButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        View a bookshelf
+                    </a>
+
+                    <div class="dropdown-menu" id="userListMenu" aria-labelledby="dropdownMenuLink">
+                        <a id='viewAShelf' class="selectedProfile dropdown-item text text-primary"
+                            href="http://63.33.214.25/signUp">Make sure to log out to see another's bookshelf!</a>
+                        <!--Usernames populate here-->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" align="center">
-        <div class="col">
-            <button type="button" class="btn btn-secondary" id="createButton">Create your own bookshelf</button>
+        <div class="row" align="center">
+            <div class="col">
+                <button type="button" class="btn btn-secondary" id="createButton">Sign in/Sign up</button>
+            </div>
         </div>
-    </div>
 
 
-    <div class="row" align="center">
-        <div class="col">
-            <img src="landinglogo.png" id="mainImage"/>
+        <div class="row" align="center">
+            <div class="col">
+                <img src="landinglogo.png" id="mainImage" />
+            </div>
         </div>
-    </div>
-    <div class="row bg-dark">
-        <div class="col">
-            <p class="headerFooterText">Built with love by Seán McKiernan | 2020</p>
+        <div class="row bg-dark">
+            <div class="col">
+                <p class="headerFooterText">Built with love by Seán McKiernan | 2020</p>
+            </div>
         </div>
-    </div>
 
-    <!--End of page content-->
+        <!--End of page content-->
     </div>
     <!--javascript libraries requied by bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
 
 <style>
-
-    .headerFooterText{
+    .headerFooterText {
         color: white;
     }
 
@@ -89,46 +119,89 @@
     #tagLine {
         text-align: center;
         font-size: 18px;
+
+
     }
+
+    .sub-tag {
+        text-align: center;
+        font-weight: 700;
+        padding: 10px 0;
+    }
+
     #enterButton {
         margin: 10px;
         background-color: steelblue !important;
         font-size: 30px;
     }
+
     #createButton {
         margin: 10px;
         font-size: 15px;
     }
 
-    #mainImage{
+    #mainImage {
         margin: 30px;
     }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js_code.js"></script>
 
 <script>
-$(document).ready(function () {
 
 
-    // Get list of bookshelf users
-    console.log('loading list of users')
-        var requestString = 'http://63.33.214.25/users';
+
+    $(document).ready(function () {
+
+
+        // Get list of bookshelf users
+        console.log('loading list of users')
+        var requestString = `http://${serverAddress}/users`;
         $.get(requestString, function (data, status) {
-        
+
             data.forEach(function (user) {
                 lovelyUser = user.user
-            console.log(lovelyUser)
-            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://63.33.214.25/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+                console.log(lovelyUser)
+                document.getElementById('userListMenu').innerHTML += `<a class="selectedProfile dropdown-item" href="http://${serverAddress}/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
 
-                });
+            });
         });
-      
- 
 
-    $('#createButton').click(function () {
-        console.log('entering site...')
-        window.location.href ='http://63.33.214.25/signUp'
+
+
+        $('#createButton').click(function () {
+            console.log('entering site...')
+            window.location.href = `http://${serverAddress}/signUp`
+        });
+
+        function getCookie(name) {
+            const value = `${document.cookie}`;
+            if (value.length > 0) {
+                console.log('all cookies', value)
+                const parts = value.split(`; ${name}=`);
+                console.log('parts 0 split on semi-colon part 0:', parts[0].split(';')[0].split('=')[1])
+                var loggedInUser = parts[0].split(';')[0].split('=')[1]
+                return loggedInUser;
+            } else {
+                return [] //return empty array if not logged in.
+            }
+
+        }
+
+        // Set default cookie values
+        cookieJar = getCookie()
+        console.log('cookie jar', cookieJar)
+        if (cookieJar.length === 0) {
+            status = 'signedOut' // make sure it cannot be edited
+            $('#editModeSwitch').hide() // hide edit switch
+            $("#signedInLight").hide()
+
+        } else {
+            userName = cookieJar
+            console.log('User logged in. Diplaying personal profile for user', userName)
+            $('#editModeSwitch').show() //show edit switch
+            $("#signedInLight").show()
+        }
+
     });
-
-});
 </script>
