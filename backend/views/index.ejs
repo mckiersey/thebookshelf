@@ -9,6 +9,19 @@
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="/index/favicon.ico">
 
+
+    <script>
+        window.onload = function() {
+            //when the document is finished loading, replace everything
+            //between the <a ...> </a> tags with the value of splitText
+        document.getElementById("viewAShelf").href=`http://${serverAddress}/home`;
+
+        console.log('this is the address', serverAddress)
+        }
+    </script>
+
+
+    
 </head>
 
 <body>
@@ -33,7 +46,7 @@
                 <p id="tagLine">
                     A bookshelf is a reflection of who you are.
                     Now you can curate, organise and keep your favourite content on your own bookshelf. <br />
-                <h2 class='sub-tag'>Great content deserves a good home.</h2>
+                <h2 class='sub-tag'>Good content deserves a good home.</h2>
                 </p>
             </div>
         </div>
@@ -47,7 +60,7 @@
                     </a>
 
                     <div class="dropdown-menu" id="userListMenu" aria-labelledby="dropdownMenuLink">
-                        <a class="selectedProfile dropdown-item text text-primary"
+                        <a id='viewAShelf' class="selectedProfile dropdown-item text text-primary"
                             href="http://63.33.214.25/signUp">Make sure to log out to see another's bookshelf!</a>
                         <!--Usernames populate here-->
                     </div>
@@ -132,20 +145,24 @@
     }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js_code.js"></script>
 
 <script>
+
+
+
     $(document).ready(function () {
 
 
         // Get list of bookshelf users
         console.log('loading list of users')
-        var requestString = 'http://63.33.214.25/users';
+        var requestString = `http://${serverAddress}/users`;
         $.get(requestString, function (data, status) {
 
             data.forEach(function (user) {
                 lovelyUser = user.user
                 console.log(lovelyUser)
-                document.getElementById('userListMenu').innerHTML += `<a class="selectedProfile dropdown-item" href="http://63.33.214.25/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+                document.getElementById('userListMenu').innerHTML += `<a class="selectedProfile dropdown-item" href="http://${serverAddress}/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
 
             });
         });
@@ -154,7 +171,7 @@
 
         $('#createButton').click(function () {
             console.log('entering site...')
-            window.location.href = 'http://63.33.214.25/signUp'
+            window.location.href = `http://${serverAddress}/signUp`
         });
 
         function getCookie(name) {

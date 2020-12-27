@@ -13,8 +13,22 @@
     <!--Icons (delete button)-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
     <!--Open Sans-->
-
     <script src="js_code.js"></script>
+
+    <script>
+        window.onload = function() {
+            //when the document is finished loading, replace everything
+            //between the <a ...> </a> tags with the value of splitText
+        document.getElementById("homeLink").href=`http://${serverAddress}/home`;
+        document.getElementById("landingLink").href=`http://${serverAddress}/index`;
+        document.getElementById("signinLink").href=`http://${serverAddress}/signUp`;
+        document.getElementById("createLink").href=`http://${serverAddress}/signUp`;
+
+        console.log('this is the address', serverAddress)
+        }
+    </script>
+
+
 
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -87,16 +101,16 @@
                 <ul class="nav flex-column nav-pills nav-justified personalSection" aria-orientation="vertical"
                     id="navBar">
                     <li class="item">
-                        <a class="nav-link active" href="http://63.33.214.25/home">View a shelf</a>
+                        <a id='homeLink' class="nav-link active" href="http://63.33.214.25/home">View a shelf</a>
                     </li>
                     <li class="item">
-                        <a class="nav-link" href="http://63.33.214.25/index">Landing page</a>
+                        <a class="nav-link" id='landingLink' href="http://63.33.214.25/index">Landing page</a>
                     </li>
                     <li class="item">
-                        <a class="nav-link" href="http://63.33.214.25/signUp">Sign in</a>
+                        <a class="nav-link" id='signinLink' href="http://63.33.214.25/signUp">Sign in</a>
                     </li>
                     <li class="item">
-                        <a class="nav-link" href="http://63.33.214.25/signUp">Create your own</a>
+                        <a class="nav-link" id='createLink' href="http://63.33.214.25/signUp">Create your own</a>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-danger" id="logOutButton">Log out</button>
