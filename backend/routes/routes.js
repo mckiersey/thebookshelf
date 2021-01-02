@@ -140,10 +140,9 @@ app.post('/auth', function (request, response) {
 
     // Fetch videoLinks;
     app.get('/videos', (request, response) => {
-            console.log('video user name', userName)
         pool.query(`SELECT link FROM contentData WHERE user = '${userName}' AND type = 'video'`, (error, result) => {
             if (error) throw error;
-            console.log('********* Video links requested *********')
+            console.log('********* Video links requested by ',userName,'*********')
             console.log('video links query result:', result)
             response.send(result);
         });
