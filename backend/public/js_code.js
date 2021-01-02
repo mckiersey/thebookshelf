@@ -163,7 +163,7 @@ $(document).ready(function () {
 
     $('#openVideos').click(function () {
         console.log('Video data requested, clicker count = ', videoClicker)
-        //if (videoClicker === 0) {
+        if (videoClicker === 0) {
 
             var requestString = `http://${serverAddress}/videos`;
 
@@ -176,7 +176,7 @@ $(document).ready(function () {
                         + '<button class="btn btn-danger btn-sm rounded-0 videoDeleteButton editModeElement" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>'
                 });
             });
-        //}
+        }
         videoClicker++
     });
 
