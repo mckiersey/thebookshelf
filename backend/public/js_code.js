@@ -1,5 +1,5 @@
-﻿//serverAddress = 'localhost' // Local
-serverAddress = '63.33.214.25' //Online
+﻿serverAddress = 'localhost' // Local
+//serverAddress = 'thebook-shelf.com' //Online
 
 $(document).ready(function () {
     console.log('Javascript loading...')

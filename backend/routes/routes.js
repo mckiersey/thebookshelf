@@ -7,9 +7,7 @@
 const pool = require('../data/config');
 const router = app => {
     app.get('/', (request, response) => {
-        response.send({
-            message: 'This message is coming from the routes file'
-        });
+        response.redirect('/index');
     });
 
   
