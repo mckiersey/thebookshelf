@@ -122,7 +122,7 @@ app.post('/auth', function (request, response) {
             if(error) throw error;
             
             response.send(result);
-            console.log('Here is the list of all bookshelf users! What wonderful people', result)
+            //console.log('Here is the list of all bookshelf users! What wonderful people', result)
         });
     });
 
