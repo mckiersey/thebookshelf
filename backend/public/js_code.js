@@ -1,5 +1,5 @@
-﻿//serverAddress = 'localhost' // Local
-serverAddress = '63.33.214.25' //Online
+﻿serverAddress = 'localhost' // Local
+//serverAddress = '63.33.214.25' //Online
 
 $(document).ready(function () {
     console.log('Javascript loading...')
@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     //Get unlogged username
     var url = new URL(window.location.href);
-    var unloggedUser = url.searchParams.get("unloggedUserName");
+    var unloggedUser = url.searchParams.get("UserProfile");
     console.log("Viewing bookshelf of user:", unloggedUser);
 
 

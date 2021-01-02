@@ -22,8 +22,8 @@ app.get('/index', (request, response)=> {
 
 app.get('/home', (request, response)=> {
     console.log('sending to home...')
-    var unloggedUserName = request.query.unloggedUserName
-    console.log('unlogged user bookshelf', unloggedUserName)
+    var UserProfile = request.query.UserProfile
+    console.log('unlogged user bookshelf', UserProfile)
     let j =[];
     //sample json
     j.push({data:"hi"});
@@ -56,6 +56,7 @@ app.get('/signOut', (request, response)=> {
     try {
         console.log('Creating new user...')
         var NewuserName = request.body.userName
+        var NewuserEmail = request.body.userEmail
         var Newpassword = request.body.password
 
         console.log('encrypting credentials...')    
@@ -66,7 +67,7 @@ app.get('/signOut', (request, response)=> {
         console.log('posting new user!')
  
     //console.log('Creating user', NewuserName, 'with password', hashedPassword);
-    pool.query(`INSERT INTO contentData (user, password) VALUES("${NewuserName}", '${Newpassword}');`, (error, result) => {
+    pool.query(`INSERT INTO contentData (user, email, password) VALUES("${NewuserName}", "${NewuserEmail}", "${Newpassword}");`, (error, result) => {
         if (error) throw error;
         console.log('error type:', error);
         response.status(201).send(`Hi <b>${NewuserName}</b>, welcome to thebook-shelf! We're creating your account now...`);

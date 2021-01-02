@@ -93,11 +93,15 @@
                         <form>
                             <div class="form-group">
                                 <label>Your username</label>
-                                <input id="userNameSignUp"name="" class="form-control" placeholder="Email" type="text">
+                                <input id="userNameSignUp"name="" class="form-control" placeholder= "username" type="text">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <label>Your email</label>
+                                <input id="userEmailSignUp"name="" class="form-control" placeholder="Email" type="text">
                             </div> <!-- form-group// -->
                             <div class="form-group">
                                 <label >Your password</label>
-                                <input id="passwordSignUp" class="form-control" placeholder="******" type="password">
+                                <input id="passwordSignUp" class="form-control" placeholder="password" type="password">
                             </div> <!-- form-group// -->
                             <p style="color:white">Please don't use a secure password, I haven't built any encryption features yet! &#128517;</p>
                             <div class="form-group">
@@ -109,14 +113,17 @@
             </div>
             <div class="col">
                 <p class="text-success" id="signInMsg"></p>
+                <p class="text-danger" id="signInMsgFAIL"></p>
                 <p class="text-success" id="signUpMsg"></p>
+
                 <div class="spinner-border text-success" id="spinner" role="status">
+
                     <span class="sr-only">Loading...</span>
                 </div>
                    
                 <button type="button" class="navButton btn btn-danger" id="logOutButton">Log out</button>
                 
-                <button onclick="location.href='http://63.33.214.25/index'"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
+                <button onclick="location.href= `http://${serverAddress}/index`"  class=" navButton btn btn-primary" type="button">Back to the landing page</button>
                 <div class="dropdown show">
                     <a class="navButton btn btn-primary dropdown-toggle" href="#" role="button" id="enterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       View a bookshelf
@@ -124,7 +131,6 @@
                   
                     <div class="dropdown-menu" id="userListMenu" aria-labelledby="dropdownMenuLink">
                      <!--Usernames populate here-->
-                     <a class="selectedProfile dropdown-item text text-primary">Make sure to log out to see another's bookshelf!</a>
 
                     </div>
                 </div>
@@ -213,7 +219,7 @@
             data.forEach(function (user) {
                 lovelyUser = user.user
             console.log(lovelyUser)
-            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://${serverAddress}/home?unloggedUserName=${lovelyUser}">${lovelyUser}</a>`
+            document.getElementById('userListMenu').innerHTML +=  `<a class="selectedProfile dropdown-item" href="http://${serverAddress}/home?UserProfile=${lovelyUser}">${lovelyUser}</a>`
 
                 });
         });
@@ -226,12 +232,14 @@
             $('#submitSignUp').on("click", function (event) {
                 event.preventDefault();
                 var userNameInput = $('#userNameSignUp');
+                var userEmailInput = $('#userEmailSignUp');
                 var passwordInput = $('#passwordSignUp');
 
                 var NewUseruserName = userNameInput.val();
+                var NewUseruserEmail = userEmailInput.val();
                 var NewUserpassword = passwordInput.val();
 
-                console.log('new user is:', NewUseruserName, 'and the password is', NewUserpassword)
+                console.log('new user is:', NewUseruserName,'the email is: ', NewUseruserEmail, 'and the password is', NewUserpassword)
 
 
                 // POST NEW USER TO DATA BASE;
@@ -240,12 +248,12 @@
 
                     // Send the data using post;
 
-                    $.post(postUrl, { userName: NewUseruserName, password: NewUserpassword })
+                    $.post(postUrl, { userName: NewUseruserName, userEmail: NewUseruserEmail, password: NewUserpassword })
                     .done(function (data) {
                             $('#signUpMsg').html(data).show();
                             $('#spinner').show()
                             console.log('success sign up clause')
-                            setTimeout(function () { window.location.href =`http://${serverAddress}/signUp`}, 300);
+                            setTimeout(function () { window.location.href =`http://${serverAddress}/signUp`}, 800);
 
                         });   
             });
@@ -274,15 +282,15 @@
             document.cookie = `validatedUserName = ${validateUseruserName}; path=/`
             console.log('this cookie is:', document.cookie)
 
-            setTimeout(function () { window.location.href =`http://${serverAddress}/home` }, 2000);
+            setTimeout(function () { window.location.href =`http://${serverAddress}/home?UserProfile=${validateUseruserName}` }, 600);
             
         }else{
            //Something went wrong
            console.log("In sign in failure clause")
            console.log('failure is', response)
-           $('#signInMsg').html(response).show();
-            $('#spinner').show()
-           setTimeout(function () { window.location.href =`http://${serverAddress}/signUp` }, 2500);
+           $('#signInMsgFAIL').html(response).show();
+           $('#spinnerFAIL').show()
+           setTimeout(function () { window.location.href =`http://${serverAddress}/signUp` }, 600);
         }
          });           
         }) 
