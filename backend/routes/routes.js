@@ -34,7 +34,9 @@ app.get('/home', (request, response)=> {
 });
 
 
-
+app.get('/auth', function(request, response){
+    response.sendFile('/Users/Seansmac/Desktop/Dev/thebookshelf/backend/views/Authentication.html');
+});
 
 
 
