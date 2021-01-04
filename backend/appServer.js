@@ -5,9 +5,14 @@ const session = require('express-session');
 const cors = require('cors')
 const fileupload = require('express-fileupload');
 const path = require('path');
+const routes = require('./routes/routes')
 
 // security
 app.use(cors());
+
+// Use routes (which houses the REST requests)
+routes(app) 
+
 
 //session
 app.use(session({
@@ -25,7 +30,6 @@ const server = app.listen(port, (error) => {
 
 })
 
-//routes(app) // not sure what this does...
 
 //Data bridge
 //TODO
