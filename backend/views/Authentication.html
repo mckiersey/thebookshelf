@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--https://developers.google.com/identity/sign-in/web-->
+<html>
+    <head>
+        <title>Google Authentication sign in</title>
+        <meta name="google-signin-client_id" content="722691118980-7h0qujhekiur1uh1hh6raa108e77jesq.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>The book-shelf.com sign in</h1>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        <a href="#" onclick="signOut();">Sign out</a>
+
+        <div id="greeting">
+            You are not authorized to view this content
+          </div>
+          <div id="authorisedContent">
+        <!-- EDIT SWITCH-->
+        <div class="custom-control custom-switch" id="authorisedContent" align="right">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label text-success" for="customSwitch1"><b></b>Edit mode switch & add
+                content</b></label>
+        </div>
+    </html>
+
+<script>
+        console.log('outside function Print out')
+        // hide initially
+        $('#authorisedContent').hide()
+
+// sign in 
+function onSignIn(googleUser) {
+    console.log('Print out')
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+    setTimeout(function() {
+    // show the content
+    $('#greeting').hide()
+    $('#authorisedContent').show()
+  }, 1000);
+}
+// sign out
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+// check if signed in
+function isUserSignedIn() {
+  gapi.load('auth2', function() {
+      var isSignedIn = auth2.isSignedIn.get();
+      console.log('is signed in? ', isSignedIn)
+  })
+}
+
+// display if signed in
+
+
+  </script>
+</body>
+
