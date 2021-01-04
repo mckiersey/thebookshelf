@@ -1,5 +1,5 @@
 const express = require('express');
-const post = 80;
+const port = 80;
 const app = express();
 const session = require('express-session');
 const cors = require('cors')
@@ -25,7 +25,7 @@ const server = app.listen(port, (error) => {
 
 })
 
-routes(app) // not sure what this does...
+//routes(app) // not sure what this does...
 
 //Data bridge
 //TODO
