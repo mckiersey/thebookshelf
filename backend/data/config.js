@@ -1,23 +1,15 @@
 const mysql = require('mysql');
 
-
-// SET DATABASE CONNECTION CREDENTIALS
-
+// Configure credentials to connect to the database
 const config = {
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'bootstrap'
+    database: 'auth'
 };
 
-
-
-
-// A MYSQL POOL ALLOWS FOR MULTIPLE CONNECTIONS AT ONCE
-
+// Creating a pool to enable multiple connections
 const pool = mysql.createPool(config);
 
-// EXPORT THE POOL SO THAT IT CAN BE USED BY THE APP
-
+//Export the pool
 module.exports = pool;
-

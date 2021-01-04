@@ -6,10 +6,10 @@ const router = app => {
 
 
 // REDIRECTS
-const loginPage = '/Users/Seansmac/Desktop/Dev/thebookshelf/backend/index.html'
+const loginPage = '/Users/Seansmac/Desktop/Dev/thebookshelf/backend/views/Authentication.ejs'
 app.get('/login', (req, res)=>{
     console.log('Redirect to index')
-    res.sendFile(loginPage)
+    res.render(loginPage)
     });
 
 };
