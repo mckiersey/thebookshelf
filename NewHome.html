@@ -195,32 +195,7 @@
     });
 
 
-    $('.iframe').on('click', function(event) { 
-    alert("iframe clicked")
-    $(this).width(500);
-    $(this).height(600);
-    })
     
-    $("#middleVid").on("click", function(event){
-        alert("click!")
-    })
-
-    var iframeBody = $('body', $('#middleVid')[0].contentWindow.document);
-        $(iframeBody).on('click', 'img', function(event) {
-            alert("click!")
-});
-
-
-    $(".vidRack").on("mouseover", function(event) {
-        console.log('mouseover')
-        $(this).width(200);
-        $(this).height(150);
-    });
-    $(".vidRack").mouseout(function() { 
-        $(this).width(80);
-        $(this).height(60);
-    });
-
 </script>
             
 
