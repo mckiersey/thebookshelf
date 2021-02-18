@@ -11,7 +11,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/a3b77350a6.js"></script>
-    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <!--Clipboard-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+
 
 
     <!--Icons (delete button)-->
@@ -93,14 +95,12 @@
         </div>
     </div>
     <div>
-        <h2> COPY TEST </h2>
+        <h1> COPY TEST </h1>
         <!-- Target -->
-        <input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
+        <input id="post-shortlink" value="https://ac.me/qmE_jpnYXFo">
 
         <!-- Trigger -->
-        <button class="btn" data-clipboard-target="#foo">
-            <img src="assets/clippy.svg" alt="Copy to clipboard">
-        </button>
+        <button class="button" id="copy-button" data-clipboard-target="#post-shortlink">Copy</button>§
     </div>
 
     </div>
@@ -238,7 +238,9 @@
     <!--Javascript-->
     <script>
         // Copy button
-        new ClipboardJS('button');
+        (function () {
+            new Clipboard('#copy-button');
+        })();
         // podcast player with variables
         "http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%26feed%3D54nAGcIl" +
         "&title=${nameString1%20{nameString2}%20{nameString3}%20{nameString4}t&podcastName=`${episodeString_1}`%20`{episodeString2}&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
