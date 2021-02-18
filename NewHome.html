@@ -1,323 +1,395 @@
 <!DOCTYPE html>
 <!-- file:///Users/Seansmac/Desktop/Dev/thebookshelf/NewHome.html -->
 <html>
+
 <head>
 
 
-    <title data-n-head="true">scrapbkr</title>
+    <title data-n-head="true">partagr</title>
     <link data-n-head="true" rel="icon" type="image/x-icon" href="/favicon.png?v=2">
-    <title>scrapbk.com</title>
+    <title>partagr.com</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/a3b77350a6.js"></script> <!--Icons (delete button)-->
+    <script src="https://use.fontawesome.com/a3b77350a6.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+
+    <!--Icons (delete button)-->
 
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
 
-    <div class = "container-fluid">
+    <div class="container-fluid">
         <!--HEADER-->
         <div class="row header" align="left">
             <div class="col-8 ">
-                <h1>scrapbkr.com</h1>
+                <h1>partagr.com</h1>
             </div>
             <div class="col-4 " align="right">
                 <img src="/Users/Seansmac/Projects/content.github.io/me_balloons.jpg" alt="Avatar" class="avatar">
             </div>
         </div>
-<!--CONTENT-->
+        <!--CONTENT-->
 
         <!--YOUTUBE-->
-        <div class="row justify-content-center align-self-center top-buffer" align="center" >
-            <!--Col Left-->
+        <div class="row justify-content-center align-self-center top-buffer" align="center">
+
+            <!--BANNER VIDEO-->
+            <div class="col-12 centre-piece">
+                <iframe width="900" height="450" src="https://www.youtube.com/embed/BC2dRkm8ATU" frameborder="0" allow="accelerometer; autoplay; 
+                    clipboard-write; encrypted-media; gyroscope; 
+                    picture-in-picture" allowfullscreen></iframe>
+
+            </div>
+        </div>
+
+
+        <!--First row -->
+        <div class="row justify-content-center align-self-center top-buffer" align="center">
+
             <div class="col-3 ">
-                    <div class="row   justify-content-center align-self-center">
-                        <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/2vjPBrBU-TM" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="row justify-content-center">
-                        <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/TP9luRtEqjc" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                    
-                    </div>
-                    <div class="row justify-content-center">
-                        <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/y8Ndi955iuY" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                  
-                    </div>
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/2vjPBrBU-TM" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
-            <!--Col Centre-->
-            <div class="col-6 centre-piece">
-                    <iframe class="iframe" id="middleVid" width="560" height="315" src="https://www.youtube.com/embed/BC2dRkm8ATU" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="col-3 ">
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/TP9luRtEqjc" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
-      
-            <!--Col Right-->
-            <div class="col-3  ">
-                <div class="row   justify-content-center align-self-center">
-                    <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/hTGJfRPLe08" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="row    justify-content-center">
-                    <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/GVDJ8O3lPBA" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="row    justify-content-center">
-                    <iframe class="iframe" width="260" height="150" src="https://www.youtube.com/embed/sCNlt5nvSI8" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+            <div class="col-3 ">
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/y8Ndi955iuY" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
-        <!--VIDEO RACK-->
-        <div class="row" align="left">
-            <div class="col-12">
-                <h3 id="videoRack">video rack</h3>
+        <!--Second row-->
+        <div class="row justify-content-center align-self-center top-buffer" align="center">
+            <div class="col-3 ">
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/hTGJfRPLe08" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="col-3 ">
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/GVDJ8O3lPBA" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="col-3 ">
+                <iframe class="iframe" width="260" height="150" frameBorder="0"
+                    src="https://www.youtube.com/embed/sCNlt5nvSI8" frame="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
-        <div class="row" align="center">
-            <div class="col-12" id="populateVideoRack">
-                <!--Populate rack-->
+    </div>
+    <div>
+        <h2> COPY TEST </h2>
+        <!-- Target -->
+        <input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
 
-            </div>
-        </div>
-    
-        <!--PODCASTS-->
-        <div class="row top-buffer" align="center">
-            <div class="col-12">
-                <h1 id="section-title">podcasts</h1>
-            </div>
-        </div>
-        <div class="row" align="center">
-            <div class="col-2  podcastSource ">
-                <a href="http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F25ab0ef0-8e9c-47e2-bbea-4776fa514d46%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D25ab0ef0-8e9c-47e2-bbea-4776fa514d46%26feed%3D54nAGcIl&title=‘Rankly%20Unfit’%3A%20The%20View%20From%20a%20Republican%20Who%20Voted%20to%20Impeach&podcastName=The%20Daily&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
-                onclick="populatePodcast(this); return false;"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/TheDaily.jpg" width="150" height="110">
-                </a>
-            </div>
-                
-            <div class="col-2">
-                <a href="http://www.cloud-caster.com/player/OpenPlayer?mediaurl=http%3A%2F%2Ffeedproxy.google.com%2F~r%2Fdancarlin%2Fhistory%2F~5%2FsOXrUig8M1c%2Fdchha59_BLITZ_The_Destroyer_of_Worlds.mp3&title=Show%2059%20-%20(Blitz)%20The%20Destroyer%20of%20Worlds&podcastName=Dan%20Carlin%27s%20Hardcore%20History&feedurl=http%3A%2F%2Ffeeds.feedburner.com%2Fdancarlin%2Fhistory%3Fformat%3Dxml"
-                    onclick="populatePodcast(this); return false;">
-                    <img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/hardcoreHistory.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/hardcoreHistory.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/howIBuiltThis.jpg" width="150" height="110">
-                </a>    
-            </div>
-            <div class="col-2">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/Serial.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/sTown.jpg" width="150" height="110">
-                </a>
-            </div>
-        </div> 
-    
+        <!-- Trigger -->
+        <button class="btn" data-clipboard-target="#foo">
+            <img src="assets/clippy.svg" alt="Copy to clipboard">
+        </button>
+    </div>
 
-        <div class="row" align="center">
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/SongExplorer.png" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/stuffYouShouldKnow.png" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/podSaveAmerica.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/WiredThePodcast.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/myDadWroteAPorno.jpg" width="150" height="110">
-                </a>
-            </div>
-            <div class="col-2  ">
-                <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/joeRoganExperience.jpg" width="150" height="110">
-                </a>
-            </div>
-        </div> 
-        <!--Podcast player-->
-        <div class="row" align= center>
-            <div class="col-12">
-                <iframe class= "removable" id="podcastPlayer"
-                    src=""
-                    title="Stream your Podcast"
-                    height= 400px
-                    width = 700px>                        
-                </iframe>
-            </div>  
+    </div>
+    <!--VIDEO RACK-->
+    <div class="row" align="left">
+        <div class="col-12">
+            <h3 id="videoRack">video rack</h3>
         </div>
-        <div class="row" align="center">
-            <div class="col-12">
-                <button class="close removable">close</button>
-            </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col-12" id="populateVideoRack">
+            <!--Populate rack-->
+
+        </div>
+    </div>
+
+    <!--PODCASTS-->
+    <div class="row top-buffer" align="center">
+        <div class="col-12">
+            <h1 id="section-title">Listening</h1>
+        </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col-2  podcastSource ">
+            <a href="http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F25ab0ef0-8e9c-47e2-bbea-4776fa514d46%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D25ab0ef0-8e9c-47e2-bbea-4776fa514d46%26feed%3D54nAGcIl&title=‘Rankly%20Unfit’%3A%20The%20View%20From%20a%20Republican%20Who%20Voted%20to%20Impeach&podcastName=The%20Daily&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
+                onclick="populatePodcast(this); return false;"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/TheDaily.jpg" width="150" height="110">
+            </a>
         </div>
 
-      
-
-       
-        <!--Articles-->
-        <div class="row  top-buffer" align="center">
-            <div class="col-12">
-                <h1 id="section-title">articles</h1>
-            </div>
+        <div class="col-2">
+            <a href="http://www.cloud-caster.com/player/OpenPlayer?mediaurl=http%3A%2F%2Ffeedproxy.google.com%2F~r%2Fdancarlin%2Fhistory%2F~5%2FsOXrUig8M1c%2Fdchha59_BLITZ_The_Destroyer_of_Worlds.mp3&title=Show%2059%20-%20(Blitz)%20The%20Destroyer%20of%20Worlds&podcastName=Dan%20Carlin%27s%20Hardcore%20History&feedurl=http%3A%2F%2Ffeeds.feedburner.com%2Fdancarlin%2Fhistory%3Fformat%3Dxml"
+                onclick="populatePodcast(this); return false;">
+                <img alt="Qries" src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/hardcoreHistory.jpg" width="150"
+                    height="110">
+            </a>
         </div>
-            <div class="row" align="left">
-                <div class="col-4">
-                    <ul id="populateArticles-col1">
-                    <!--Populate Articles-->
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <ul id="populateArticles-col2">
-                        <!--Populate Articles-->
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <ul id="populateArticles-col3">
-                        <!--Populate Articles-->
-                    </ul>               
-                </div>
-            </div>
+        <div class="col-2">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/hardcoreHistory.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/howIBuiltThis.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/Serial.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/sTown.jpg" width="150" height="110">
+            </a>
+        </div>
+    </div>
 
-<!--Javascript-->
-<script>
 
-// podcast player with variables
-    "http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%26feed%3D54nAGcIl" +
-     "&title=${nameString1%20{nameString2}%20{nameString3}%20{nameString4}t&podcastName=`${episodeString_1}`%20`{episodeString2}&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
-    
-     
-     http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2Fbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%2Fepisodes%2F04938406-a2b2-4707-94cb-7510b8c4b757%2Faudio%2F128%2Fdefault.mp3%3FawCollectionId%3Dbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%26awEpisodeId%3D04938406-a2b2-4707-94cb-7510b8c4b757&title=730%3A%20The%20Empty%20Chair&podcastName=This%20American%20Life&feedurl=http%3A%2F%2Ffeed.thisamericanlife.org%2Ftalpodcast
-     
-     http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F45249e94-b864-4399-99fd-81dd8c0d80d0%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D45249e94-b864-4399-99fd-81dd8c0d80d0%26feed%3D54nAGcIl&title=A%20Conspiracy%20Theory%20Is%20Proved%20Wrong&podcastName=The%20Daily&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl
-     function populatePodcast(obj) {
-        podcastSource = obj.getAttribute("href")
-        $("#podcastPlayer").attr('src',podcastSource);
-        $(".removable").slideDown("slow");
+    <div class="row" align="center">
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/SongExplorer.png" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/stuffYouShouldKnow.png" width="150"
+                    height="110">
+            </a>
+        </div>
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/podSaveAmerica.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/WiredThePodcast.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/myDadWroteAPorno.jpg" width="150" height="110">
+            </a>
+        </div>
+        <div class="col-2  ">
+            <a href="https://www.npr.org/sections/money/?t=1611457303956"><img alt="Qries"
+                    src="/Users/Seansmac/Desktop/Dev/thebookshelf/images/joeRoganExperience.jpg" width="150"
+                    height="110">
+            </a>
+        </div>
+    </div>
+    <!--Podcast player-->
+    <div class="row" align=center>
+        <div class="col-12">
+            <iframe class="removable" id="podcastPlayer" src="" title="Stream your Podcast" height=400px width=700px>
+            </iframe>
+        </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col-12">
+            <button id='PodcastCloser' class="close removable">close</button>
+        </div>
+    </div>
 
-        return false;
-    }
 
-    $(".close").on("click", function(event) {
-        $("#podcastPlayer").attr('src',"");
-        $(".removable").slideUp("slow");
 
-    })
 
-    var videoRackList = ["https://www.youtube.com/embed/DgZPQMyzKiE", "https://www.youtube.com/embed/zo_nrcKUffw",
-                        "https://www.youtube.com/embed/BC2dRkm8ATU","https://www.youtube.com/embed/cuqZPx0H7a0",
-                        "https://www.youtube.com/embed/XnRCZK3KjUY", "https://www.youtube.com/embed/CHp639vhUJg"]
-    $("#videoRack").on("click", function(event) {
-        videoRackList.forEach(function (item, index){
-            document.getElementById('populateVideoRack').innerHTML +=  `<iframe class='vidRack' width="60" height="50" src="${item}" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    <!--Articles-->
+    <div class="row  top-buffer" align="center">
+        <div class="col-12">
+            <h1 id="section-title">Reading</h1>
+        </div>
+    </div>
+    <div class="row" align="left">
+        <div class="col-4">
+            <ul id="populateArticles-col1">
+                <!--Populate Articles-->
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul id="populateArticles-col2">
+                <!--Populate Articles-->
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul id="populateArticles-col3">
+                <!--Populate Articles-->
+            </ul>
+        </div>
+    </div>
+
+    <!--Javascript-->
+    <script>
+        // Copy button
+        new ClipboardJS('button');
+        // podcast player with variables
+        "http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%26feed%3D54nAGcIl" +
+        "&title=${nameString1%20{nameString2}%20{nameString3}%20{nameString4}t&podcastName=`${episodeString_1}`%20`{episodeString2}&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
+
+
+        //http: //www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2Fbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%2Fepisodes%2F04938406-a2b2-4707-94cb-7510b8c4b757%2Faudio%2F128%2Fdefault.mp3%3FawCollectionId%3Dbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%26awEpisodeId%3D04938406-a2b2-4707-94cb-7510b8c4b757&title=730%3A%20The%20Empty%20Chair&podcastName=This%20American%20Life&feedurl=http%3A%2F%2Ffeed.thisamericanlife.org%2Ftalpodcast
+
+        // http: //www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F45249e94-b864-4399-99fd-81dd8c0d80d0%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D45249e94-b864-4399-99fd-81dd8c0d80d0%26feed%3D54nAGcIl&title=A%20Conspiracy%20Theory%20Is%20Proved%20Wrong&podcastName=The%20Daily&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl
+        function populatePodcast(obj) {
+            podcastSource = obj.getAttribute("href")
+            $("#podcastPlayer").attr('src', podcastSource);
+            $(".removable").slideDown("slow");
+
+            return false;
+        }
+
+        $(".close").on("click", function (event) {
+            $("#podcastPlayer").attr('src', "");
+            $(".removable").slideUp("slow");
 
         })
-        
 
-    });
+        var videoRackList = ["https://www.youtube.com/embed/DgZPQMyzKiE",
+            "https://www.youtube.com/embed/zo_nrcKUffw",
+            "https://www.youtube.com/embed/BC2dRkm8ATU", "https://www.youtube.com/embed/cuqZPx0H7a0",
+            "https://www.youtube.com/embed/XnRCZK3KjUY", "https://www.youtube.com/embed/CHp639vhUJg"
+        ]
+        $("#videoRack").on("click", function (event) {
+            videoRackList.forEach(function (item, index) {
+                document.getElementById('populateVideoRack').innerHTML +=
+                    `<iframe class='vidRack' width="60" height="50" src="${item}" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 
-
-    $(".vidRack").on("mouseover", function(event) {
-        console.log('mouseover')
-        $(this).width(200);
-        $(this).height(150);
-    });
-    $(".vidRack").mouseout(function() { 
-        $(this).width(80);
-        $(this).height(60);
-    });
-
-    //GET ARTICLE DATA
-    var articleList = { 
-                    "On careers": "https://waitbutwhy.com/2018/04/picking-career.html",
-                    "A Supposedly Fun Thing": "https://harpers.org/wp-content/uploads/2008/09/HarpersMagazine-1996-01-0007859.pdf",
-                    "Consider the Lobster": "http://www.columbia.edu/~col8/lobsterarticle.pdf",
-                    "Anthony Bourdain": "https://www.newyorker.com/magazine/1999/04/19/dont-eat-before-reading-this",
-                    "Covid Survivor's Log": "https://mckiersey.medium.com/log-covid-19-38f565944bcd",
-                    "A Love Letter (of sorts) to Paris from a Foreigner": "https://mckiersey.medium.com/my-paris-is-3d4bd3d4405b",
-                    "The Meaning of Life in 100 Spoons": "https://mckiersey.medium.com/i-just-proved-that-a-spoon-has-100-different-uses-7b505d4db33f",
-                    "My 'Words' Project": "https://mckiersey.medium.com/words-68b6d5e89e16",
-                    "Searching for Failure": "https://mckiersey.medium.com/searching-for-failure-6173c120c366"
-                    }
+            })
 
 
-var i = 1;
-console.log(i)
+        });
 
 
-for (const property in articleList) {
-    console.log(i)
+        $(".vidRack").on("mouseover", function (event) {
+            console.log('mouseover')
+            $(this).width(200);
+            $(this).height(150);
+        });
+        $(".vidRack").mouseout(function () {
+            $(this).width(80);
+            $(this).height(60);
+        });
 
-    var caption = property
-    var articleLink = articleList[property]
-    var pathArray = articleLink.split('/');
-    var protocol = pathArray[0];
-    var host = pathArray[2];
-    var baseUrl = protocol + '//' + host;
-    if (i <= 4){
-        //document.getElementById('populateArticles-col1').innerHTML +=  `<div class="row" align = "left"><div class="col-12 border"><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></div></div>` 
-        document.getElementById('populateArticles-col1').innerHTML +=  `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></li>` 
-    } else if(i >= 4  && i <=8){
-        //document.getElementById('populateArticles-col2').innerHTML +=   `<div class="row"align = "left"><div class="col-12 border"><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></div></div>`
-        document.getElementById('populateArticles-col2').innerHTML +=   `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></li>`
-
-    }else if(i >= 8  && i <=12){
-        document.getElementById('populateArticles-col3').innerHTML +=   `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></li>`
-    }
-    i+=1
-    console.log('value of i:'+i)
-}
+        //GET ARTICLE DATA
+        var articleList = {
+            "On careers": "https://waitbutwhy.com/2018/04/picking-career.html",
+            "A Supposedly Fun Thing": "https://harpers.org/wp-content/uploads/2008/09/HarpersMagazine-1996-01-0007859.pdf",
+            "Consider the Lobster": "http://www.columbia.edu/~col8/lobsterarticle.pdf",
+            "The Meaning of Life in 100 Spoons": "https://mckiersey.medium.com/i-just-proved-that-a-spoon-has-100-different-uses-7b505d4db33f",
+            "Anthony Bourdain": "https://www.newyorker.com/magazine/1999/04/19/dont-eat-before-reading-this",
+            "Covid Survivor's Log": "https://mckiersey.medium.com/log-covid-19-38f565944bcd",
+            "A Love Letter (of sorts) to Paris from a Foreigner": "https://mckiersey.medium.com/my-paris-is-3d4bd3d4405b",
+            "My 'Words' Project": "https://mckiersey.medium.com/words-68b6d5e89e16",
+            "Searching for Failure": "https://mckiersey.medium.com/searching-for-failure-6173c120c366"
+        }
 
 
-</script>
-            
+        var i = 1;
+        console.log(i)
+
+
+        for (const property in articleList) {
+            console.log(i)
+
+            var caption = property
+            var articleLink = articleList[property]
+            var pathArray = articleLink.split('/');
+            var protocol = pathArray[0];
+            var host = pathArray[2];
+            var baseUrl = protocol + '//' + host;
+            if (i <= 4) {
+                document.getElementById('populateArticles-col1').innerHTML +=
+                    `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a class="ArticleTextLinkClass" href =${articleLink} target="_blank">  ${property}</a></li>`
+            } else if (i >= 4 && i <= 8) {
+                document.getElementById('populateArticles-col2').innerHTML +=
+                    `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></li>`
+
+            } else if (i >= 8 && i <= 12) {
+                document.getElementById('populateArticles-col3').innerHTML +=
+                    `<li><img height="18" width="18" src="http://www.google.com/s2/favicons?domain=${baseUrl}"/><a href =${articleLink} target="_blank">  ${property}</a></li>`
+            }
+            i += 1
+            console.log('value of i:' + i)
+        }
+    </script>
+
 
 </body>
 
 
 
 <style>
-
-
-    body{
-        background-color: #f5f5f5;
+    * {
+        font-family: Helvetica;
     }
 
-    .header{
-        background-color: #c3b299
+    body {
+        background-color: black;
     }
 
-    #section-title{
-        color: #c3b299;
+    .header {
+        background-color: white
     }
-    h1{
-        padding: 10px;
+
+    #section-title {
         color: white;
     }
 
-    img{
+    h1 {
+        padding: 10px;
+        color: c3b299;
+    }
+
+    img {
         margin: 10px;
     }
 
-    iframe{
+    iframe {
         margin: 5px;
     }
 
-   
+    #PodcastCloser {
+        color: white
+    }
 
-    #videoRack{
-        color: #AAAAAA;
+
+
+    #videoRack {
+        color: white;
         margin: 10px;
         padding-left: 20px;
     }
 
-    .articles{
+    .articles {
         margin-left: 20px;
     }
-    p{
+
+    a:link {
+        color: white;
+    }
+
+    a:visited {
+        color: white;
+    }
+
+    p {
         padding: 100px;
     }
 
@@ -327,27 +399,28 @@ for (const property in articleList) {
         height: 90px;
         padding: 10px;
         border-radius: 50%;
-  
+
     }
 
     ul {
-        list-style-type: none; /* Remove bullets */
-        padding: 0; /* Remove padding */
-        margin: 0; /* Remove margins */
+        list-style-type: none;
+        /* Remove bullets */
+        padding: 0;
+        /* Remove padding */
+        margin: 0;
+        /* Remove margins */
     }
 
-    .centre-piece{
+
+    .centre-piece {
         margin-top: 100px;
     }
 
-    .top-buffer{
+    .top-buffer {
         margin-top: 30px;
     }
 
-    .removable{
+    .removable {
         display: none;
     }
-
-
-
 </style>
