@@ -217,7 +217,7 @@
             <h1 id="section-title">Reading</h1>
         </div>
     </div>
-    <div class="row" align="left">
+    <div class="row" id="ArticleSection" align="left">
         <div class="col-4">
             <ul id="populateArticles-col1">
                 <!--Populate Articles-->
@@ -237,10 +237,6 @@
 
     <!--Javascript-->
     <script>
-        // Copy button
-        (function () {
-            new Clipboard('#copy-button');
-        })();
         // podcast player with variables
         "http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%26feed%3D54nAGcIl" +
         "&title=${nameString1%20{nameString2}%20{nameString3}%20{nameString4}t&podcastName=`${episodeString_1}`%20`{episodeString2}&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
@@ -299,7 +295,10 @@
             "Covid Survivor's Log": "https://mckiersey.medium.com/log-covid-19-38f565944bcd",
             "A Love Letter (of sorts) to Paris from a Foreigner": "https://mckiersey.medium.com/my-paris-is-3d4bd3d4405b",
             "My 'Words' Project": "https://mckiersey.medium.com/words-68b6d5e89e16",
-            "Searching for Failure": "https://mckiersey.medium.com/searching-for-failure-6173c120c366"
+            "Searching for Failure": "https://mckiersey.medium.com/searching-for-failure-6173c120c366",
+            "Il Maestro- Scorese on the art of Cinema & its death": "https://harpers.org/archive/2021/03/il-maestro-federico-fellini-martin-scorsese/",
+            "The (nearly lethal) comforts of a luxury cruise ship": "https://harpers.org/wp-content/uploads/2008/09/HarpersMagazine-1996-01-0007859.pdf",
+            "Consider the lobster": "http://www.columbia.edu/~col8/lobsterarticle.pdf"
         }
 
 
@@ -352,6 +351,7 @@
 
     #section-title {
         color: white;
+        margin-bottom: 50px;
     }
 
     h1 {
@@ -413,6 +413,10 @@
         /* Remove margins */
     }
 
+    #ArticleSection {
+        padding-bottom: 100px;
+        background-color: rgb(51, 51, 51);
+    }
 
     .centre-piece {
         margin-top: 100px;
