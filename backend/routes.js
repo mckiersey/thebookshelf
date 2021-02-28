@@ -10,7 +10,7 @@ const router = app => {
 
 
     app.get('/peak', (request, response) => {
-        PeakPage = "To be done"
+        PeakPage = "backend/NewHome.html"
         response.sendFile(__dirname + response)
     });
 
