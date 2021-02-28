@@ -4,12 +4,14 @@ const port = 80;
 const path = require('path');
 const routes = require('./routes.js');
 const bodyParser = require('body-parser')
+process.env.PWD = process.cwd()
 
 
 
 
 // Add body parser for routes.js file
 app.use(bodyParser.json())
+app.use(express.static(process.env.PWD + '/public'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
