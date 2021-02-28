@@ -11,8 +11,7 @@ const router = app => {
 
     app.get('/peak', (request, response) => {
         PeakPage = "To be done"
-        //response.sendFile(homepage_file)
-        response.send(PeakPage)
+        response.sendFile(__dirname + response)
     });
 
 
