@@ -9,9 +9,9 @@ const router = app => {
     });
 
 
-    app.get('/peak', (request, response) => {
-        PeakPage = "/NewHome.html"
-        response.sendFile(__dirname + PeakPage)
+    app.get('/peek', (request, response) => {
+        PeekPage = "/NewHome.html"
+        response.sendFile(__dirname + PeekPage)
     });
 
 
