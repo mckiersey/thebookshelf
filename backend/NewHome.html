@@ -180,13 +180,44 @@
         </div>
         <div class="col-2  ">
             <a href="https://podcasts.google.com/feed/aHR0cDovL2ZlZWRzLnNvdW5kY2xvdWQuY29tL3VzZXJzL3NvdW5kY2xvdWQ6dXNlcnM6NDQ2MTk4MjIvc291bmRzLnJzcw"
-                target="_blank"><img alt="Qries" src="/SecondCaptains.jpg" width="150" height="110">
+                target="_blank"><img alt="Qries" src="/SecondCaptains.jpg" onclick="PodcastEpisodeFunction" width="150"
+                    height="110">
             </a>
         </div>
-        <div class="col-2  ">
-            <a href="https://podcasts.google.com/feed/aHR0cHM6Ly93d3cudGhpc2FtZXJpY2FubGlmZS5vcmcvcG9kY2FzdC54bWw"
-                target="_blank"><img alt="Qries" src="/Thisamericanlife.png" width="150" height="110">
-            </a>
+        <div class="col-2 ">
+            <!-- DROP DOWN BOX-->
+            <img alt="Qries" src="/Thisamericanlife.png" onclick="TALShow()" width="150" height="110">
+        </div>
+    </div>
+    <div class="row" id="TALRemovable" align="center">
+        <div class="col-12">
+            <h2 style="color: white;">Episodes</h2>
+            <ul>
+                <a href="https://www.thisamericanlife.org/664/the-room-of-requirement">
+                    <li>A great story</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/323/the-super">
+                    <li>A good intro to TAL</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/487/harper-high-school-part-one">
+                    <li>Schools and guns</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/515/good-guys">
+                    <li>Good guys</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/570/the-night-in-question">
+                    <li>Lost peace in Palestein</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/557/birds-bees">
+                    <li>The birds and the bees</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/559/captains-log">
+                    <li>Captain's log</li>
+                </a>
+                <a href="https://www.thisamericanlife.org/575/poetry-of-propaganda">
+                    <li>Poetry of Propaganda</li>
+                </a>
+            </ul>
         </div>
     </div>
     <!--Podcast player-->
@@ -231,14 +262,18 @@
 
     <!--Javascript-->
     <script>
-        // podcast player with variables
-        "http://www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D2456bb9b-b94e-4da5-a167-8b5f6a1a45a4%26feed%3D54nAGcIl" +
-        "&title=${nameString1%20{nameString2}%20{nameString3}%20{nameString4}t&podcastName=`${episodeString_1}`%20`{episodeString2}&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl"
+        // GET PODCAST DATA
+        var ThisAmericanLifeList = {
+            "Heavy listening but great journalism on guns and schools in the US": "https://www.thisamericanlife.org/487/harper-high-school-part-one",
+            "A good one to get started with This American Life": "https://www.thisamericanlife.org/323/the-super",
+            "Amazing listening": "https://www.thisamericanlife.org/664/the-room-of-requirement",
+            "This one's funny": "https://www.thisamericanlife.org/515/good-guys",
+            "Fanscinating look into a crucial lost opportunity for peace in Palestein": "https://www.thisamericanlife.org/570/the-night-in-question",
+            "Birds and Bees": "https://www.thisamericanlife.org/557/birds-bees",
+            "Captain's Log": "https://www.thisamericanlife.org/559/captains-log",
+            "Poetry of Propaganda": "https://www.thisamericanlife.org/575/poetry-of-propaganda"
+        }
 
-
-        //http: //www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2Fbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%2Fepisodes%2F04938406-a2b2-4707-94cb-7510b8c4b757%2Faudio%2F128%2Fdefault.mp3%3FawCollectionId%3Dbbbcc290-ed3b-44a2-8e5d-5513e38cfe20%26awEpisodeId%3D04938406-a2b2-4707-94cb-7510b8c4b757&title=730%3A%20The%20Empty%20Chair&podcastName=This%20American%20Life&feedurl=http%3A%2F%2Ffeed.thisamericanlife.org%2Ftalpodcast
-
-        // http: //www.cloud-caster.com/player/OpenPlayer?mediaurl=https%3A%2F%2Fdts.podtrac.com%2Fredirect.mp3%2Fchtbl.com%2Ftrack%2F8DB4DB%2Fpdst.fm%2Fe%2Fnyt.simplecastaudio.com%2F03d8b493-87fc-4bd1-931f-8a8e9b945d8a%2Fepisodes%2F45249e94-b864-4399-99fd-81dd8c0d80d0%2Faudio%2F128%2Fdefault.mp3%3Faid%3Drss_feed%26awCollectionId%3D03d8b493-87fc-4bd1-931f-8a8e9b945d8a%26awEpisodeId%3D45249e94-b864-4399-99fd-81dd8c0d80d0%26feed%3D54nAGcIl&title=A%20Conspiracy%20Theory%20Is%20Proved%20Wrong&podcastName=The%20Daily&feedurl=https%3A%2F%2Ffeeds.simplecast.com%2F54nAGcIl
         function populatePodcast(obj) {
             podcastSource = obj.getAttribute("href")
             $("#podcastPlayer").attr('src', podcastSource);
@@ -246,6 +281,11 @@
 
             return false;
         }
+
+        function TALShow() {
+            $("#TALRemovable").slideDown("slow")
+        }
+
 
         $(".close").on("click", function (event) {
             $("#podcastPlayer").attr('src', "");
@@ -426,5 +466,14 @@
 
     .removable {
         display: none;
+    }
+
+    #TALRemovable {
+        display: none;
+    }
+
+    ul,
+    li {
+        color: white;
     }
 </style>

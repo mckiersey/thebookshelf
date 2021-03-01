@@ -4,7 +4,7 @@
 const router = app => {
 
     app.get('/', (request, response) => {
-        LandingPage = "/SneakPeak/SneakPeak-Landing.html"
+        LandingPage = "/SneakPeek/SneakPeek-Landing.html"
         response.sendFile(__dirname + LandingPage)
     });
 
