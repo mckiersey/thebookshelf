@@ -262,6 +262,26 @@
 
     <!--Javascript-->
     <script>
+        // PODCAST API
+        $("#podcasts").on("click", function (event) {
+            console.log("podcast button clicked!")
+            var requestString = "http://localhost/api/podcasts"
+            $.get(requestString, function (data, status) {
+                console.log(data)
+                title = data[0]
+                thumbnail = data[1]
+                listenURL = data[2]
+                id = data[3]
+
+                document.getElementById('podThumbmail').innerHTML += `<img src=${thumbnail}></img>`
+                document.getElementById('podTitle').innerHTML += title
+                document.getElementById('podUrl').innerHTML += listenURL
+                document.getElementById('podId').innerHTML += id
+            });
+        });
+
+
+
         // GET PODCAST DATA
         var ThisAmericanLifeList = {
             "Heavy listening but great journalism on guns and schools in the US": "https://www.thisamericanlife.org/487/harper-high-school-part-one",
