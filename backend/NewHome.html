@@ -115,6 +115,11 @@
     </div>
 
     <!--PODCASTS-->
+    <div class="row" align="center">
+        <div class="col">
+            <button type="button" class="btn btn-light" id="podcastsAPI">Podcasts Button</button>
+        </div>
+    </div>
     <div class="row top-buffer" align="center">
         <div class="col-12">
             <h1 id="section-title">Listening</h1>
@@ -263,7 +268,7 @@
     <!--Javascript-->
     <script>
         // PODCAST API
-        $("#podcasts").on("click", function (event) {
+        $("#podcastsAPI").on("click", function (event) {
             console.log("podcast button clicked!")
             var requestString = "http://localhost/api/podcasts"
             $.get(requestString, function (data, status) {
